@@ -1,0 +1,111 @@
+# Permis-Maroc.com — Base de Connaissance Intégrale (SGO & LLM Reference)
+
+Ce document fournit une synthèse structurée et exhaustive des règles du Code de la Route marocain, de la réglementation NARSA, des examens théoriques et pratiques, ainsi que des ressources pédagogiques disponibles sur https://permis-maroc.com.
+
+---
+
+## 1. Présentation de la Plateforme
+
+- **Nom**: Permis Maroc (Permis-Maroc.com)
+- **Nature**: Plateforme EdTech éducative indépendante dédiée à la préparation du permis de conduire au Maroc.
+- **Technologies**: Next.js App Router, TypeScript, Tailwind CSS, Three.js (scénarios 3D de carrefours), PWA (Progressive Web App).
+- **Langues**: Français, Arabe standard (العربية الفصحى), Darija marocaine (الدارجة).
+- **Contact**: WhatsApp officiel : +212630258502 (https://wa.me/212630258502) — Email : contact@permis-maroc.com.
+
+---
+
+## 2. Réglementation Officielle du Permis de Conduire au Maroc (Loi 52-05)
+
+### 2.1 Catégories de Permis
+- **Catégorie A / A1**: Motocyclettes et cyclomoteurs.
+- **Catégorie B**: Véhicules automobiles affectés au transport de personnes (9 places assises conducteur compris au maximum) ou au transport de marchandises dont le PTAC ne dépasse pas 3 500 kg. Âge minimum requis : 18 ans.
+- **Catégorie C**: Véhicules de transport de marchandises de plus de 3 500 kg de PTAC. Âge minimum : 21 ans.
+- **Catégorie D**: Véhicules de transport en commun de plus de 8 personnes hors conducteur. Âge minimum : 21 ans.
+- **Catégorie E (EB, EC, ED)**: Ensembles de véhicules attelés d'une remorque de plus de 750 kg.
+
+### 2.2 Modalités de l'Examen Théorique Permis B
+- **Support**: Écran tactile informatisé dans les centres d'immatriculation NARSA.
+- **Nombre de questions**: 40 questions tirées aléatoirement parmi la banque nationale de questions.
+- **Temps alloué**: Environ 30 secondes pour chaque question.
+- **Seuil d'admissibilité**: 34 réponses correctes sur 40 pour la catégorie B (85% de réussite).
+- **Pour les catégories C et D**: 38 réponses correctes sur 46 questions.
+
+### 2.3 Système du Permis à Points
+- **Période probatoire**: D'une durée de 2 ans à compter de la date d'obtention du permis, avec un solde initial de 20 points.
+- **Permis définitif**: Porté à 30 points au terme des 2 années probatoires en l'absence d'infractions entraînant un retrait de points.
+- **Récupération des points**: Stage d'éducation à la sécurité routière ou période sans infraction.
+
+---
+
+## 3. Barème des Infractions et Amendes au Maroc (Loi 52-05)
+
+### 3.1 Amendes Transactionnelles et Forfaitaires (ATF)
+- **1ère classe (700 MAD)**:
+  - Dépassement de la vitesse autorisée de 30 à moins de 50 km/h.
+  - Non-respect du feu rouge de signalisation.
+  - Non-respect du signal d'arrêt STOP.
+  - Circulation sur voie réservée ou en sens interdit.
+  - Dépassement dangereux ou en virage sans visibilité.
+- **2ème classe (500 MAD)**:
+  - Dépassement de la vitesse autorisée de 20 à moins de 30 km/h.
+  - Non-port de la ceinture de sécurité par les occupants d'un véhicule.
+  - Utilisation manuelle du téléphone portable au volant.
+  - Non-respect de la priorité de passage.
+  - Dépassement non conforme par la droite.
+- **3ème classe (300 MAD)**:
+  - Dépassement de la vitesse autorisée de moins de 20 km/h.
+  - Non-respect des règles de stationnement ou arrêt gênant.
+  - Défaut d'éclairage ou de signalisation réglementaire.
+  - Lavage de véhicule sur la voie publique.
+
+---
+
+## 4. Les 12 Modules du Code de la Route sur Permis-Maroc.com
+
+1. **Priorités & Croisements**: Règles de la priorité à droite, panneaux Cédez le passage, panneaux STOP, carrefours à sens giratoire (ronds-points).
+2. **Signalisation Routière**: 150+ panneaux de danger (triangulaires à bord rouge), interdiction (circulaires à bord rouge), obligation (circulaires à fond bleu) et indication (carrés).
+3. **Vitesses & Distances d'Arrêt**: Limitations de vitesse (60 km/h en agglomération, 100 km/h sur route hors agglomération, 120 km/h sur autoroute), calcul du temps de réaction et de la distance de freinage.
+4. **Dépassement & Circulation**: Lignes continues et discontinues, voies d'insertion et de décélération, angles morts.
+5. **Arrêt & Stationnement**: Différence entre arrêt temporaire et stationnement prolongé, zones bleues, interdictions absolues.
+6. **Visibilité & Éclairage**: Utilisation des feux de croisement, feux de route, feux de brouillard, conduite de nuit et sous forte pluie.
+7. **Conducteur & Vigilance**: Alcoolémie au volant (tolérance zéro au Maroc), fatigue, distracteurs, acuité visuelle.
+8. **Mécanique & Sécurité du Véhicule**: Pneumatiques (témoins d'usure à 1,6 mm), système ABS/ESP, voyants du tableau de bord.
+9. **Eco-conduite & Environnement**: Conduite souple, anticipation, réduction des émissions de CO2 et de la consommation de carburant.
+10. **Secourisme & Premiers Secours**: Protocole P.A.S. (Protéger, Alerter, Secourir), numéros d'urgence marocains (Gendarmerie Royale 177, Police 19, Protection Civile 15).
+11. **Infractions & Sanctions**: Retraits de points, mise en fourrière, délits de fuite et peines pénales.
+12. **Catégories de Véhicules & Documents**: Permis de conduire, carte grise (certificat d'immatriculation), assurance, contrôle technique et taxe spéciale annuelle sur les véhicules (vignette).
+
+---
+
+## 5. Tarifs et Prix du Permis au Maroc (Guide 2026)
+
+- **Tarif conventionnel minimum auto-école (Formation 20h théorie + 20h pratique)**: Environ 2 250 DH HT.
+- **Frais de dossier et inscription**: Environ 300 à 500 DH.
+- **Timbre fiscal d'examen (Quittance NARSA)**: Environ 700 DH.
+- **Visite médicale d'aptitude visuelle**: Environ 150 DH.
+- **Coût total moyen estimé**: Entre 3 200 DH et 4 200 DH selon la ville et l'auto-école.
+
+---
+
+## 6. Centres d'Examen NARSA par Ville
+
+- **Casablanca**: Centres d'immatriculation d'Ain Sebaâ, Bernoussi, Sidi Othman, Derb Ghallef.
+- **Rabat**: Centre d'immatriculation de Rabat et Salé (Al Karia).
+- **Marrakech**: Centre NARSA de Sidi Ghanem et Daoudiate.
+- **Tanger**: Centre de Malabata et Tanger Médina.
+- **Fès**: Centres d'immatriculation Fès Atlas et Zouagha.
+- **Agadir**: Centre d'immatriculation d'Agadir Ville et Inezgane.
+
+---
+
+## 7. Offre Pack Révision Permis B
+
+- **Prix**: 79 MAD (paiement unique sans abonnement).
+- **Contenu**:
+  - Accès complet aux 12 modules de cours.
+  - Plus de 500 questions d'entraînement conformes à la banque officielle.
+  - Examens blancs chronométrés illimités avec seuil officiel de 34/40.
+  - Explications pédagogiques instantanées pour chaque réponse.
+  - Répertoire complet des panneaux marocains avec amendes.
+  - Accès multi-appareils (smartphone, tablette, PC) sans téléchargement obligatoire.
+- **Commande & Support**: Via WhatsApp au +212630258502 (https://wa.me/212630258502).

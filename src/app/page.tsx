@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  // Structured Data Schema.org
+  // Structured Data Schema.org for SEO & SGO (Search Generative Optimization)
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -39,13 +39,64 @@ export default function HomePage() {
     },
   };
 
-  const organizationSchema = {
+  const educationalOrgSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "EducationalOrganization",
     name: "Permis Maroc",
     url: "https://permis-maroc.com",
     logo: "https://permis-maroc.com/logo.png",
-    sameAs: [],
+    description:
+      "Plateforme éducative indépendante d'apprentissage du Code de la Route marocain (Loi 52-05) et de simulation d'examen blanc.",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "MA",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+212630258502",
+      contactType: "customer service",
+      areaServed: "MA",
+      availableLanguage: ["French", "Arabic"],
+    },
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Comment se déroule l'examen théorique du permis de conduire au Maroc ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "L'examen théorique du permis B au Maroc se déroule sur ordinateur dans un centre d'immatriculation NARSA. Le candidat répond à une série de 40 questions à choix multiples chronométrées (environ 30 secondes par question).",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Quel est le score minimum pour réussir l'examen du permis B au Maroc ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Pour réussir l'examen théorique de la catégorie B (véhicules légers), le candidat doit obtenir un minimum de 34 bonnes réponses sur 40 (soit un taux de réussite de 85%). Pour les permis poids lourds (C, D), le seuil est de 38/46.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Combien coûte le permis de conduire au Maroc en 2026 ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Le tarif légal minimum de base de la formation théorique et pratique en auto-école est fixé à environ 2 250 DH HT. En comptant les frais d'inscription, le timbre fiscal d'examen (environ 700 DH) et la visite médicale (environ 150 DH), le coût moyen total se situe généralement entre 3 200 et 4 000 DH.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Combien de points comporte le permis de conduire marocain ?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Pendant la période probatoire de 2 ans qui suit l'obtention du permis, le capital est de 20 points. À l'issue des 2 années sans infraction entraînant l'annulation du permis, le capital est automatiquement porté à 30 points.",
+        },
+      },
+    ],
   };
 
   return (
@@ -58,7 +109,11 @@ export default function HomePage() {
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(educationalOrgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
 
         {/* MOBILE NATIVE APP VIEW (< 768px) matching reference design */}

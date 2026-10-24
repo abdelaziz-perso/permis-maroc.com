@@ -1,0 +1,33 @@
+# Permis-Maroc.com
+
+> La plateforme moderne et indépendante pour apprendre le Code de la Route au Maroc, s'entraîner avec des examens blancs interactifs et réviser la signalisation routière.
+
+- Site officiel: https://permis-maroc.com
+- Cadre légal: Principes de la Loi 52-05 portant Code de la Route au Maroc (NARSA - Agence Nationale de la Sécurité Routière)
+- Langues: Français, Arabe standard (العربية), et Darija marocaine (الدارجة)
+- Support WhatsApp: +212630258502 (https://wa.me/212630258502)
+- Application: PWA (Progressive Web App) optimisée smartphone, tablette et ordinateur
+
+## Pages Principales & Liens d'Apprentissage
+
+- [Accueil & Simulateur 3D](https://permis-maroc.com): Présentation de la méthode d'apprentissage, carrefour interactif 3D et premiers tests.
+- [Examen Blanc Permis B](https://permis-maroc.com/examen-blanc): Simulateur d'examen de 40 questions chronométrées, seuil de réussite 34/40, correction pas à pas.
+- [Pack Révision Permis B](https://permis-maroc.com/pack-revision): Offre complète à 79 MAD (cours complets, 500+ questions, panneaux, suivi personnalisé).
+- [Cours du Code de la Route](https://permis-maroc.com/code-de-la-route): 12 modules pédagogiques officiels couvrant l'ensemble du programme.
+- [Panneaux de Signalisation](https://permis-maroc.com/panneaux): Guide illustré de 150+ panneaux avec montants officiels des amendes en MAD.
+- [Fiches Mémo & Résumés PDF](https://permis-maroc.com/pdf): Fiches synthétiques imprimables pour réviser hors-ligne.
+- [Mises en Situation Routière](https://permis-maroc.com/situations): Scénarios 3D de carrefours, priorités à droite et ronds-points marocains.
+- [Prix du Permis au Maroc](https://permis-maroc.com/prix-permis-maroc): Détail des tarifs officiels 2026, coût auto-école, timbres fiscaux et frais médicaux.
+- [Documents & Dossier Administratif](https://permis-maroc.com/documents-permis-maroc): Liste officielle des pièces requises pour l'inscription à l'examen.
+- [Blog & Guides Pratiques](https://permis-maroc.com/blog): Articles détaillés sur les démarches, conseils de moniteurs et astuces d'examen.
+
+## Données Clés sur le Permis de Conduire au Maroc
+
+- **Examen Théorique Permis B**: 40 questions tirées au hasard par ordinateur.
+- **Seuil de validation**: 34/40 (85% de bonnes réponses).
+- **Temps par question**: 30 secondes.
+- **Période probatoire**: 2 ans avec un capital de 20 points (puis 30 points).
+- **Classes d'amendes routières (Loi 52-05)**:
+  - 1ère classe (700 MAD): Excès de vitesse > 30 km/h, feu rouge, panneau STOP, sens interdit.
+  - 2ème classe (500 MAD): Téléphone au volant, défaut de ceinture, non-respect de la priorité.
+  - 3ème classe (300 MAD): Stationnement interdit, défaut de feux, excès de vitesse < 20 km/h.

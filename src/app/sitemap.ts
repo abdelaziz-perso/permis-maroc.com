@@ -8,149 +8,192 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://permis-maroc.com";
+  const now = new Date();
 
+  // 1. Core Hub & Pillar SEO Pages
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 1.0,
     },
     {
       url: `${baseUrl}/examen-blanc`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.95,
     },
     {
       url: `${baseUrl}/pack-revision`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
       priority: 0.95,
     },
     {
       url: `${baseUrl}/code-de-la-route`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/panneaux`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/pdf`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/dashboard`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/profil`,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/situations`,
-      lastModified: new Date(),
+      url: `${baseUrl}/test-permis-maroc`,
+      lastModified: now,
       changeFrequency: "weekly",
-      priority: 0.85,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/permis-de-conduire-maroc`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/prix-permis-maroc`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/documents-permis-maroc`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: `${baseUrl}/situations`,
+      lastModified: now,
+      changeFrequency: "weekly",
       priority: 0.85,
     },
     {
       url: `${baseUrl}/code-de-la-route-maroc`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/test-permis-maroc`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
       url: `${baseUrl}/examen-permis-maroc`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
       url: `${baseUrl}/panneaux-signalisation-maroc`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
       url: `${baseUrl}/permis-b-maroc`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.85,
     },
     {
+      url: `${baseUrl}/prix-permis-maroc`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/documents-permis-maroc`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "daily",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/dashboard`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/profil`,
+      lastModified: now,
+      changeFrequency: "daily",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/mentions-legales`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/confidentialite`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
+  ];
+
+  // 2. Test Simulation Routes (/tests/[id])
+  const testRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/tests/permis-b`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/tests/1`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/tests/2`,
+      lastModified: now,
+      changeFrequency: "weekly",
       priority: 0.8,
     },
   ];
 
-  // Course category routes
+  // 3. Official 12 Course Category Routes (/code-de-la-route/[category])
   const courseRoutes: MetadataRoute.Sitemap = courseCategories.map((c) => ({
     url: `${baseUrl}/code-de-la-route/${c.slug}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "weekly",
+    priority: 0.85,
+  }));
+
+  // 4. Moroccan City Guides (/villes/[city])
+  const cityRoutes: MetadataRoute.Sitemap = cityGuides.map((city) => ({
+    url: `${baseUrl}/villes/${city.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
     priority: 0.8,
   }));
 
-  // City routes
-  const cityRoutes: MetadataRoute.Sitemap = cityGuides.map((city) => ({
-    url: `${baseUrl}/villes/${city.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.75,
-  }));
-
-  // Blog post routes
+  // 5. Blog Posts (/blog/[slug])
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.publishDate),
     changeFrequency: "monthly",
-    priority: 0.7,
+    priority: 0.75,
   }));
 
-  // Road signs routes
+  // 6. Road Signs Detail Routes (/panneaux/[slug])
   const signRoutes: MetadataRoute.Sitemap = roadSigns.map((sign) => ({
     url: `${baseUrl}/panneaux/${sign.id}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "monthly",
-    priority: 0.7,
+    priority: 0.75,
   }));
 
-  return [...staticRoutes, ...courseRoutes, ...cityRoutes, ...blogRoutes, ...signRoutes];
+  return [
+    ...staticRoutes,
+    ...testRoutes,
+    ...courseRoutes,
+    ...cityRoutes,
+    ...blogRoutes,
+    ...signRoutes,
+  ];
 }

@@ -60,6 +60,14 @@ export const metadata: Metadata = {
   verification: {
     google: "google5cca444fee08cb36",
   },
+  alternates: {
+    canonical: "https://permis-maroc.com",
+    languages: {
+      "fr-MA": "https://permis-maroc.com",
+      "ar-MA": "https://permis-maroc.com",
+      "x-default": "https://permis-maroc.com",
+    },
+  },
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
