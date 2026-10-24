@@ -86,20 +86,20 @@ function CoursesContent() {
       </div>
 
       {/* DESKTOP WEB EXPERIENCE (>= 768px) */}
-      <div className="hidden md:flex min-h-screen flex-col bg-[#070A0F] text-white">
+      <div className="hidden md:flex min-h-screen flex-col bg-[#F8FAFC] text-[#071A3D]">
         <Navbar />
 
         <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-blue-500/30 text-xs font-semibold text-blue-400 mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-xs font-bold text-blue-600 mb-3">
             <BookOpen className="w-3.5 h-3.5" />
             <span>Programme Officiel 2026</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
+          <h1 className="text-3xl sm:text-5xl font-black text-[#071A3D] tracking-tight mb-4">
             Code de la Route au Maroc
           </h1>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+          <p className="text-[#64748B] text-sm sm:text-base leading-relaxed">
             12 modules complets pour assimiler toutes les notions du Code de la Route marocain à votre rythme, avec fiches et mini-quiz.
           </p>
         </div>
@@ -121,22 +121,22 @@ function CoursesContent() {
               <Link
                 key={category.id}
                 href={`/code-de-la-route/${category.slug}`}
-                className="group p-6 rounded-2xl bg-[#121824] border border-white/10 hover:border-red-500/40 hover:-translate-y-1 transition-all duration-300 shadow-xl flex flex-col justify-between"
+                className="group p-6 rounded-3xl bg-white border border-[#E2E8F0] hover:border-[#F20D2F]/30 hover:-translate-y-1 transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-slate-900 border border-white/10 flex items-center justify-center text-red-400 group-hover:scale-105 transition-transform">
+                    <div className="w-12 h-12 rounded-2xl bg-red-50 text-[#F20D2F] border border-red-100 flex items-center justify-center group-hover:scale-105 transition-transform">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-md bg-slate-950 text-slate-400 border border-white/5">
+                    <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]">
                       Module {idx + 1} / 12
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-red-400 transition-colors mb-2">
+                  <h3 className="text-lg font-bold text-[#071A3D] group-hover:text-[#F20D2F] transition-colors mb-2">
                     {category.title}
                   </h3>
-                  <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed mb-6">
+                  <p className="text-xs text-[#64748B] line-clamp-2 leading-relaxed mb-6 font-normal">
                     {category.description}
                   </p>
                 </div>
@@ -144,25 +144,25 @@ function CoursesContent() {
                 <div>
                   {/* Progress Indicator */}
                   <div className="mb-4">
-                    <div className="flex items-center justify-between text-[11px] text-slate-400 mb-1.5">
+                    <div className="flex items-center justify-between text-[11px] text-[#64748B] mb-1.5 font-semibold">
                       <span>Progression</span>
-                      <span className="font-mono font-bold text-white">{progress}%</span>
+                      <span className="font-mono font-bold text-[#071A3D]">{progress}%</span>
                     </div>
-                    <div className="w-full bg-slate-950 h-1.5 rounded-full overflow-hidden">
+                    <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                       <div
-                        className="bg-gradient-to-r from-[#C1272D] to-amber-500 h-full transition-all duration-500"
+                        className="bg-gradient-to-r from-[#F20D2F] to-[#20C875] h-full transition-all duration-500 rounded-full"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
                   </div>
 
                   {/* Footer Meta */}
-                  <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
-                    <div className="flex items-center gap-1.5">
+                  <div className="pt-3 border-t border-[#F1F5F9] flex items-center justify-between text-xs text-[#64748B]">
+                    <div className="flex items-center gap-1.5 font-medium">
                       <Clock className="w-3.5 h-3.5 text-slate-400" />
                       <span>{category.estimatedHours}h estimées</span>
                     </div>
-                    <div className="flex items-center gap-1 font-semibold text-slate-300 group-hover:text-white">
+                    <div className="flex items-center gap-1 font-bold text-[#071A3D] group-hover:text-[#F20D2F]">
                       <span>Accéder</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                     </div>

@@ -23,7 +23,7 @@ export function PackValueProps({ isArabic = false }: PackValuePropsProps) {
           <span className="text-xs font-bold text-[#F20D2F] uppercase tracking-wider">
             {isArabic ? "مميزات الباك" : "Pourquoi choisir ce pack ?"}
           </span>
-          <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-1">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#071A3D] tracking-tight mt-1">
             {isArabic
               ? "طريقة حديثة للتحضير بدون تعقيد"
               : "Une méthode moderne pour réussir du premier coup"}
@@ -36,16 +36,16 @@ export function PackValueProps({ isArabic = false }: PackValuePropsProps) {
             return (
               <div
                 key={idx}
-                className="rounded-3xl bg-[#0F172A]/70 border border-slate-800 p-6 flex flex-col justify-between hover:border-slate-700 transition-colors"
+                className="rounded-3xl bg-white border border-[#E2E8F0] p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow"
               >
                 <div>
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 ${prop.color}`}>
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h3 className="font-extrabold text-lg text-white mb-2">
+                  <h3 className="font-extrabold text-lg text-[#071A3D] mb-2">
                     {isArabic ? prop.titleAr : prop.title}
                   </h3>
-                  <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                  <p className="text-sm text-[#64748B] leading-relaxed font-normal">
                     {isArabic ? prop.descriptionAr : prop.description}
                   </p>
                 </div>

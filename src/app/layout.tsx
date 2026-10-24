@@ -91,7 +91,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" dir="ltr" className="h-full scroll-smooth">
-      <body className="min-h-full flex flex-col bg-[#0B0F17] text-slate-100 antialiased selection:bg-[#C1272D] selection:text-white font-sans">
+      <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#071A3D] antialiased selection:bg-[#F20D2F] selection:text-white font-sans">
         {children}
       </body>
     </html>

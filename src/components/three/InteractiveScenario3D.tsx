@@ -240,9 +240,9 @@ export function InteractiveScenario3D({ scenario }: ScenarioProps) {
   };
 
   return (
-    <div className="w-full bg-[#121824] rounded-2xl border border-white/10 overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+    <div className="w-full bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden shadow-xs flex flex-col lg:flex-row">
       {/* 3D Canvas Viewport */}
-      <div className="w-full lg:w-3/5 h-[340px] sm:h-[420px] lg:h-[480px] relative bg-slate-950">
+      <div className="w-full lg:w-3/5 h-[340px] sm:h-[420px] lg:h-[480px] relative bg-slate-900">
         <Canvas
           camera={{ position: [0, 11, 10], fov: 38 }}
           shadows
@@ -258,8 +258,8 @@ export function InteractiveScenario3D({ scenario }: ScenarioProps) {
         </Canvas>
 
         {/* Floating action hint */}
-        <div className="absolute top-3 left-3 px-3 py-1.5 rounded-lg bg-slate-900/80 backdrop-blur-md border border-white/10 text-xs text-slate-300 flex items-center gap-2 pointer-events-none">
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+        <div className="absolute top-3 left-3 px-3 py-1.5 rounded-lg bg-white/90 backdrop-blur-md border border-[#E2E8F0] text-xs text-[#071A3D] flex items-center gap-2 pointer-events-none shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
           <span>Cliquez directement sur une voiture pour tester</span>
         </div>
 
@@ -267,27 +267,27 @@ export function InteractiveScenario3D({ scenario }: ScenarioProps) {
         {isAnimating && (
           <button
             onClick={handleReset}
-            className="absolute bottom-3 right-3 px-3 py-2 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-white border border-white/10 text-xs flex items-center gap-1.5 transition-all shadow-lg cursor-pointer"
+            className="absolute bottom-3 right-3 px-3 py-2 rounded-lg bg-white/95 hover:bg-white text-[#071A3D] border border-[#E2E8F0] text-xs flex items-center gap-1.5 transition-all shadow-md cursor-pointer font-medium"
           >
-            <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
+            <RotateCcw className="w-3.5 h-3.5 text-amber-500" />
             <span>Réinitialiser la scène</span>
           </button>
         )}
       </div>
 
       {/* Interactive Controls & Educational Feedback */}
-      <div className="w-full lg:w-2/5 p-6 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-white/10 bg-[#0F172A]/90">
+      <div className="w-full lg:w-2/5 p-6 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-[#E2E8F0] bg-white">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-950/60 border border-red-500/30 text-red-400 text-xs font-semibold uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-50 border border-red-100 text-[#F20D2F] text-xs font-semibold uppercase tracking-wider mb-3">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>Situation 3D Réelle</span>
           </div>
 
-          <h3 className="text-xl font-bold text-white mb-2">{scenario.title}</h3>
-          <p className="text-slate-400 text-sm mb-5 leading-relaxed">{scenario.description}</p>
+          <h3 className="text-xl font-bold text-[#071A3D] mb-2">{scenario.title}</h3>
+          <p className="text-slate-600 text-sm mb-5 leading-relaxed">{scenario.description}</p>
 
-          <div className="p-3.5 rounded-xl bg-slate-900/70 border border-white/5 mb-5">
-            <h4 className="text-sm font-semibold text-slate-200 mb-3">{scenario.question}</h4>
+          <div className="p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] mb-5">
+            <h4 className="text-sm font-semibold text-[#071A3D] mb-3">{scenario.question}</h4>
 
             {/* Answer Options */}
             <div className="space-y-2">
@@ -296,12 +296,12 @@ export function InteractiveScenario3D({ scenario }: ScenarioProps) {
                 const isThisCorrect = opt.vehicleId === scenario.correctVehicleId;
 
                 let btnStyles =
-                  "border-white/10 bg-slate-800/60 text-slate-200 hover:border-slate-500 hover:bg-slate-800";
+                  "border-[#E2E8F0] bg-white text-[#071A3D] hover:border-slate-400 hover:bg-slate-50";
                 if (isSelected) {
                   if (isThisCorrect) {
-                    btnStyles = "border-emerald-500 bg-emerald-950/50 text-emerald-200";
+                    btnStyles = "border-emerald-500 bg-emerald-50 text-emerald-800";
                   } else {
-                    btnStyles = "border-red-500 bg-red-950/50 text-red-200";
+                    btnStyles = "border-red-500 bg-red-50 text-red-800";
                   }
                 }
 
@@ -315,9 +315,9 @@ export function InteractiveScenario3D({ scenario }: ScenarioProps) {
                     {isSelected && (
                       <span>
                         {isThisCorrect ? (
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                         ) : (
-                          <XCircle className="w-4 h-4 text-red-400" />
+                          <XCircle className="w-4 h-4 text-[#F20D2F]" />
                         )}
                       </span>
                     )}
@@ -333,37 +333,37 @@ export function InteractiveScenario3D({ scenario }: ScenarioProps) {
           <div
             className={`p-4 rounded-xl border transition-all ${
               isCorrect
-                ? "bg-emerald-950/30 border-emerald-500/40"
-                : "bg-red-950/30 border-red-500/40"
+                ? "bg-emerald-50 border-emerald-200"
+                : "bg-red-50 border-red-200"
             }`}
           >
             <div className="flex items-center gap-2 mb-2">
               {isCorrect ? (
                 <>
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                  <span className="font-bold text-emerald-300 text-sm">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                  <span className="font-bold text-emerald-800 text-sm">
                     Exact ! Excellente analyse.
                   </span>
                 </>
               ) : (
                 <>
-                  <XCircle className="w-5 h-5 text-red-400" />
-                  <span className="font-bold text-red-300 text-sm">
+                  <XCircle className="w-5 h-5 text-[#F20D2F]" />
+                  <span className="font-bold text-red-800 text-sm">
                     Attention, mauvaise décision !
                   </span>
                 </>
               )}
             </div>
 
-            <p className="text-xs text-slate-300 leading-relaxed mb-3">
+            <p className="text-xs text-slate-700 leading-relaxed mb-3">
               {scenario.explanation}
             </p>
 
-            <div className="pt-2 border-t border-white/10">
-              <span className="text-[11px] font-semibold text-slate-400 block mb-1">
+            <div className="pt-2 border-t border-slate-200">
+              <span className="text-[11px] font-semibold text-slate-600 block mb-1">
                 Règles officielles appliquées :
               </span>
-              <ul className="text-[11px] text-slate-400 space-y-1 list-disc list-inside">
+              <ul className="text-[11px] text-slate-500 space-y-1 list-disc list-inside">
                 {scenario.rulesApplied.map((rule, idx) => (
                   <li key={idx}>{rule}</li>
                 ))}

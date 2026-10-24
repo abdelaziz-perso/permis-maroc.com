@@ -123,18 +123,18 @@ export default async function RoadSignDetailPage({ params }: Props) {
         </div>
 
         {/* DESKTOP VIEW (>= 768px) */}
-        <div className="hidden md:flex min-h-screen flex-col bg-[#070A0F] text-white">
+        <div className="hidden md:flex min-h-screen flex-col bg-[#F8FAFC] text-[#071A3D]">
           <Navbar />
           <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
             <Link
               href="/panneaux"
-              className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white mb-6"
+              className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-[#071A3D] mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Retour à tous les panneaux</span>
             </Link>
 
-            <div className="p-8 rounded-3xl bg-slate-900 border border-white/10 shadow-xl flex flex-col md:flex-row items-center gap-8">
+            <div className="p-8 rounded-3xl bg-white border border-[#E2E8F0] shadow-xs flex flex-col md:flex-row items-center gap-8">
               <div className="w-32 h-32 flex items-center justify-center shrink-0">
                 <SignGraphic
                   id={sign.id}
@@ -145,18 +145,18 @@ export default async function RoadSignDetailPage({ params }: Props) {
               </div>
 
               <div className="flex-1">
-                <span className="text-xs font-bold text-red-400 uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#F20D2F] uppercase tracking-wider">
                   {sign.category}
                 </span>
-                <h1 className="text-3xl font-black text-white mt-1 mb-3">
+                <h1 className="text-3xl font-black text-[#071A3D] mt-1 mb-3">
                   {sign.code ? `${sign.code} • ` : ""}
                   {sign.name}
                 </h1>
-                <p className="text-sm text-slate-300 leading-relaxed mb-4">
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
                   {sign.description}
                 </p>
-                <div className="p-4 rounded-xl bg-slate-950 border border-white/5 text-xs text-slate-300">
-                  <span className="font-bold text-amber-400 block mb-1">
+                <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900">
+                  <span className="font-bold text-amber-700 block mb-1">
                     Conseil d&apos;examen :
                   </span>
                   {sign.advice}

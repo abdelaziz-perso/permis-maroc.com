@@ -35,20 +35,20 @@ export default function BlogIndexPage() {
   return (
     <LanguageProvider>
       <UserProvider>
-        <div className="min-h-screen flex flex-col bg-[#070A0F] text-white">
+        <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#071A3D]">
           <Navbar />
 
           <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
             {/* Header */}
             <div className="text-center max-w-3xl mx-auto mb-10">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-white/10 text-xs text-slate-300 font-semibold mb-3">
-                <BookOpen className="w-3.5 h-3.5 text-red-400" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#F20D2F] mb-3">
+                <BookOpen className="w-3.5 h-3.5" />
                 <span>Guides, Conseils & Actualités</span>
               </div>
-              <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
+              <h1 className="text-3xl sm:text-5xl font-black text-[#071A3D] tracking-tight mb-4">
                 Le Blog Permis Maroc
               </h1>
-              <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+              <p className="text-[#64748B] text-sm sm:text-base leading-relaxed">
                 Les meilleurs conseils rédigés par des moniteurs et experts de la sécurité routière pour réussir son permis du premier coup.
               </p>
             </div>
@@ -62,7 +62,7 @@ export default function BlogIndexPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Rechercher un article ou un conseil..."
-                  className="w-full pl-12 pr-4 py-3.5 rtl:pr-12 rtl:pl-4 rounded-2xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-red-500/50 text-sm shadow-xl"
+                  className="w-full pl-12 pr-4 py-3.5 rtl:pr-12 rtl:pl-4 rounded-2xl bg-white border border-[#E2E8F0] text-[#071A3D] placeholder-slate-400 focus:outline-none focus:border-[#F20D2F] text-sm shadow-xs"
                 />
               </div>
 
@@ -73,8 +73,8 @@ export default function BlogIndexPage() {
                     onClick={() => setActiveCategory(cat)}
                     className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                       activeCategory === cat
-                        ? "bg-[#C1272D] text-white shadow-lg shadow-red-950/40"
-                        : "bg-slate-900 text-slate-300 hover:bg-slate-800 border border-white/5"
+                        ? "bg-[#F20D2F] text-white shadow-md shadow-red-500/20"
+                        : "bg-white text-slate-600 hover:text-[#071A3D] border border-[#E2E8F0] shadow-2xs"
                     }`}
                   >
                     {cat}
@@ -89,30 +89,30 @@ export default function BlogIndexPage() {
                 <Link
                   key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group p-6 rounded-2xl bg-[#121824] border border-white/10 hover:border-red-500/40 hover:-translate-y-1 transition-all duration-300 shadow-xl flex flex-col justify-between"
+                  className="group p-6 rounded-3xl bg-white border border-[#E2E8F0] hover:border-[#F20D2F]/30 hover:-translate-y-1 transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center justify-between text-xs text-slate-400 mb-3">
-                      <span className="font-mono font-bold text-red-400 px-2.5 py-0.5 rounded-full bg-red-950/60 border border-red-500/30">
+                      <span className="font-mono font-bold text-[#F20D2F] px-2.5 py-0.5 rounded-full bg-red-50 border border-red-200">
                         {post.category}
                       </span>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-1 text-[#64748B]">
                         <Clock className="w-3.5 h-3.5" />
                         <span>{post.readTime}</span>
                       </div>
                     </div>
 
-                    <h2 className="text-lg font-bold text-white group-hover:text-red-400 transition-colors mb-2 leading-snug">
+                    <h2 className="text-lg font-bold text-[#071A3D] group-hover:text-[#F20D2F] transition-colors mb-2 leading-snug">
                       {post.title}
                     </h2>
-                    <p className="text-xs text-slate-400 line-clamp-3 leading-relaxed mb-6">
+                    <p className="text-xs text-[#64748B] line-clamp-3 leading-relaxed mb-6 font-normal">
                       {post.excerpt}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
+                  <div className="pt-4 border-t border-[#F1F5F9] flex items-center justify-between text-xs text-[#64748B]">
                     <span>{post.publishDate}</span>
-                    <span className="font-semibold text-slate-300 group-hover:text-white flex items-center gap-1">
+                    <span className="font-bold text-[#071A3D] group-hover:text-[#F20D2F] flex items-center gap-1">
                       Lire l&apos;article
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                     </span>

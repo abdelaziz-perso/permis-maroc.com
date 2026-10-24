@@ -15,9 +15,9 @@ const InteractiveScenario3D = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="w-full h-[400px] rounded-2xl border border-white/10 bg-[#121824] flex flex-col items-center justify-center p-6 text-center">
-        <Loader2 className="w-8 h-8 text-[#C1272D] animate-spin mb-3" />
-        <span className="text-sm font-medium text-slate-300">
+      <div className="w-full h-[400px] rounded-2xl border border-[#E2E8F0] bg-white shadow-xs flex flex-col items-center justify-center p-6 text-center">
+        <Loader2 className="w-8 h-8 text-[#F20D2F] animate-spin mb-3" />
+        <span className="text-sm font-medium text-slate-600">
           Initialisation de l&apos;intersection 3D...
         </span>
       </div>

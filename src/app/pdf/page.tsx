@@ -64,40 +64,40 @@ export default function PdfResourcesPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
         />
 
-        <div className="min-h-screen flex flex-col bg-[#070A0F] text-white">
+        <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#071A3D]">
           <Navbar />
 
           <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
             {/* Header Hero */}
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-red-500/30 text-xs font-semibold text-red-400 mb-4 shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#F20D2F] mb-4 shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                 <span>Ressources Pédagogiques & Fiches Pratiques 2026</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white mb-5 leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#071A3D] mb-5 leading-tight">
                 Télécharger les Fiches Mémo{" "}
-                <span className="text-[#C1272D]">Code de la Route PDF</span>
+                <span className="text-[#F20D2F]">Code de la Route PDF</span>
               </h1>
 
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl mx-auto font-normal">
+              <p className="text-sm sm:text-base text-[#475569] leading-relaxed max-w-2xl mx-auto font-normal">
                 Tous les résumés essentiels pour réviser l&apos;examen théorique NARSA : formules de calcul de distances, règles de priorité, tableau des amendes de la Loi 52-05 et feux en conditions difficiles.
               </p>
 
               {/* Trust badges */}
-              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 text-xs text-slate-400 font-medium">
+              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 text-xs text-[#64748B] font-semibold">
                 <span className="flex items-center gap-1.5">
-                  <DownloadCloud className="w-4 h-4 text-emerald-400" />
+                  <DownloadCloud className="w-4 h-4 text-[#20C875]" />
                   100% Gratuit & Imprimable
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5">
-                  <BookOpen className="w-4 h-4 text-blue-400" />
+                  <BookOpen className="w-4 h-4 text-blue-500" />
                   Conforme Banque de Questions 2026
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5">
-                  <FileText className="w-4 h-4 text-amber-400" />
+                  <FileText className="w-4 h-4 text-amber-500" />
                   Français & العربية
                 </span>
               </div>

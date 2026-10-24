@@ -104,12 +104,12 @@ export function PdfResourcesClient() {
                 ? "ابحث في ملخصات الدروس (مثال: المسافات، الغرامات، الأسبقية...)"
                 : "Rechercher une fiche (ex: distances, amendes, priorités, feux...)"
             }
-            className="w-full pl-10 pr-4 rtl:pr-10 rtl:pl-4 py-3 rounded-2xl bg-slate-900/90 border border-white/10 text-white placeholder-slate-400 text-sm focus:outline-none focus:border-red-500/50 transition-colors shadow-inner"
+            className="w-full pl-10 pr-4 rtl:pr-10 rtl:pl-4 py-3 rounded-2xl bg-white border border-[#E2E8F0] text-[#071A3D] placeholder-slate-400 text-sm focus:outline-none focus:border-[#F20D2F]/50 transition-colors shadow-xs"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
-              className="absolute right-3 rtl:left-3 rtl:right-auto top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+              className="absolute right-3 rtl:left-3 rtl:right-auto top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#071A3D]"
             >
               <X className="w-4 h-4" />
             </button>
@@ -124,8 +124,8 @@ export function PdfResourcesClient() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 selectedCategory === cat
-                  ? "bg-[#C1272D] text-white shadow-lg shadow-red-950/40"
-                  : "bg-slate-900/80 text-slate-300 hover:text-white hover:bg-slate-800 border border-white/10"
+                  ? "bg-[#F20D2F] text-white shadow-md shadow-red-500/20"
+                  : "bg-white text-slate-600 hover:text-[#071A3D] hover:bg-slate-50 border border-[#E2E8F0] shadow-2xs"
               }`}
             >
               {cat === "all" ? (isArabic ? "الكل" : "Toutes les fiches") : cat}
@@ -145,13 +145,13 @@ export function PdfResourcesClient() {
           return (
             <div
               key={res.id}
-              className="rounded-3xl bg-slate-900/70 border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between overflow-hidden group shadow-lg hover:shadow-2xl hover:-translate-y-1"
+              className="rounded-3xl bg-white border border-[#E2E8F0] hover:border-slate-300 transition-all flex flex-col justify-between overflow-hidden group shadow-xs hover:shadow-lg hover:-translate-y-0.5"
             >
               <div className="p-6">
                 {/* Top Badge & Size */}
                 <div className="flex items-center justify-between mb-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-950/60 border border-red-500/30 text-red-300 text-[11px] font-bold">
-                    <Sparkles className="w-3 h-3 text-amber-400" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 border border-red-100 text-[#F20D2F] text-[11px] font-bold">
+                    <Sparkles className="w-3 h-3 text-amber-500" />
                     <span>{badge}</span>
                   </span>
                   <span className="text-xs text-slate-400 font-mono">
@@ -161,27 +161,27 @@ export function PdfResourcesClient() {
 
                 {/* Card Title with Icon */}
                 <div className="flex items-start gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center shrink-0">
                     {getIcon(res.icon)}
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-red-300 transition-colors leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold text-[#071A3D] group-hover:text-[#F20D2F] transition-colors leading-snug">
                     {title}
                   </h3>
                 </div>
 
                 {/* Description */}
-                <p className="text-xs sm:text-sm text-slate-300 line-clamp-3 mb-5 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-600 line-clamp-3 mb-5 leading-relaxed">
                   {desc}
                 </p>
 
                 {/* Key Summary Bullet points preview */}
-                <div className="space-y-2 mb-6 p-3.5 rounded-2xl bg-black/30 border border-white/5">
-                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">
+                <div className="space-y-2 mb-6 p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
                     {isArabic ? "أهم النقاط المضمونة للامتحان :" : "Points clés de révision :"}
                   </span>
                   {summaryPoints.slice(0, 3).map((point, idx) => (
-                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                    <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                       <span className="line-clamp-2">{point}</span>
                     </div>
                   ))}
@@ -189,11 +189,11 @@ export function PdfResourcesClient() {
 
                 {/* Formula Highlight if exists */}
                 {res.formulas && (
-                  <div className="mb-4 p-3 rounded-xl bg-blue-950/30 border border-blue-500/20 text-xs">
-                    <span className="font-semibold text-blue-300 block mb-1">
+                  <div className="mb-4 p-3 rounded-xl bg-blue-50/70 border border-blue-200/60 text-xs">
+                    <span className="font-semibold text-blue-900 block mb-1">
                       {isArabic ? "معادلة سريعة :" : "Formule rapide :"}
                     </span>
-                    <span className="font-mono text-white text-xs">
+                    <span className="font-mono text-[#071A3D] text-xs font-semibold">
                       {res.formulas[0].label}: {res.formulas[0].formula}
                     </span>
                   </div>
@@ -201,19 +201,19 @@ export function PdfResourcesClient() {
               </div>
 
               {/* Action Buttons Footer */}
-              <div className="p-4 bg-slate-950/60 border-t border-white/5 flex items-center justify-between gap-2">
+              <div className="p-4 bg-[#F8FAFC] border-t border-[#E2E8F0] flex items-center justify-between gap-2">
                 <button
                   onClick={() => setActiveModalResource(res)}
-                  className="flex-1 py-2.5 px-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="flex-1 py-2.5 px-3 rounded-xl bg-white hover:bg-slate-100 border border-[#E2E8F0] text-[#071A3D] text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs"
                 >
-                  <FileText className="w-3.5 h-3.5 text-slate-300" />
+                  <FileText className="w-3.5 h-3.5 text-slate-500" />
                   <span>{isArabic ? "عرض الفيش كامل" : "Consulter la fiche"}</span>
                 </button>
 
                 <button
                   onClick={() => handlePrint(res)}
                   title={isArabic ? "طباعة أو حفظ PDF" : "Imprimer ou enregistrer en PDF"}
-                  className="py-2.5 px-3 rounded-xl bg-[#C1272D] hover:bg-[#A31D22] text-white text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 shadow-md shadow-red-950/40 cursor-pointer"
+                  className="py-2.5 px-3 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white text-xs font-semibold transition-colors flex items-center justify-center gap-1.5 shadow-md shadow-red-500/20 cursor-pointer"
                 >
                   <Printer className="w-3.5 h-3.5" />
                   <span className="hidden sm:inline">
@@ -228,12 +228,12 @@ export function PdfResourcesClient() {
 
       {/* Empty State */}
       {filteredResources.length === 0 && (
-        <div className="text-center py-16 p-6 rounded-3xl bg-slate-900/50 border border-white/10 max-w-md mx-auto">
-          <AlertTriangle className="w-10 h-10 text-amber-400 mx-auto mb-3" />
-          <h3 className="text-lg font-bold text-white mb-2">
+        <div className="text-center py-16 p-6 rounded-3xl bg-white border border-[#E2E8F0] max-w-md mx-auto shadow-xs">
+          <AlertTriangle className="w-10 h-10 text-amber-500 mx-auto mb-3" />
+          <h3 className="text-lg font-bold text-[#071A3D] mb-2">
             {isArabic ? "لم يتم العثور على أي ملف" : "Aucune fiche trouvée"}
           </h3>
-          <p className="text-xs text-slate-400 mb-4">
+          <p className="text-xs text-slate-500 mb-4">
             {isArabic
               ? "جرب البحث بكلمة أخرى مثل: إشارات، مسافات، غرامات، أو أسبقية."
               : "Essayez avec d'autres mots-clés : distances, panneaux, amendes..."}
@@ -243,7 +243,7 @@ export function PdfResourcesClient() {
               setSearchQuery("");
               setSelectedCategory("all");
             }}
-            className="px-4 py-2 rounded-xl bg-slate-800 text-xs font-semibold text-white hover:bg-slate-700"
+            className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-[#071A3D]"
           >
             {isArabic ? "إعادة الضبط" : "Réinitialiser les filtres"}
           </button>
@@ -252,21 +252,21 @@ export function PdfResourcesClient() {
 
       {/* Detailed Modal / Print Preview Drawer */}
       {activeModalResource && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto print:p-0 print:bg-white print:text-black">
-          <div className="relative w-full max-w-3xl rounded-3xl bg-[#0F172A] border border-white/15 p-6 sm:p-8 shadow-2xl text-white my-8 print:border-none print:bg-white print:text-black print:shadow-none print:p-0">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto print:p-0 print:bg-white print:text-black">
+          <div className="relative w-full max-w-3xl rounded-3xl bg-white border border-[#E2E8F0] p-6 sm:p-8 shadow-2xl text-[#071A3D] my-8 print:border-none print:bg-white print:text-black print:shadow-none print:p-0">
             {/* Modal Header */}
             <div className="flex items-start justify-between gap-4 mb-6 print:hidden">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center shrink-0">
                   {getIcon(activeModalResource.icon)}
                 </div>
                 <div>
-                  <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">
+                  <span className="text-xs font-semibold text-[#F20D2F] uppercase tracking-wider">
                     {isArabic
                       ? activeModalResource.categoryAr
                       : activeModalResource.categoryFr}
                   </span>
-                  <h2 className="text-xl sm:text-2xl font-black text-white">
+                  <h2 className="text-xl sm:text-2xl font-black text-[#071A3D]">
                     {isArabic
                       ? activeModalResource.titleAr
                       : activeModalResource.titleFr}
@@ -276,7 +276,7 @@ export function PdfResourcesClient() {
 
               <button
                 onClick={() => setActiveModalResource(null)}
-                className="p-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
+                className="p-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-[#071A3D] transition-colors"
                 aria-label="Fermer"
               >
                 <X className="w-5 h-5" />
@@ -285,7 +285,7 @@ export function PdfResourcesClient() {
 
             {/* Print Header Visible only when printing */}
             <div className="hidden print:block mb-6 border-b pb-4">
-              <h1 className="text-2xl font-bold text-red-700">
+              <h1 className="text-2xl font-bold text-[#F20D2F]">
                 PERMIS-MAROC.COM — FICHE DE RÉVISION OFFICIELLE
               </h1>
               <h2 className="text-lg font-semibold text-gray-900 mt-1">
@@ -297,18 +297,18 @@ export function PdfResourcesClient() {
             </div>
 
             {/* Modal Body Content */}
-            <div className="space-y-6 text-sm text-slate-200 print:text-black">
+            <div className="space-y-6 text-sm text-slate-700 print:text-black">
               {/* Detailed intro */}
-              <p className="leading-relaxed text-slate-300 print:text-gray-800">
+              <p className="leading-relaxed text-slate-600 print:text-gray-800">
                 {isArabic
                   ? activeModalResource.detailedContentAr
                   : activeModalResource.detailedContentFr}
               </p>
 
               {/* Key points box */}
-              <div className="p-4 rounded-2xl bg-slate-900/90 border border-white/10 print:bg-gray-50 print:border-gray-300">
-                <h4 className="font-bold text-white print:text-black mb-3 flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <div className="p-4 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] print:bg-gray-50 print:border-gray-300">
+                <h4 className="font-bold text-[#071A3D] print:text-black mb-3 flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
                   <span>
                     {isArabic ? "قواعد الحفظ الإلزامية :" : "Règles d'or à mémoriser :"}
                   </span>
@@ -319,7 +319,7 @@ export function PdfResourcesClient() {
                     : activeModalResource.keySummaryFr
                   ).map((item, idx) => (
                     <li key={idx} className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-2 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#F20D2F] mt-2 shrink-0" />
                       <span className="text-xs sm:text-sm">{item}</span>
                     </li>
                   ))}
@@ -328,9 +328,9 @@ export function PdfResourcesClient() {
 
               {/* Formulas Table if available */}
               {activeModalResource.formulas && (
-                <div className="p-4 rounded-2xl bg-blue-950/40 border border-blue-500/30 print:bg-blue-50 print:border-blue-200">
-                  <h4 className="font-bold text-blue-200 print:text-blue-900 mb-3 flex items-center gap-2">
-                    <Ruler className="w-4 h-4 text-blue-400" />
+                <div className="p-4 rounded-2xl bg-blue-50/70 border border-blue-200/60 print:bg-blue-50 print:border-blue-200">
+                  <h4 className="font-bold text-blue-900 print:text-blue-900 mb-3 flex items-center gap-2">
+                    <Ruler className="w-4 h-4 text-blue-500" />
                     <span>
                       {isArabic ? "جدول حساب المسافات :" : "Formules de calcul des distances :"}
                     </span>
@@ -339,15 +339,15 @@ export function PdfResourcesClient() {
                     {activeModalResource.formulas.map((f, i) => (
                       <div
                         key={i}
-                        className="p-3 rounded-xl bg-slate-900/80 border border-white/5 print:bg-white print:border-gray-200"
+                        className="p-3 rounded-xl bg-white border border-blue-100 print:bg-white print:border-gray-200 shadow-2xs"
                       >
-                        <span className="text-xs font-bold text-amber-300 print:text-amber-800 block">
+                        <span className="text-xs font-bold text-amber-700 print:text-amber-800 block">
                           {f.label}
                         </span>
-                        <span className="font-mono text-xs text-white print:text-black block font-semibold my-1">
+                        <span className="font-mono text-xs text-[#071A3D] print:text-black block font-semibold my-1">
                           {f.formula}
                         </span>
-                        <span className="text-[11px] text-slate-400 print:text-gray-600 block">
+                        <span className="text-[11px] text-slate-500 print:text-gray-600 block">
                           Exemple : {f.example}
                         </span>
                       </div>
@@ -358,9 +358,9 @@ export function PdfResourcesClient() {
 
               {/* Fines Table if available */}
               {activeModalResource.finesTable && (
-                <div className="overflow-x-auto rounded-2xl border border-white/10 print:border-gray-300">
+                <div className="overflow-x-auto rounded-2xl border border-[#E2E8F0] print:border-gray-300">
                   <table className="w-full text-left rtl:text-right text-xs">
-                    <thead className="bg-slate-800/80 print:bg-gray-100 text-slate-300 print:text-gray-700">
+                    <thead className="bg-[#F8FAFC] print:bg-gray-100 text-[#071A3D] print:text-gray-700 border-b border-[#E2E8F0]">
                       <tr>
                         <th className="p-3">Classe</th>
                         <th className="p-3">Amende</th>
@@ -368,19 +368,19 @@ export function PdfResourcesClient() {
                         <th className="p-3">Exemples</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-white/5 print:divide-gray-200">
+                    <tbody className="divide-y divide-[#E2E8F0] print:divide-gray-200 bg-white">
                       {activeModalResource.finesTable.map((row, i) => (
-                        <tr key={i} className="hover:bg-white/5">
-                          <td className="p-3 font-semibold text-white print:text-black">
+                        <tr key={i} className="hover:bg-slate-50">
+                          <td className="p-3 font-semibold text-[#071A3D] print:text-black">
                             {row.classification}
                           </td>
-                          <td className="p-3 text-amber-300 print:text-amber-700">
+                          <td className="p-3 font-semibold text-amber-600 print:text-amber-700">
                             {row.amount}
                           </td>
-                          <td className="p-3 font-bold text-red-400 print:text-red-700">
+                          <td className="p-3 font-bold text-[#F20D2F] print:text-red-700">
                             {row.points}
                           </td>
-                          <td className="p-3 text-slate-300 print:text-gray-700">
+                          <td className="p-3 text-slate-600 print:text-gray-700">
                             {row.examples}
                           </td>
                         </tr>
@@ -391,8 +391,8 @@ export function PdfResourcesClient() {
               )}
 
               {/* Exam Tip */}
-              <div className="p-3.5 rounded-xl bg-amber-950/40 border border-amber-500/30 text-amber-200 print:bg-yellow-50 print:text-yellow-900 text-xs flex items-start gap-2.5">
-                <Sparkles className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+              <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 print:bg-yellow-50 print:text-yellow-900 text-xs flex items-start gap-2.5">
+                <Sparkles className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold">
                     {isArabic ? "فخ يتكرر في الامتحان :" : "Astuce clé pour le jour J :"}
@@ -407,17 +407,17 @@ export function PdfResourcesClient() {
             </div>
 
             {/* Modal Footer Controls */}
-            <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-end gap-3 print:hidden">
+            <div className="mt-8 pt-4 border-t border-[#E2E8F0] flex items-center justify-end gap-3 print:hidden">
               <button
                 onClick={() => setActiveModalResource(null)}
-                className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold"
+                className="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-[#071A3D] text-xs font-semibold"
               >
                 {isArabic ? "إغلاق" : "Fermer"}
               </button>
 
               <button
                 onClick={() => window.print()}
-                className="px-6 py-2.5 rounded-xl bg-[#C1272D] hover:bg-[#9E1F24] text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-red-950/50"
+                className="px-6 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-red-500/25"
               >
                 <Printer className="w-4 h-4" />
                 <span>{isArabic ? "طباعة الفيش PDF" : "Imprimer en PDF"}</span>

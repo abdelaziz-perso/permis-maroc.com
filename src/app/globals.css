@@ -2,32 +2,32 @@
 
 @layer base {
   :root {
-    --brand-red: #c1272d;
-    --brand-red-dark: #9e1f24;
-    --brand-red-light: #ea383e;
-    --brand-green: #10b981;
-    --brand-green-dark: #059669;
-    --dark-950: #070a0f;
-    --dark-900: #0b0f17;
-    --dark-800: #121824;
-    --dark-700: #1c2434;
-    --dark-600: #2a354b;
-    --card-bg: rgba(18, 24, 36, 0.75);
-    --border-color: rgba(255, 255, 255, 0.08);
+    --brand-red: #f20d2f;
+    --brand-red-dark: #c1272d;
+    --brand-red-light: #ff4757;
+    --brand-green: #20c875;
+    --brand-green-dark: #10b981;
+    --dark-950: #071a3d;
+    --dark-900: #0f172a;
+    --dark-800: #1e293b;
+    --dark-700: #334155;
+    --dark-600: #475569;
+    --card-bg: #ffffff;
+    --border-color: #e5ecf5;
 
-    /* Mobile Design System Colors (from reference) */
+    /* Mobile & Light Design System Colors (White Mode by Default) */
     --mobile-red: #f20d2f;
     --mobile-navy: #071a3d;
     --mobile-green: #20c875;
     --mobile-amber: #ffb020;
-    --mobile-bg: #f6f9fd;
+    --mobile-bg: #f8fafc;
     --mobile-card: #ffffff;
-    --mobile-border: #e5ecf5;
+    --mobile-border: #e2e8f0;
   }
 
   body {
-    background-color: var(--dark-900);
-    color: #f1f5f9;
+    background-color: #f8fafc;
+    color: #071a3d;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", "Tajawal", "Cairo", sans-serif;
     overflow-x: hidden;
   }
@@ -37,34 +37,33 @@
   }
 }
 
-/* Glassmorphism utilities */
+/* Glassmorphism utilities for light theme */
 .glass-panel {
-  background: rgba(18, 24, 36, 0.7);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #e2e8f0;
 }
 
 .glass-card {
-  background: rgba(28, 36, 52, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(7, 26, 61, 0.04);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  border-color: rgba(193, 39, 45, 0.4);
+  border-color: rgba(242, 13, 47, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -10px rgba(193, 39, 45, 0.15);
+  box-shadow: 0 12px 30px -10px rgba(7, 26, 61, 0.08);
 }
 
 .glow-red {
-  box-shadow: 0 0 35px -5px rgba(193, 39, 45, 0.35);
+  box-shadow: 0 0 35px -5px rgba(242, 13, 47, 0.2);
 }
 
 .glow-green {
-  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 0 35px -5px rgba(32, 200, 117, 0.2);
 }
 
 /* Custom scrollbars */
@@ -74,16 +73,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0b0f17;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2a354b;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c1272d;
+  background: #f20d2f;
 }
 
 /* Animations */

@@ -53,52 +53,52 @@ export default function DocumentsPermisMarocPage() {
   return (
     <LanguageProvider>
       <UserProvider>
-        <div className="min-h-screen flex flex-col bg-[#070A0F] text-white">
+        <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#071A3D]">
           <Navbar />
 
           <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
             <div className="mb-10">
-              <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider block mb-2">
+              <span className="text-xs font-mono font-bold text-emerald-600 uppercase tracking-wider block mb-2">
                 Démarches Administratives
               </span>
-              <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4 leading-tight">
+              <h1 className="text-3xl sm:text-5xl font-black text-[#071A3D] tracking-tight mb-4 leading-tight">
                 Documents à fournir pour le permis au Maroc
               </h1>
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
                 La liste exacte des pièces administratives exigées par la NARSA pour constituer votre dossier d&apos;inscription officiel en auto-école.
               </p>
             </div>
 
             {/* Checklist */}
-            <div className="bg-[#121824] rounded-2xl border border-white/10 overflow-hidden shadow-xl mb-10">
-              <div className="p-6 border-b border-white/10 flex items-center justify-between">
-                <h2 className="text-base font-bold text-white flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-red-400" />
+            <div className="bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden shadow-xs mb-10">
+              <div className="p-6 border-b border-[#E2E8F0] flex items-center justify-between">
+                <h2 className="text-base font-bold text-[#071A3D] flex items-center gap-2">
+                  <FileText className="w-5 h-5 text-[#F20D2F]" />
                   <span>Checklist des pièces justificatives</span>
                 </h2>
-                <span className="text-xs text-slate-400 font-mono">Dossier NARSA 2026</span>
+                <span className="text-xs text-slate-500 font-mono">Dossier NARSA 2026</span>
               </div>
 
-              <div className="divide-y divide-white/5">
+              <div className="divide-y divide-[#E2E8F0]">
                 {documents.map((doc, idx) => (
                   <div key={idx} className="p-5 flex items-start gap-4">
-                    <div className="w-6 h-6 rounded-full bg-emerald-950 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
                       <CheckCircle2 className="w-4 h-4" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <h3 className="font-bold text-sm text-white">{doc.title}</h3>
+                        <h3 className="font-bold text-sm text-[#071A3D]">{doc.title}</h3>
                         {doc.required ? (
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-500/30">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-50 text-[#F20D2F] border border-red-100">
                             Obligatoire
                           </span>
                         ) : (
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-800 text-slate-400">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
                             Cas particulier
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-400 leading-relaxed">
+                      <p className="text-xs text-slate-500 leading-relaxed">
                         {doc.description}
                       </p>
                     </div>
@@ -108,27 +108,27 @@ export default function DocumentsPermisMarocPage() {
             </div>
 
             {/* Medical visit information */}
-            <div className="p-6 rounded-2xl bg-slate-900 border border-white/10 mb-8 space-y-3">
-              <h3 className="text-base font-bold text-white flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 text-amber-400" />
+            <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mb-8 space-y-3">
+              <h3 className="text-base font-bold text-[#071A3D] flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 text-amber-500" />
                 <span>Zoom sur la visite médicale obligatoire</span>
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 La visite médicale coûte exactement 150 MAD (tarif légal fixé par arrêté ministériel). Elle comprend un examen d&apos;acuité visuelle (minimum 8/10ème pour les deux yeux réunis, avec verres correcteurs si nécessaire), un contrôle auditif et un test réflexe.
               </p>
             </div>
 
             {/* Bottom link */}
-            <div className="p-6 rounded-2xl bg-[#121824] border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <h4 className="font-bold text-white text-base">Vos documents sont prêts ?</h4>
-                <p className="text-xs text-slate-400">
+                <h4 className="font-bold text-[#071A3D] text-base">Vos documents sont prêts ?</h4>
+                <p className="text-xs text-slate-500">
                   Commencez dès aujourd&apos;hui vos révisions du code en ligne gratuitement.
                 </p>
               </div>
               <Link
                 href="/examen-blanc"
-                className="px-5 py-2.5 rounded-xl bg-[#C1272D] hover:bg-[#9E1F24] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-lg"
+                className="px-5 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
               >
                 Faire un test blanc
               </Link>

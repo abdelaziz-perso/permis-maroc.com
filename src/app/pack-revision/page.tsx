@@ -61,7 +61,7 @@ export default function PackRevisionPage() {
         </div>
 
         {/* DESKTOP VIEW (>= 768px): Full width modern experience */}
-        <div className="hidden md:flex min-h-screen flex-col bg-[#0B0F17] text-white">
+        <div className="hidden md:flex min-h-screen flex-col bg-[#F8FAFC] text-[#071A3D]">
           <Navbar />
           <main className="flex-1">
             <PackHeroSection />

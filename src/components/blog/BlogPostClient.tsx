@@ -14,21 +14,21 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
   return (
     <LanguageProvider>
       <UserProvider>
-        <div className="min-h-screen flex flex-col bg-[#070A0F] text-white">
+        <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#071A3D]">
           <Navbar />
 
           <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors mb-6"
+              className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#071A3D] transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
               <span>Retour à tous les articles</span>
             </Link>
 
             <div className="mb-8">
-              <div className="flex items-center gap-3 text-xs text-slate-400 mb-3">
-                <span className="font-mono font-bold text-red-400 px-2.5 py-0.5 rounded-full bg-red-950/60 border border-red-500/30">
+              <div className="flex items-center gap-3 text-xs text-slate-500 mb-3">
+                <span className="font-mono font-bold text-[#F20D2F] px-2.5 py-0.5 rounded-full bg-red-50 border border-red-100">
                   {post.category}
                 </span>
                 <span>•</span>
@@ -43,23 +43,23 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
                 </div>
               </div>
 
-              <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight mb-4 leading-tight">
+              <h1 className="text-2xl sm:text-4xl font-black text-[#071A3D] tracking-tight mb-4 leading-tight">
                 {post.title}
               </h1>
 
-              <div className="p-4 rounded-xl bg-slate-900 border border-white/5 text-xs sm:text-sm text-slate-300 italic leading-relaxed">
+              <div className="p-4 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs text-xs sm:text-sm text-slate-600 italic leading-relaxed">
                 {post.excerpt}
               </div>
             </div>
 
-            <article className="p-6 sm:p-10 rounded-3xl bg-[#121824] border border-white/10 shadow-2xl mb-10 text-slate-300 text-sm sm:text-base leading-relaxed space-y-6">
+            <article className="p-6 sm:p-10 rounded-3xl bg-white border border-[#E2E8F0] shadow-xs mb-10 text-slate-700 text-sm sm:text-base leading-relaxed space-y-6">
               {post.content.split("\n\n").map((section, idx) => {
                 const trimmed = section.trim();
                 if (trimmed.startsWith("## ")) {
                   return (
                     <h2
                       key={idx}
-                      className="text-xl sm:text-2xl font-bold text-white pt-4 border-t border-white/5 first:pt-0 first:border-0"
+                      className="text-xl sm:text-2xl font-bold text-[#071A3D] pt-4 border-t border-[#E2E8F0] first:pt-0 first:border-0"
                     >
                       {trimmed.replace("## ", "")}
                     </h2>
@@ -67,7 +67,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
                 } else if (trimmed.startsWith("- ")) {
                   const items = trimmed.split("\n- ").map((item) => item.replace("- ", ""));
                   return (
-                    <ul key={idx} className="space-y-2 list-disc list-inside text-slate-300">
+                    <ul key={idx} className="space-y-2 list-disc list-inside text-slate-700">
                       {items.map((li, i) => (
                         <li key={i}>{li}</li>
                       ))}
@@ -78,16 +78,16 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
               })}
             </article>
 
-            <div className="p-6 rounded-2xl bg-[#C1272D]/10 border border-red-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
-                <h4 className="font-bold text-white text-base">Envie de vous tester ?</h4>
-                <p className="text-xs text-slate-300">
+                <h4 className="font-bold text-[#071A3D] text-base">Envie de vous tester ?</h4>
+                <p className="text-xs text-slate-500">
                   Passez un examen blanc gratuit pour appliquer ces conseils dès maintenant.
                 </p>
               </div>
               <Link
                 href="/examen-blanc"
-                className="px-5 py-2.5 rounded-xl bg-[#C1272D] hover:bg-[#9E1F24] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-lg"
+                className="px-5 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
               >
                 Faire un test
               </Link>

@@ -30,7 +30,7 @@ export default function SituationsPage() {
         </div>
 
         {/* DESKTOP VIEW (>= 768px) */}
-        <div className="hidden md:flex min-h-screen flex-col bg-[#070A0F] text-white">
+        <div className="hidden md:flex min-h-screen flex-col bg-[#F8FAFC] text-[#071A3D]">
           <Navbar />
           <main className="flex-1 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
             <Interactive3DSection />

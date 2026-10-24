@@ -13,67 +13,67 @@ export function MobileAppPromo() {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 lg:py-24 bg-gradient-to-b from-[#0B0F17] via-[#121824] to-[#0B0F17] relative overflow-hidden border-t border-white/5">
+    <section className="py-16 lg:py-24 bg-gradient-to-b from-[#FFFFFF] via-[#F8FAFC] to-[#F1F5F9] relative overflow-hidden border-t border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Info, features, placeholder badges */}
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-red-500/30 text-xs font-semibold text-red-400 mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#F20D2F] mb-4">
               <Smartphone className="w-3.5 h-3.5" />
               <span>{t.appPromo.badge}</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight mb-4">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#071A3D] tracking-tight leading-tight mb-4">
               {t.appPromo.title}
             </h2>
 
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed mb-8 max-w-xl">
+            <p className="text-[#475569] text-sm sm:text-base leading-relaxed mb-8 max-w-xl font-normal">
               {t.appPromo.subtitle}
             </p>
 
             {/* Feature bullets */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-10">
               {t.appPromo.features.map((feat, idx) => (
-                <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-300">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm text-[#334155] font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#20C875] shrink-0" />
                   <span>{feat}</span>
                 </div>
               ))}
             </div>
 
             {/* Coming Soon Notice and Store Badges */}
-            <div className="p-5 rounded-2xl bg-slate-900/80 border border-white/10 max-w-lg">
-              <div className="flex items-center gap-2 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
+            <div className="p-5 rounded-3xl bg-white border border-[#E2E8F0] shadow-sm max-w-lg">
+              <div className="flex items-center gap-2 text-amber-500 text-xs font-bold uppercase tracking-wider mb-3">
                 <Clock className="w-4 h-4" />
                 <span>{t.appPromo.comingSoon}</span>
               </div>
 
               <div className="flex flex-col sm:flex-row items-center gap-3">
                 {/* App Store Placeholder */}
-                <div className="w-full sm:w-1/2 flex items-center gap-3 px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 opacity-80 cursor-not-allowed">
-                  <Apple className="w-6 h-6 text-white shrink-0" />
+                <div className="w-full sm:w-1/2 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] opacity-80 cursor-not-allowed">
+                  <Apple className="w-6 h-6 text-[#071A3D] shrink-0" />
                   <div className="text-left">
-                    <span className="block text-[10px] text-slate-400 leading-tight">
+                    <span className="block text-[10px] text-slate-500 leading-tight">
                       Bientôt sur
                     </span>
-                    <span className="text-xs font-bold text-white tracking-wide">
+                    <span className="text-xs font-bold text-[#071A3D] tracking-wide">
                       App Store
                     </span>
                   </div>
                 </div>
 
                 {/* Google Play Placeholder */}
-                <div className="w-full sm:w-1/2 flex items-center gap-3 px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 opacity-80 cursor-not-allowed">
+                <div className="w-full sm:w-1/2 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] opacity-80 cursor-not-allowed">
                   <div className="w-6 h-6 flex items-center justify-center shrink-0">
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-emerald-400">
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-emerald-600">
                       <path d="M3.609 1.814L13.792 12 3.61 22.186a1.996 1.996 0 0 1-.22-.914V2.728c0-.336.082-.647.219-.914zm11.233 11.233l2.25 2.25-11.45 6.61 9.2-8.86zm0-2.094L5.642 2.093l11.45 6.61-2.25 2.25zm1.536 1.047l3.774 2.18c.997.576.997 1.516 0 2.092l-3.774 2.18-2.316-2.316 2.316-2.136z" />
                     </svg>
                   </div>
                   <div className="text-left">
-                    <span className="block text-[10px] text-slate-400 leading-tight">
+                    <span className="block text-[10px] text-slate-500 leading-tight">
                       Bientôt sur
                     </span>
-                    <span className="text-xs font-bold text-white tracking-wide">
+                    <span className="text-xs font-bold text-[#071A3D] tracking-wide">
                       Google Play
                     </span>
                   </div>
