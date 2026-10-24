@@ -6,9 +6,6 @@ import {
   Smartphone,
   CheckCircle2,
   Clock,
-  Sparkles,
-  Bell,
-  Download,
   Apple,
 } from "lucide-react";
 

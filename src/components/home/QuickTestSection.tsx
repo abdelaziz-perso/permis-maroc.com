@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { sampleQuestions } from "@/data/questions";
-import { CheckCircle2, XCircle, ArrowRight, ShieldCheck, Sparkles, HelpCircle } from "lucide-react";
+import { CheckCircle2, XCircle, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
 
 export function QuickTestSection() {
   const { t } = useLanguage();

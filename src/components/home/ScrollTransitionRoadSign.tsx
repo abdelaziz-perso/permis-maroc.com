@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowDown, CheckSquare, Sparkles } from "lucide-react";
+import { ArrowDown, Sparkles } from "lucide-react";
 
 export function ScrollTransitionRoadSign() {
   const [scrollY, setScrollY] = useState(0);

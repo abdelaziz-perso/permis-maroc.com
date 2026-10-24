@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { interactiveScenarios } from "@/data/scenarios3D";
 import { InteractiveScenarioWrapper } from "@/components/three/InteractiveScenarioWrapper";
-import { Sparkles, Layers, CheckCircle2 } from "lucide-react";
+import { Sparkles, Layers } from "lucide-react";
 
 export function Interactive3DSection() {
   const { t } = useLanguage();

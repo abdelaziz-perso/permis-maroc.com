@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Scenario3D } from "@/types/models";
-import { CheckCircle2, XCircle, RotateCcw, HelpCircle, ArrowRight } from "lucide-react";
+import { CheckCircle2, XCircle, RotateCcw, HelpCircle } from "lucide-react";
 
 interface ScenarioProps {
   scenario: Scenario3D;
@@ -12,8 +12,6 @@ interface ScenarioProps {
 
 // --- Car Mesh with Animation State ---
 function ScenarioCar({
-  id,
-  name,
   color,
   initialPos,
   rotation,
@@ -23,8 +21,8 @@ function ScenarioCar({
   isSelected,
   isCorrect,
 }: {
-  id: string;
-  name: string;
+  id?: string;
+  name?: string;
   color: string;
   initialPos: [number, number, number];
   rotation: [number, number, number];
