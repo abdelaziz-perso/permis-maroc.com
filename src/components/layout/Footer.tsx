@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/useLanguage";
-import { ShieldCheck, Heart, ExternalLink } from "lucide-react";
+import { ShieldCheck, Heart } from "lucide-react";
 
 export function Footer() {
   const { t } = useLanguage();
@@ -56,6 +56,11 @@ export function Footer() {
               <li>
                 <Link href="/panneaux" className="hover:text-white transition-colors">
                   150+ Panneaux de signalisation
+                </Link>
+              </li>
+              <li>
+                <Link href="/pdf" className="text-red-400 hover:text-red-300 font-semibold transition-colors">
+                  Fiches Mémo & Résumés PDF (Nouveau)
                 </Link>
               </li>
               <li>
