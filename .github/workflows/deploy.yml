@@ -1,0 +1,82 @@
+name: Deploy permis-maroc.com
+
+# Builds the Next.js site as a static export and uploads it to the
+# Namecheap server (SSH host configured as `aglcode` on this laptop)
+# at /home/aglctvyl/permis-maroc.com.
+#
+# Required repository secrets (set by a repo admin):
+#   SSH_HOST         199.188.200.9
+#   SSH_PORT         21098
+#   SSH_USERNAME     aglctvyl
+#   SSH_PRIVATE_KEY  contents of ~/.ssh/permis_deploy_ci (this laptop)
+#   SSH_TARGET_DIR   /home/aglctvyl/permis-maroc.com
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    name: Build & deploy static export
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Build static export
+        run: |
+          npm ci
+          npm run build
+
+      - name: Ensure export output exists
+        run: |
+          if [ ! -d out ] && [ -d dist ]; then
+            mv dist out
+          fi
+          test -d out || { echo "No static export output found (expected next.config with output: 'export')."; exit 1; }
+          find out -type f | head -5
+
+      - name: Wipe remote web root
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT || 21098 }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            mkdir -p "${{ secrets.SSH_TARGET_DIR }}"
+            find "${{ secrets.SSH_TARGET_DIR }}" -mindepth 1 -delete
+
+      - name: Upload static export via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT || 21098 }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "out/*"
+          target: ${{ secrets.SSH_TARGET_DIR }}
+          strip_components: 1
+          overwrite: true
+
+      - name: Verify deployment
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT || 21098 }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script_stop: true
+          script: |
+            test -f "${{ secrets.SSH_TARGET_DIR }}/index.html" || { echo "index.html missing after deploy"; exit 1; }
+            echo "Deploy OK — index.html is in place at ${{ secrets.SSH_TARGET_DIR }}"
