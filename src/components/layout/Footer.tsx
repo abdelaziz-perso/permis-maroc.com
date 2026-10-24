@@ -9,7 +9,7 @@ export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="w-full bg-[#070A0F] border-t border-white/10 text-slate-400 text-sm mt-auto pb-16 md:pb-0">
+    <footer className="hidden md:block w-full bg-[#070A0F] border-t border-white/10 text-slate-400 text-sm mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
           {/* Brand Column */}

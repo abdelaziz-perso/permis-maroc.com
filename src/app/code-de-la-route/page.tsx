@@ -4,16 +4,16 @@ import React from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
+import { MobileAppShell } from "@/components/layout/MobileAppShell";
+import { MobileCoursesView } from "@/components/mobile/MobileCoursesView";
 import { LanguageProvider, useLanguage } from "@/lib/i18n/useLanguage";
 import { UserProvider, useUser } from "@/context/UserContext";
 import { courseCategories } from "@/data/courses";
 import {
   BookOpen,
+  Search,
   Clock,
-  CheckCircle2,
   ArrowRight,
-  Sparkles,
   ShieldAlert,
   Compass,
   TrafficCone,
@@ -74,10 +74,22 @@ function CoursesContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070A0F] text-white">
-      <Navbar />
+    <>
+      {/* MOBILE APP VIEW (< 768px) matching reference design */}
+      <div className="block md:hidden">
+        <MobileAppShell
+          title="Code de la route"
+          rightAction={<Search className="w-5 h-5 text-[#071A3D]" />}
+        >
+          <MobileCoursesView />
+        </MobileAppShell>
+      </div>
 
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
+      {/* DESKTOP WEB EXPERIENCE (>= 768px) */}
+      <div className="hidden md:flex min-h-screen flex-col bg-[#070A0F] text-white">
+        <Navbar />
+
+        <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-blue-500/30 text-xs font-semibold text-blue-400 mb-3">
@@ -162,8 +174,8 @@ function CoursesContent() {
         </div>
       </main>
 
-      <Footer />
-      <MobileBottomNav />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }

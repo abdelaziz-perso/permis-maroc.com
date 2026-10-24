@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
+import { MobileAppShell } from "@/components/layout/MobileAppShell";
+import { MobileHomeScreen } from "@/components/mobile/MobileHomeScreen";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ScrollTransitionRoadSign } from "@/components/home/ScrollTransitionRoadSign";
 import { QuickTestSection } from "@/components/home/QuickTestSection";
@@ -59,7 +60,15 @@ export default function HomePage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
 
-        <div className="min-h-screen flex flex-col bg-[#0B0F17] text-white">
+        {/* MOBILE NATIVE APP VIEW (< 768px) matching reference design */}
+        <div className="block md:hidden">
+          <MobileAppShell isHome={true}>
+            <MobileHomeScreen />
+          </MobileAppShell>
+        </div>
+
+        {/* DESKTOP WEB EXPERIENCE (>= 768px) with 3D Diorama & Hero */}
+        <div className="hidden md:flex min-h-screen flex-col bg-[#0B0F17] text-white">
           <Navbar />
           <main className="flex-1">
             <HeroSection />
@@ -71,7 +80,6 @@ export default function HomePage() {
             <FaqAccordion />
           </main>
           <Footer />
-          <MobileBottomNav />
         </div>
       </UserProvider>
     </LanguageProvider>

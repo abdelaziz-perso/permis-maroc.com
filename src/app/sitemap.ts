@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { courseCategories } from "@/data/courses";
 import { cityGuides } from "@/data/cities";
 import { blogPosts } from "@/data/blogPosts";
+import { roadSigns } from "@/data/roadSigns";
 
 export const dynamic = "force-static";
 
@@ -44,6 +45,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/profil`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/situations`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/permis-de-conduire-maroc`,
@@ -125,5 +138,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...courseRoutes, ...cityRoutes, ...blogRoutes];
+  // Road signs routes
+  const signRoutes: MetadataRoute.Sitemap = roadSigns.map((sign) => ({
+    url: `${baseUrl}/panneaux/${sign.id}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...courseRoutes, ...cityRoutes, ...blogRoutes, ...signRoutes];
 }

@@ -60,13 +60,20 @@ export const metadata: Metadata = {
   verification: {
     google: "google5cca444fee08cb36",
   },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Permis Maroc",
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#C1272D",
+  themeColor: "#F20D2F",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

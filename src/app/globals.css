@@ -14,6 +14,15 @@
     --dark-600: #2a354b;
     --card-bg: rgba(18, 24, 36, 0.75);
     --border-color: rgba(255, 255, 255, 0.08);
+
+    /* Mobile Design System Colors (from reference) */
+    --mobile-red: #f20d2f;
+    --mobile-navy: #071a3d;
+    --mobile-green: #20c875;
+    --mobile-amber: #ffb020;
+    --mobile-bg: #f6f9fd;
+    --mobile-card: #ffffff;
+    --mobile-border: #e5ecf5;
   }
 
   body {
@@ -92,6 +101,19 @@
   animation: float 4s ease-in-out infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulseGlow 3s ease-in-out infinite;
+/* Safe area utilities for iOS / Android */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.pb-safe {
+  padding-bottom: max(16px, env(safe-area-inset-bottom, 16px));
+}
+.pb-nav {
+  padding-bottom: calc(76px + env(safe-area-inset-bottom, 16px));
+}
+.top-safe {
+  top: env(safe-area-inset-top, 0px);
+}
+.bottom-safe {
+  bottom: env(safe-area-inset-bottom, 0px);
 }

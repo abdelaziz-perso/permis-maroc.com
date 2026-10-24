@@ -4,7 +4,8 @@ import React from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
+import { MobileAppShell } from "@/components/layout/MobileAppShell";
+import { MobileProfileView } from "@/components/mobile/MobileProfileView";
 import { LanguageProvider, useLanguage } from "@/lib/i18n/useLanguage";
 import { UserProvider, useUser } from "@/context/UserContext";
 import { courseCategories } from "@/data/courses";
@@ -21,6 +22,7 @@ import {
   ShieldCheck,
   Calendar,
   Sparkles,
+  Settings,
 } from "lucide-react";
 
 export default function DashboardPage() {
@@ -40,10 +42,22 @@ function DashboardContent() {
   const inProgressCategories = courseCategories.slice(0, 3);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070A0F] text-white">
-      <Navbar />
+    <>
+      {/* MOBILE APP PROFILE VIEW (< 768px) matching reference design Screen 8 */}
+      <div className="block md:hidden">
+        <MobileAppShell
+          title="Mon profil"
+          rightAction={<Settings className="w-5 h-5 text-[#071A3D]" />}
+        >
+          <MobileProfileView />
+        </MobileAppShell>
+      </div>
 
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
+      {/* DESKTOP WEB DASHBOARD (>= 768px) */}
+      <div className="hidden md:flex min-h-screen flex-col bg-[#070A0F] text-white">
+        <Navbar />
+
+        <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
         {/* Top Header greeting */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
@@ -368,8 +382,8 @@ function DashboardContent() {
         </div>
       </main>
 
-      <Footer />
-      <MobileBottomNav />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }

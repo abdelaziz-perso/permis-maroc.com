@@ -5,7 +5,8 @@ import Link from "next/link";
 import confetti from "canvas-confetti";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
+import { MobileAppShell } from "@/components/layout/MobileAppShell";
+import { MobileTestView } from "@/components/mobile/MobileTestView";
 import { LanguageProvider, useLanguage } from "@/lib/i18n/useLanguage";
 import { UserProvider, useUser } from "@/context/UserContext";
 import { sampleQuestions, examConfigs } from "@/data/questions";
@@ -156,10 +157,19 @@ function ExamSimulator() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070A0F] text-white">
-      <Navbar />
+    <>
+      {/* MOBILE APP TEST VIEW (< 768px) matching reference design */}
+      <div className="block md:hidden">
+        <MobileAppShell title="Test permis B" hideBottomNav={true}>
+          <MobileTestView />
+        </MobileAppShell>
+      </div>
 
-      <main className="flex-1 py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+      {/* DESKTOP WEB EXPERIENCE (>= 768px) */}
+      <div className="hidden md:flex min-h-screen flex-col bg-[#070A0F] text-white">
+        <Navbar />
+
+        <main className="flex-1 py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
         {/* Category Selector Bar (before exam or when restarting) */}
         {!isFinished && (
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl bg-slate-900/80 border border-white/10">
@@ -451,8 +461,8 @@ function ExamSimulator() {
         )}
       </main>
 
-      <Footer />
-      <MobileBottomNav />
-    </div>
+        <Footer />
+      </div>
+    </>
   );
 }
