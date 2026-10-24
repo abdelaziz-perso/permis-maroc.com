@@ -12,6 +12,7 @@ import {
   Award,
   ArrowRight,
   TrendingUp,
+  Sparkles,
 } from "lucide-react";
 
 export function MobileHomeScreen() {
@@ -162,6 +163,30 @@ export function MobileHomeScreen() {
           );
         })}
       </div>
+
+      {/* 5. Pack Révision Promo Card (High-conversion mobile banner) */}
+      <Link
+        href="/pack-revision"
+        className="block p-4 rounded-3xl bg-gradient-to-br from-[#071A3D] to-[#0D2860] text-white shadow-lg shadow-navy-950/20 active:scale-[0.98] transition-all relative overflow-hidden"
+      >
+        <div className="flex items-center justify-between gap-3">
+          <div className="space-y-1">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#F20D2F] text-[10px] font-black uppercase tracking-wider">
+              <Sparkles className="w-2.5 h-2.5" />
+              <span>{isArabic ? "عرض خاص" : "PACK RÉVISION"}</span>
+            </span>
+            <div className="text-sm font-black leading-tight">
+              {isArabic ? "باك المراجعة الشامل 2026" : "Pack Révision Permis B"}
+            </div>
+            <div className="text-[11px] text-slate-300">
+              {isArabic ? "دروس، أسئلة، وبلايك بـ 79 درهم فقط" : "Cours, tests & examens à 79 MAD"}
+            </div>
+          </div>
+          <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 text-white">
+            <ArrowRight className="w-5 h-5 rtl:rotate-180" />
+          </div>
+        </div>
+      </Link>
     </div>
   );
 }

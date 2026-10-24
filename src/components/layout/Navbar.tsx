@@ -30,6 +30,7 @@ export function Navbar() {
     { href: "/code-de-la-route", label: t.nav.courses, icon: BookOpen },
     { href: "/examen-blanc", label: t.nav.tests, icon: CheckCircle },
     { href: "/panneaux", label: t.nav.signs, icon: ShieldAlert },
+    { href: "/pack-revision", label: language === "ar" || language === "ary" ? "باك المراجعة" : "Pack Révision", icon: Sparkles, highlight: true },
     { href: "/pdf", label: language === "ar" || language === "ary" ? "ملفات PDF" : "Fiches PDF", icon: FileText },
     { href: "/dashboard", label: t.nav.dashboard, icon: LayoutDashboard },
     { href: "/blog", label: t.nav.blog, icon: Sparkles },
@@ -64,10 +65,12 @@ export function Navbar() {
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1.5 ${
                   isActive
                     ? "bg-white/10 text-white font-semibold"
+                    : link.highlight
+                    ? "text-red-400 font-semibold hover:bg-red-500/10"
                     : "text-slate-300 hover:text-white hover:bg-white/5"
                 }`}
               >
-                <link.icon className="w-4 h-4 text-slate-400" />
+                <link.icon className={`w-4 h-4 ${link.highlight ? "text-red-400" : "text-slate-400"}`} />
                 <span>{link.label}</span>
               </Link>
             );

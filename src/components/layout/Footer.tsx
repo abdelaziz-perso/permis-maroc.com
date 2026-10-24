@@ -76,6 +76,11 @@ export function Footer() {
             <h4 className="text-white font-semibold text-sm mb-3">Examens & Outils</h4>
             <ul className="space-y-2 text-xs">
               <li>
+                <Link href="/pack-revision" className="text-red-400 hover:text-red-300 font-semibold transition-colors">
+                  Pack Révision Permis B (79 MAD)
+                </Link>
+              </li>
+              <li>
                 <Link href="/examen-blanc" className="hover:text-white transition-colors">
                   Examen Blanc Permis B (40 questions)
                 </Link>

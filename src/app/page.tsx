@@ -8,6 +8,7 @@ import { ScrollTransitionRoadSign } from "@/components/home/ScrollTransitionRoad
 import { QuickTestSection } from "@/components/home/QuickTestSection";
 import { Interactive3DSection } from "@/components/home/Interactive3DSection";
 import { FeaturesGrid } from "@/components/home/FeaturesGrid";
+import { HomePackPreview } from "@/components/home/HomePackPreview";
 import { MobileAppPromo } from "@/components/home/MobileAppPromo";
 import { FaqAccordion } from "@/components/home/FaqAccordion";
 import { LanguageProvider } from "@/lib/i18n/useLanguage";
@@ -76,6 +77,7 @@ export default function HomePage() {
             <QuickTestSection />
             <Interactive3DSection />
             <FeaturesGrid />
+            <HomePackPreview />
             <MobileAppPromo />
             <FaqAccordion />
           </main>
