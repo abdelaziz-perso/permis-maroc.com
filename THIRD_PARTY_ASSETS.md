@@ -14,8 +14,9 @@ All external 3D models and media utilized in **Permis-Maroc.com** adhere strictl
 - **Commercial Use Permitted**: Yes (Unrestricted personal, educational, and commercial use)
 - **Attribution Required**: Not legally required by CC0, but proudly credited to Kenney
 - **Local Storage Path**:
-  - `/public/models/car/sedan.glb` (168 KB)
-  - `/public/models/car/wheel.glb` (26 KB)
+  - `/public/models/car/sedan.glb` (168 KB) — byte-identical to the official pack file
+  - `/public/models/car/wheel.glb` (26 KB) — byte-identical to `wheel-default.glb` in the official pack
+  - `/public/models/car/Textures/colormap.png` (12 KB) — official Kit texture referenced relatively by both models
 - **Customizations applied in code**:
   - Removable Moroccan driving school magnetic roof sign with red "L" badge
   - Emissive blinking indicators for roundabout exit signaling
