@@ -7,7 +7,8 @@ import { InteractiveScenarioWrapper } from "@/components/three/InteractiveScenar
 import { Sparkles, Layers } from "lucide-react";
 
 export function Interactive3DSection() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const isArabic = language === "ar" || language === "ary";
   const [activeScenarioIndex, setActiveScenarioIndex] = useState(0);
   const scenario = interactiveScenarios[activeScenarioIndex];
 
@@ -40,7 +41,9 @@ export function Interactive3DSection() {
                 }`}
               >
                 <Layers className="w-3.5 h-3.5" />
-                <span>Situation {idx + 1}</span>
+                <span>
+                  {isArabic ? `الوضعية ${idx + 1}` : `Situation ${idx + 1}`}
+                </span>
               </button>
             ))}
           </div>

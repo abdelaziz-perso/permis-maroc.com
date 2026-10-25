@@ -4,16 +4,37 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { sampleQuestions } from "@/data/questions";
-import { CheckCircle2, XCircle, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  CheckCircle2,
+  XCircle,
+  ArrowRight,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 
 export function QuickTestSection() {
-  const { t } = useLanguage();
-  // Question 1: Priorité à droite
+  const { language, t } = useLanguage();
+  const isArabic = language === "ar" || language === "ary";
+
   const question = sampleQuestions[0];
   const [selectedAnswerId, setSelectedAnswerId] = useState<string | null>(null);
 
   const selectedAnswer = question.answers.find((a) => a.id === selectedAnswerId);
   const isCorrect = selectedAnswer ? selectedAnswer.isCorrect : null;
+
+  const questionText =
+    language === "ary" && question.questionAry
+      ? question.questionAry
+      : isArabic && question.questionAr
+      ? question.questionAr
+      : question.question;
+
+  const explanationText =
+    language === "ary" && question.explanationAry
+      ? question.explanationAry
+      : isArabic && question.explanationAr
+      ? question.explanationAr
+      : question.explanation;
 
   return (
     <section id="quick-test" className="py-16 lg:py-24 bg-[#F8FAFC] relative">
@@ -37,7 +58,7 @@ export function QuickTestSection() {
           {/* Top Progress Bar & Header */}
           <div className="px-6 py-4 bg-[#F8FAFC] border-b border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <span className="px-2.5 py-1 rounded-md bg-[#F20D2F] text-white text-xs font-mono font-bold">
+              <span className="px-2.5 py-1 rounded-md bg-[#F20D2F] text-white text-xs font-mono font-bold tabular-nums">
                 1 / 40
               </span>
               <span className="text-xs font-bold text-[#071A3D]">
@@ -47,7 +68,7 @@ export function QuickTestSection() {
 
             {/* Simulated Progress bar (1/40 = 2.5%) */}
             <div className="w-full sm:w-48 bg-slate-200 h-2 rounded-full overflow-hidden">
-              <div className="bg-gradient-to-r from-[#F20D2F] to-amber-500 h-full w-[2.5%]" />
+              <div className="bg-gradient-to-r from-[#F20D2F] to-amber-500 h-full w-[5%]" />
             </div>
           </div>
 
@@ -59,7 +80,11 @@ export function QuickTestSection() {
                 <svg
                   viewBox="0 0 240 180"
                   className="w-full h-full max-w-[280px] drop-shadow-lg"
-                  aria-label="Illustration carrefour sans signalisation"
+                  aria-label={
+                    isArabic
+                      ? "ملتقى طرق بدون إشارات"
+                      : "Illustration carrefour sans signalisation"
+                  }
                 >
                   {/* Ground */}
                   <rect x="0" y="0" width="240" height="180" fill="#0F172A" />
@@ -73,31 +98,122 @@ export function QuickTestSection() {
                   <rect x="90" y="60" width="60" height="60" fill="#293548" />
 
                   {/* White Dashed lines */}
-                  <line x1="120" y1="5" x2="120" y2="55" stroke="#F8FAFC" strokeWidth="2.5" strokeDasharray="6 4" />
-                  <line x1="120" y1="125" x2="120" y2="175" stroke="#F8FAFC" strokeWidth="2.5" strokeDasharray="6 4" />
-                  <line x1="5" y1="90" x2="85" y2="90" stroke="#F8FAFC" strokeWidth="2.5" strokeDasharray="6 4" />
-                  <line x1="155" y1="90" x2="235" y2="90" stroke="#F8FAFC" strokeWidth="2.5" strokeDasharray="6 4" />
+                  <line
+                    x1="120"
+                    y1="5"
+                    x2="120"
+                    y2="55"
+                    stroke="#F8FAFC"
+                    strokeWidth="2.5"
+                    strokeDasharray="6 4"
+                  />
+                  <line
+                    x1="120"
+                    y1="125"
+                    x2="120"
+                    y2="175"
+                    stroke="#F8FAFC"
+                    strokeWidth="2.5"
+                    strokeDasharray="6 4"
+                  />
+                  <line
+                    x1="5"
+                    y1="90"
+                    x2="85"
+                    y2="90"
+                    stroke="#F8FAFC"
+                    strokeWidth="2.5"
+                    strokeDasharray="6 4"
+                  />
+                  <line
+                    x1="155"
+                    y1="90"
+                    x2="235"
+                    y2="90"
+                    stroke="#F8FAFC"
+                    strokeWidth="2.5"
+                    strokeDasharray="6 4"
+                  />
 
                   {/* Vehicle A (You / Red) waiting at bottom */}
                   <g transform="translate(100, 130)">
-                    <rect x="0" y="0" width="20" height="34" rx="4" fill="#DC2626" stroke="#FFFFFF" strokeWidth="1" />
-                    <rect x="2" y="6" width="16" height="18" rx="2" fill="#0F172A" />
-                    <text x="10" y="24" fontSize="10" fontWeight="bold" fill="#FFFFFF" textAnchor="middle">VOUS</text>
+                    <rect
+                      x="0"
+                      y="0"
+                      width="20"
+                      height="34"
+                      rx="4"
+                      fill="#DC2626"
+                      stroke="#FFFFFF"
+                      strokeWidth="1"
+                    />
+                    <rect
+                      x="2"
+                      y="6"
+                      width="16"
+                      height="18"
+                      rx="2"
+                      fill="#0F172A"
+                    />
+                    <text
+                      x="10"
+                      y="24"
+                      fontSize="8"
+                      fontWeight="bold"
+                      fill="#FFFFFF"
+                      textAnchor="middle"
+                    >
+                      {isArabic ? "أنت" : "VOUS"}
+                    </text>
                   </g>
 
                   {/* Vehicle B (Blue) coming from RIGHT */}
                   <g transform="translate(170, 70)">
-                    <rect x="0" y="0" width="34" height="20" rx="4" fill="#2563EB" stroke="#FFFFFF" strokeWidth="1" />
-                    <rect x="6" y="2" width="18" height="16" rx="2" fill="#0F172A" />
-                    <text x="17" y="14" fontSize="9" fontWeight="bold" fill="#FFFFFF" textAnchor="middle">B</text>
+                    <rect
+                      x="0"
+                      y="0"
+                      width="34"
+                      height="20"
+                      rx="4"
+                      fill="#2563EB"
+                      stroke="#FFFFFF"
+                      strokeWidth="1"
+                    />
+                    <rect
+                      x="6"
+                      y="2"
+                      width="18"
+                      height="16"
+                      rx="2"
+                      fill="#0F172A"
+                    />
+                    <text
+                      x="17"
+                      y="14"
+                      fontSize="9"
+                      fontWeight="bold"
+                      fill="#FFFFFF"
+                      textAnchor="middle"
+                    >
+                      B
+                    </text>
                   </g>
 
                   {/* Arrow indicating Vehicle B's approach */}
-                  <line x1="165" y1="80" x2="140" y2="80" stroke="#FACC15" strokeWidth="2.5" markerEnd="url(#arrow)" />
+                  <line
+                    x1="165"
+                    y1="80"
+                    x2="140"
+                    y2="80"
+                    stroke="#FACC15"
+                    strokeWidth="2.5"
+                  />
                 </svg>
 
-                <div className="absolute bottom-2 right-2 px-2 py-1 rounded bg-black/70 backdrop-blur text-[10px] text-slate-300 font-mono">
-                  Intersection non régulée
+                <div className="absolute bottom-2 right-2 px-2.5 py-1 rounded bg-black/75 backdrop-blur text-[11px] text-slate-200 font-semibold">
+                  {isArabic
+                    ? "ملتقى طرق بدون تشوير"
+                    : "Intersection non régulée"}
                 </div>
               </div>
             </div>
@@ -105,18 +221,22 @@ export function QuickTestSection() {
             {/* Question & Options */}
             <div className="md:col-span-6 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold text-[#F20D2F] uppercase tracking-wider block mb-1">
-                  Code de la Route Marocain • Priorités
+                <span className="text-xs font-bold text-[#F20D2F] tracking-wide block mb-1.5">
+                  {isArabic
+                    ? "مدونة السير المغربية • قواعد الأسبقية"
+                    : "Code de la Route Marocain • Priorités"}
                 </span>
-                <h3 className="text-lg sm:text-xl font-bold text-[#071A3D] mb-6">
-                  {question.question}
+                <h3 className="text-lg sm:text-xl font-bold text-[#071A3D] mb-6 leading-snug">
+                  {questionText}
                 </h3>
 
                 {/* Answer Cards */}
                 <div className="space-y-3 mb-6">
                   {question.answers.map((answer, index) => {
-                    const letters = ["A", "B", "C"];
+                    const letters = isArabic ? ["أ", "ب", "ج"] : ["A", "B", "C"];
                     const isSelected = selectedAnswerId === answer.id;
+                    const answerLabel =
+                      isArabic && answer.textAr ? answer.textAr : answer.text;
 
                     let cardClass =
                       "border-[#E2E8F0] bg-white hover:bg-slate-50 hover:border-slate-300 text-[#071A3D]";
@@ -135,11 +255,11 @@ export function QuickTestSection() {
                       <button
                         key={answer.id}
                         onClick={() => setSelectedAnswerId(answer.id)}
-                        className={`w-full text-left p-3.5 rounded-2xl border transition-all flex items-center justify-between cursor-pointer ${cardClass}`}
+                        className={`w-full text-start p-3.5 rounded-2xl border transition-all flex items-center justify-between cursor-pointer ${cardClass}`}
                       >
                         <div className="flex items-center gap-3">
                           <span
-                            className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs ${
+                            className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
                               isSelected
                                 ? answer.isCorrect
                                   ? "bg-emerald-600 text-white"
@@ -149,11 +269,13 @@ export function QuickTestSection() {
                           >
                             {letters[index]}
                           </span>
-                          <span className="text-sm font-semibold">{answer.text}</span>
+                          <span className="text-sm font-semibold">
+                            {answerLabel}
+                          </span>
                         </div>
 
                         {isSelected && (
-                          <span>
+                          <span className="shrink-0">
                             {answer.isCorrect ? (
                               <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                             ) : (
@@ -179,21 +301,23 @@ export function QuickTestSection() {
                   <div className="flex items-center gap-2 font-bold text-sm mb-1.5">
                     {isCorrect ? (
                       <>
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                         <span>{t.quickTest.correct}</span>
                       </>
                     ) : (
                       <>
-                        <XCircle className="w-4 h-4 text-red-600" />
+                        <XCircle className="w-4 h-4 text-red-600 shrink-0" />
                         <span>{t.quickTest.incorrect}</span>
                       </>
                     )}
                   </div>
                   <p className="text-xs text-slate-700 leading-relaxed">
-                    {question.explanation}
+                    {explanationText}
                   </p>
                   <span className="block mt-2 text-[10px] text-slate-500 font-mono">
-                    Réf : {question.officialRef}
+                    {isArabic
+                      ? `المرجع القانوني: المادة 28 من القانون 52-05`
+                      : `Réf : ${question.officialRef}`}
                   </span>
                 </div>
               )}

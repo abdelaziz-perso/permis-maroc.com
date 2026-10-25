@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { useUser } from "@/context/UserContext";
 import { MobileDrivingScene } from "./MobileDrivingScene";
+import { ScrollTransitionRoadSign } from "@/components/home/ScrollTransitionRoadSign";
+import { QuickTestSection } from "@/components/home/QuickTestSection";
+import { Interactive3DSection } from "@/components/home/Interactive3DSection";
 import {
   BookOpen,
   TriangleAlert,
@@ -20,7 +23,6 @@ export function MobileHomeScreen() {
   const { user, stats } = useUser();
   const isArabic = language === "ar" || language === "ary";
 
-  // Calculate real progress percentage or fallback to high-yield demo progress
   const progressPercent = stats?.testsCompleted
     ? Math.min(Math.round((stats.averageScore / 40) * 100), 100)
     : 72;
@@ -29,46 +31,58 @@ export function MobileHomeScreen() {
     {
       href: "/code-de-la-route",
       title: isArabic ? "الدروس" : "Cours",
-      subtitle: isArabic ? "12 محورا" : "12 thèmes",
+      subtitle: isArabic ? "12 محوراً" : "12 thèmes",
       icon: BookOpen,
       iconColor: "text-blue-500 bg-blue-50",
     },
     {
       href: "/panneaux",
-      title: isArabic ? "البلايك" : "Panneaux",
-      subtitle: isArabic ? "مراجعة" : "Réviser",
+      title:
+        language === "ary"
+          ? "البلايك"
+          : isArabic
+          ? "علامات المرور"
+          : "Panneaux",
+      subtitle: isArabic ? "+150 علامة" : "Réviser",
       icon: TriangleAlert,
       iconColor: "text-amber-500 bg-amber-50",
     },
     {
       href: "/examen-blanc",
       title: isArabic ? "الاختبارات" : "Tests",
-      subtitle: isArabic ? "تدريب" : "S'entraîner",
+      subtitle: isArabic ? "تدريب تفاعلي" : "S'entraîner",
       icon: HelpCircle,
       iconColor: "text-emerald-500 bg-emerald-50",
     },
     {
       href: "/examen-blanc",
-      title: isArabic ? "امتحان أبيض" : "Examen blanc",
-      subtitle: isArabic ? "40 سؤالا" : "40 questions",
+      title: isArabic ? "امتحان تجريبي" : "Examen blanc",
+      subtitle: isArabic ? "40 سؤالاً" : "40 questions",
       icon: Award,
       iconColor: "text-red-500 bg-red-50",
     },
   ];
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       {/* 1. Header Greeting & Title */}
       <div className="pt-1">
         <span className="text-xs font-semibold text-[#64748B] flex items-center gap-1.5 mb-1">
-          <span>Salam</span>
+          <span>{isArabic ? "مرحباً بك" : "Salam"}</span>
           <span>👋</span>
-          {user?.name && <span className="text-[#071A3D] font-bold">{user.name}</span>}
+          {user?.name && (
+            <span className="text-[#071A3D] font-bold">{user.name}</span>
+          )}
         </span>
         <h2 className="text-2xl sm:text-3xl font-black text-[#071A3D] tracking-tight leading-tight">
-          {isArabic ? (
+          {language === "ary" ? (
             <>
               واجد باش تجيب <span className="text-[#F20D2F]">البيرمي</span> ؟
+            </>
+          ) : isArabic ? (
+            <>
+              هل أنت مستعد للنجاح في{" "}
+              <span className="text-[#F20D2F]">امتحان السياقة</span> ؟
             </>
           ) : (
             <>
@@ -78,15 +92,15 @@ export function MobileHomeScreen() {
         </h2>
         <p className="text-xs sm:text-sm text-[#64748B] mt-1 font-normal">
           {isArabic
-            ? "تعلم، تدرب وانجح مع بيرمي المغرب."
+            ? "تعلم قانون السير، تدرب وانجح من المرة الأولى مع بيرمي المغرب."
             : "Apprends, entraîne-toi et réussis avec Permis Maroc."}
         </p>
       </div>
 
-      {/* 2. Compact Moroccan Driving Scene (Lightweight Three.js) */}
+      {/* 2. Scroll & Touch Reactive Moroccan 3D Driving Scene */}
       <MobileDrivingScene />
 
-      {/* 3. Floating Progress Card matching reference */}
+      {/* 3. Floating Progress Card */}
       <div className="rounded-3xl bg-white border border-[#E5ECF5] p-5 shadow-[0_4px_20px_rgba(7,26,61,0.04)] space-y-3.5">
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
@@ -94,7 +108,7 @@ export function MobileHomeScreen() {
               {isArabic ? "التحضير للامتحان" : "Préparation examen"}
             </span>
             <div className="flex items-baseline gap-2 mt-0.5">
-              <span className="text-3xl font-black text-[#071A3D] tracking-tight">
+              <span className="text-3xl font-black text-[#071A3D] tracking-tight tabular-nums">
                 {progressPercent}%
               </span>
             </div>
@@ -114,7 +128,7 @@ export function MobileHomeScreen() {
 
         <p className="text-xs text-[#64748B]">
           {isArabic
-            ? "استمر، أنت تتقدم بشكل ممتاز."
+            ? "استمر، أنت تتقدم بشكل ممتاز نحو النجاح."
             : "Continue, tu progresses bien."}
         </p>
 
@@ -129,7 +143,7 @@ export function MobileHomeScreen() {
                 ? "متابعة تدريبي"
                 : "Continuer mon entraînement"
               : isArabic
-              ? "ابدأ مجاناً الآن"
+              ? "ابدأ الاختبار مجاناً الآن"
               : "Continuer mon entraînement"}
           </span>
           <ArrowRight className="w-4 h-4 rtl:rotate-180" />
@@ -164,7 +178,22 @@ export function MobileHomeScreen() {
         })}
       </div>
 
-      {/* 5. Pack Révision Promo Card (High-conversion mobile banner) */}
+      {/* 5. 3D Scroll-Driven Highway Maneuver Section on Mobile too */}
+      <div className="-mx-4">
+        <ScrollTransitionRoadSign />
+      </div>
+
+      {/* 6. Interactive 3D Crossroads Simulator on Mobile */}
+      <div className="-mx-4">
+        <Interactive3DSection />
+      </div>
+
+      {/* 7. Quick Test Question on Mobile */}
+      <div className="-mx-4">
+        <QuickTestSection />
+      </div>
+
+      {/* 8. Pack Révision Promo Card */}
       <Link
         href="/pack-revision"
         className="block p-4 rounded-3xl bg-gradient-to-br from-[#071A3D] to-[#0D2860] text-white shadow-lg shadow-navy-950/20 active:scale-[0.98] transition-all relative overflow-hidden"
@@ -179,7 +208,9 @@ export function MobileHomeScreen() {
               {isArabic ? "باك المراجعة الشامل 2026" : "Pack Révision Permis B"}
             </div>
             <div className="text-[11px] text-slate-300">
-              {isArabic ? "دروس، أسئلة، وبلايك بـ 79 درهم فقط" : "Cours, tests & examens à 79 MAD"}
+              {isArabic
+                ? "دروس، أسئلة، وعلامات المرور بـ 79 درهم فقط"
+                : "Cours, tests & examens à 79 MAD"}
             </div>
           </div>
           <div className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center shrink-0 text-white">

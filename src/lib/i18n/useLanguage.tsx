@@ -1,55 +1,61 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { Language } from "@/types/models";
 import { translations } from "./translations";
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: (typeof translations)["fr"];
+  t: typeof translations.ar;
   isRtl: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType>({
-  language: "fr",
+  language: "ar",
   setLanguage: () => {},
-  t: translations.fr,
-  isRtl: false,
+  t: translations.ar,
+  isRtl: true,
 });
 
-function applyDirection(lang: Language) {
-  if (typeof document === "undefined") return;
-  const isRtl = lang === "ar" || lang === "ary";
-  document.documentElement.dir = isRtl ? "rtl" : "ltr";
-  document.documentElement.lang = lang === "ary" ? "ar-MA" : lang;
-}
+const STORAGE_KEY = "permis_maroc_lang_v2";
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("permis_maroc_lang") as Language;
-      if (saved && (saved === "fr" || saved === "ar" || saved === "ary")) {
-        applyDirection(saved);
-        return saved;
-      }
+  // Default language is Standard Arabic ("ar")
+  const [language, setLanguageState] = useState<Language>("ar");
+
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY) as Language | null;
+    if (saved === "ar" || saved === "ary" || saved === "fr") {
+      setLanguageState(saved);
+      document.documentElement.dir =
+        saved === "ar" || saved === "ary" ? "rtl" : "ltr";
+      document.documentElement.lang = saved === "ary" ? "ar" : saved;
+    } else {
+      document.documentElement.dir = "rtl";
+      document.documentElement.lang = "ar";
     }
-    return "fr";
-  });
+  }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    if (typeof window !== "undefined") {
-      localStorage.setItem("permis_maroc_lang", lang);
-    }
-    applyDirection(lang);
+    localStorage.setItem(STORAGE_KEY, lang);
+    document.documentElement.dir =
+      lang === "ar" || lang === "ary" ? "rtl" : "ltr";
+    document.documentElement.lang = lang === "ary" ? "ar" : lang;
   };
 
   const isRtl = language === "ar" || language === "ary";
-  const t = translations[language] || translations.fr;
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, isRtl }}>
+    <LanguageContext.Provider
+      value={{
+        language,
+        setLanguage,
+        t: translations[language],
+        isRtl,
+      }}
+    >
       {children}
     </LanguageContext.Provider>
   );

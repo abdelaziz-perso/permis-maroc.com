@@ -1,179 +1,259 @@
 "use client";
 
-import React, { useState, useRef, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import React, { useState, useRef, useEffect } from "react";
 import * as THREE from "three";
 import { useLanguage } from "@/lib/i18n/useLanguage";
-import { PalmTree } from "@/components/three/PalmTree";
-import { MoroccanBuilding } from "@/components/three/MoroccanBuilding";
-import { RoadSign } from "@/components/three/RoadSign";
+import {
+  afterDraw,
+  createMoroccanBuilding,
+  createPalmTree,
+  createRoadSign,
+  detectSoftwareGl,
+  setupStudioEnvironment,
+} from "@/components/three/sceneBuilders";
 import { Lightbulb, CheckCircle2, XCircle, X } from "lucide-react";
 
-// Animated Vehicle for 3D Intersection
-function IntersectionCar({
-  position,
-  rotation,
-  color,
-  isMoving,
-  moveVector,
-}: {
-  position: [number, number, number];
-  rotation: [number, number, number];
-  color: string;
-  label?: string;
-  isMoving: boolean;
-  moveVector: [number, number, number];
-}) {
-  const groupRef = useRef<THREE.Group>(null);
-  const initialPos = useRef(new THREE.Vector3(...position));
-  const progress = useRef(0);
+function createIntersectionCar(
+  position: [number, number, number],
+  rotation: [number, number, number],
+  color: string
+): THREE.Group {
+  const group = new THREE.Group();
+  group.position.set(...position);
+  group.rotation.set(...rotation);
+  group.scale.setScalar(0.65);
 
-  useFrame((_, delta) => {
-    if (!groupRef.current) return;
-    if (isMoving) {
-      progress.current = Math.min(progress.current + delta * 2, 4);
-      groupRef.current.position.x =
-        initialPos.current.x + moveVector[0] * progress.current;
-      groupRef.current.position.z =
-        initialPos.current.z + moveVector[2] * progress.current;
-    } else {
-      progress.current = 0;
-      groupRef.current.position.copy(initialPos.current);
-    }
+  const body = new THREE.Mesh(
+    new THREE.BoxGeometry(1.3, 0.42, 2.3),
+    new THREE.MeshStandardMaterial({ color, roughness: 0.3 })
+  );
+  body.position.set(0, 0.22, 0);
+  group.add(body);
+
+  const cabin = new THREE.Mesh(
+    new THREE.BoxGeometry(1.1, 0.36, 1.2),
+    new THREE.MeshStandardMaterial({
+      color: "#071A3D",
+      roughness: 0.2,
+      metalness: 0.7,
+    })
+  );
+  cabin.position.set(0, 0.52, -0.1);
+  group.add(cabin);
+
+  const badge = new THREE.Mesh(
+    new THREE.BoxGeometry(0.4, 0.2, 0.4),
+    new THREE.MeshStandardMaterial({ color: "#FFFFFF" })
+  );
+  badge.position.set(0, 0.82, -0.1);
+  group.add(badge);
+
+  const wheelMat = new THREE.MeshStandardMaterial({ color: "#1E293B" });
+  [-0.6, 0.6].forEach((x) => {
+    [-0.7, 0.7].forEach((z) => {
+      const w = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.15, 0.15, 0.12, 10),
+        wheelMat
+      );
+      w.position.set(x, 0.1, z);
+      w.rotation.set(0, 0, Math.PI / 2);
+      group.add(w);
+    });
   });
 
-  return (
-    <group ref={groupRef} position={position} rotation={rotation} scale={0.65}>
-      {/* Car Body */}
-      <mesh position={[0, 0.22, 0]}>
-        <boxGeometry args={[1.3, 0.42, 2.3]} />
-        <meshStandardMaterial color={color} roughness={0.3} />
-      </mesh>
-      {/* Cabin */}
-      <mesh position={[0, 0.52, -0.1]}>
-        <boxGeometry args={[1.1, 0.36, 1.2]} />
-        <meshStandardMaterial color="#071A3D" roughness={0.2} metalness={0.7} />
-      </mesh>
-      {/* Label Badge */}
-      <group position={[0, 0.82, -0.1]}>
-        <mesh>
-          <boxGeometry args={[0.4, 0.2, 0.4]} />
-          <meshStandardMaterial color="#FFFFFF" />
-        </mesh>
-      </group>
-      {/* Wheels */}
-      {[-0.6, 0.6].map((x, i) =>
-        [-0.7, 0.7].map((z, j) => (
-          <mesh key={`${i}-${j}`} position={[x, 0.1, z]} rotation={[0, 0, Math.PI / 2]}>
-            <cylinderGeometry args={[0.15, 0.15, 0.12, 10]} />
-            <meshStandardMaterial color="#1E293B" />
-          </mesh>
-        ))
-      )}
-    </group>
-  );
+  return group;
 }
 
 export function MobileSituationView() {
   const { language } = useLanguage();
   const isArabic = language === "ar" || language === "ary";
 
-  const [selectedVehicle, setSelectedVehicle] = useState<"A" | "B" | null>(null);
+  const mountRef = useRef<HTMLDivElement>(null);
+  const [selectedVehicle, setSelectedVehicle] = useState<"A" | "B" | null>(
+    null
+  );
   const [showExplanationSheet, setShowExplanationSheet] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
 
-  // Voiture A is correct (Voiture B has a Cédez-le-passage yield sign)
-  const isCorrect = selectedVehicle === "A";
+  const selectedVehicleRef = useRef<"A" | "B" | null>(null);
+  const isAnimatingRef = useRef(false);
 
   const handleSelect = (vehicle: "A" | "B") => {
+    selectedVehicleRef.current = vehicle;
+    isAnimatingRef.current = true;
     setSelectedVehicle(vehicle);
-    setIsAnimating(true);
     setTimeout(() => {
-      setIsAnimating(false);
+      isAnimatingRef.current = false;
     }, 2500);
   };
 
+  useEffect(() => {
+    const container = mountRef.current;
+    if (!container) return;
+
+    const isSoftwareGl = detectSoftwareGl();
+
+    const scene = new THREE.Scene();
+    const initW = container.clientWidth || 360;
+    const initH = container.clientHeight || 260;
+
+    const camera = new THREE.PerspectiveCamera(36, initW / initH, 0.1, 60);
+    camera.position.set(5.2, 5.8, 6.2);
+    camera.lookAt(0, 0, 0);
+
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        antialias: !isSoftwareGl,
+        alpha: true,
+        powerPreference: "high-performance",
+      });
+    } catch {
+      return;
+    }
+
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
+    renderer.setPixelRatio(
+      isSoftwareGl ? 1 : Math.min(window.devicePixelRatio || 1, 1.5)
+    );
+    renderer.setSize(initW, initH);
+
+    container.innerHTML = "";
+    container.appendChild(renderer.domElement);
+
+    const envTexture = setupStudioEnvironment(renderer, scene);
+
+    scene.add(new THREE.AmbientLight("#FFFFFF", 0.85));
+    const dirLight = new THREE.DirectionalLight("#FFFBEB", 1.25);
+    dirLight.position.set(6, 9, 5);
+    scene.add(dirLight);
+    scene.add(new THREE.HemisphereLight("#BAE6FD", "#FEF3C7", 0.35));
+
+    const world = new THREE.Group();
+    world.position.set(0, -0.2, 0);
+    scene.add(world);
+
+    // Ground
+    const ground = new THREE.Mesh(
+      new THREE.PlaneGeometry(14, 14),
+      new THREE.MeshStandardMaterial({ color: "#E2E8F0", roughness: 0.9 })
+    );
+    ground.rotation.set(-Math.PI / 2, 0, 0);
+    world.add(ground);
+
+    const roadMat = new THREE.MeshStandardMaterial({ color: "#1E293B" });
+    const ewRoad = new THREE.Mesh(new THREE.PlaneGeometry(12, 2.8), roadMat);
+    ewRoad.position.set(0, 0.02, 0);
+    ewRoad.rotation.set(-Math.PI / 2, 0, 0);
+    world.add(ewRoad);
+
+    const nsRoad = new THREE.Mesh(new THREE.PlaneGeometry(12, 2.8), roadMat);
+    nsRoad.position.set(0, 0.02, 0);
+    nsRoad.rotation.set(-Math.PI / 2, 0, Math.PI / 2);
+    world.add(nsRoad);
+
+    const zebraMat = new THREE.MeshStandardMaterial({ color: "#FFFFFF" });
+    [-0.8, -0.4, 0, 0.4, 0.8].forEach((z) => {
+      const strip = new THREE.Mesh(
+        new THREE.PlaneGeometry(0.5, 0.2),
+        zebraMat
+      );
+      strip.position.set(-2.8, 0.025, z);
+      strip.rotation.set(-Math.PI / 2, 0, 0);
+      world.add(strip);
+    });
+
+    world.add(
+      createRoadSign("stop", [1.8, 0.03, 1.8], [0, -Math.PI / 4, 0]).group
+    );
+
+    const carA = createIntersectionCar(
+      [2.8, 0.08, -0.6],
+      [0, -Math.PI / 2, 0],
+      "#FBBF24"
+    );
+    const carB = createIntersectionCar([0.6, 0.08, 2.8], [0, 0, 0], "#38BDF8");
+    world.add(carA);
+    world.add(carB);
+
+    world.add(createMoroccanBuilding("modern-white", [-3.2, 0, -3.2], 0.7));
+    world.add(createPalmTree([3.2, 0.03, -3.2], 0.75));
+    world.add(createPalmTree([-3.2, 0.03, 3.2], 0.75));
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const w = entry.contentRect.width;
+        const h = entry.contentRect.height;
+        if (w > 0 && h > 0) {
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+          renderer.setSize(w, h);
+        }
+      }
+    });
+    resizeObserver.observe(container);
+
+    const clock = new THREE.Clock();
+    let progressA = 0;
+    let progressB = 0;
+    let frameId = 0;
+    let timerId = 0;
+    let disposed = false;
+
+    const tick = () => {
+      if (disposed) return;
+
+      const delta = Math.min(clock.getDelta(), 0.1);
+      const anim = isAnimatingRef.current;
+      const sel = selectedVehicleRef.current;
+
+      if (anim && sel === "A") {
+        progressA = Math.min(progressA + delta * 2, 4);
+        carA.position.x = 2.8 - 1.5 * progressA;
+      } else {
+        progressA = 0;
+        carA.position.set(2.8, 0.08, -0.6);
+      }
+
+      if (anim && sel === "B") {
+        progressB = Math.min(progressB + delta * 2, 4);
+        carB.position.z = 2.8 - 1.5 * progressB;
+      } else {
+        progressB = 0;
+        carB.position.set(0.6, 0.08, 2.8);
+      }
+
+      renderer.render(scene, camera);
+
+      if (isSoftwareGl) {
+        timerId = afterDraw(renderer, tick);
+      } else {
+        frameId = requestAnimationFrame(tick);
+      }
+    };
+
+    tick();
+
+    return () => {
+      disposed = true;
+      cancelAnimationFrame(frameId);
+      clearTimeout(timerId);
+      resizeObserver.disconnect();
+      envTexture?.dispose();
+      renderer.dispose();
+    };
+  }, []);
+
   return (
     <div className="space-y-4">
-      {/* 1. 3D Canvas Scene (260px-300px height, compact mobile R3F) */}
+      {/* 1. 3D Canvas Scene */}
       <div className="w-full h-64 sm:h-72 rounded-3xl overflow-hidden relative border border-[#E5ECF5] shadow-sm bg-gradient-to-b from-sky-100 to-slate-100">
-        <Canvas
-          camera={{ position: [5.2, 5.8, 6.2], fov: 36 }}
-          dpr={[1, 1.25]}
-          gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
-          className="w-full h-full"
-        >
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[6, 9, 5]} intensity={1.2} />
-
-          <Suspense fallback={null}>
-            <group position={[0, -0.2, 0]}>
-              {/* Ground */}
-              <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry args={[14, 14]} />
-                <meshStandardMaterial color="#E2E8F0" roughness={0.9} />
-              </mesh>
-
-              {/* Crossroads Asphalt */}
-              <mesh position={[0, 0.02, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry args={[12, 2.8]} />
-                <meshStandardMaterial color="#1E293B" />
-              </mesh>
-              <mesh position={[0, 0.02, 0]} rotation={[-Math.PI / 2, 0, Math.PI / 2]}>
-                <planeGeometry args={[12, 2.8]} />
-                <meshStandardMaterial color="#1E293B" />
-              </mesh>
-
-              {/* Zebra crossing on left */}
-              {[-0.8, -0.4, 0, 0.4, 0.8].map((z, i) => (
-                <mesh key={i} position={[-2.8, 0.025, z]} rotation={[-Math.PI / 2, 0, 0]}>
-                  <planeGeometry args={[0.5, 0.2]} />
-                  <meshStandardMaterial color="#FFFFFF" />
-                </mesh>
-              ))}
-
-              {/* Yield Sign for Blue Car B */}
-              <RoadSign
-                type="stop"
-                position={[1.8, 0.03, 1.8]}
-                rotation={[0, -Math.PI / 4, 0]}
-              />
-
-              {/* Yellow Car A (coming from the right, priority road) */}
-              <IntersectionCar
-                position={[2.8, 0.08, -0.6]}
-                rotation={[0, -Math.PI / 2, 0]}
-                color="#FBBF24"
-                label="A"
-                isMoving={isAnimating && isCorrect}
-                moveVector={[-1.5, 0, 0]}
-              />
-
-              {/* Blue Car B (coming from bottom, facing Yield sign) */}
-              <IntersectionCar
-                position={[0.6, 0.08, 2.8]}
-                rotation={[0, 0, 0]}
-                color="#38BDF8"
-                label="B"
-                isMoving={isAnimating && !isCorrect}
-                moveVector={[0, 0, -1.5]}
-              />
-
-              {/* Architecture & Palm Trees in corners */}
-              <MoroccanBuilding
-                type="modern-white"
-                position={[-3.2, 0, -3.2]}
-                scale={0.7}
-              />
-              <PalmTree position={[3.2, 0.03, -3.2]} scale={0.75} />
-              <PalmTree position={[-3.2, 0.03, 3.2]} scale={0.75} />
-            </group>
-          </Suspense>
-        </Canvas>
+        <div ref={mountRef} className="w-full h-full" />
 
         {/* Top Badges overlay */}
         <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-          <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold text-[#071A3D] shadow-sm">
+          <span className="px-2.5 py-1 rounded-full bg-white/95 text-[11px] font-bold text-[#071A3D] shadow-sm">
             Situation 1 / 3
           </span>
           <span className="px-2.5 py-1 rounded-full bg-[#F20D2F] text-[11px] font-bold text-white shadow-sm">
@@ -252,17 +332,18 @@ export function MobileSituationView() {
       {showExplanationSheet && (
         <>
           <div
-            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs"
+            className="fixed inset-0 z-50 bg-black/60"
             onClick={() => setShowExplanationSheet(false)}
           />
           <div className="fixed bottom-0 left-0 right-0 z-50 max-w-md mx-auto rounded-t-3xl bg-white border-t border-[#E5ECF5] p-6 shadow-2xl animate-in slide-in-from-bottom duration-250 pb-safe">
-            {/* Sheet Handle */}
             <div className="w-12 h-1.5 rounded-full bg-slate-300 mx-auto mb-4" />
 
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-base font-black text-[#071A3D] flex items-center gap-2">
                 <Lightbulb className="w-5 h-5 text-amber-500" />
-                <span>{isArabic ? "علاش هاد الجواب ؟" : "Pourquoi cette règle ?"}</span>
+                <span>
+                  {isArabic ? "علاش هاد الجواب ؟" : "Pourquoi cette règle ?"}
+                </span>
               </h3>
               <button
                 onClick={() => setShowExplanationSheet(false)}

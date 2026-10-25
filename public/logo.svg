@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#071A3D" />
+      <stop offset="100%" stop-color="#0F295A" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded Squircle Badge -->
+  <rect x="4" y="4" width="112" height="112" rx="28" fill="url(#bgGrad)" stroke="#C1272D" stroke-width="3.5" />
+
+  <!-- Perspective Curved Road at Bottom -->
+  <path
+    d="M14 96C34 80 86 80 106 96"
+    stroke="#334155"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+  <path
+    d="M26 93C44 82 76 82 94 93"
+    stroke="#F8FAFC"
+    stroke-width="2.5"
+    stroke-dasharray="6 6"
+    stroke-linecap="round"
+  />
+
+  <!-- Driving School Roof Sign -->
+  <path
+    d="M46 28H74L70 39H50L46 28Z"
+    fill="#C1272D"
+    stroke="#FFFFFF"
+    stroke-width="2"
+    stroke-linejoin="round"
+  />
+
+  <!-- Minimalist Modern Car Silhouette -->
+  <path d="M29 56L40 39H80L91 56H29Z" fill="#FFFFFF" />
+  <path d="M36 54L44 43H76L84 54H36Z" fill="#071A3D" />
+
+  <!-- Car Main Body -->
+  <rect x="18" y="54" width="84" height="22" rx="8" fill="#C1272D" stroke="#FFFFFF" stroke-width="2.5" />
+
+  <!-- Headlights & Grille -->
+  <rect x="24" y="60" width="13" height="7" rx="3.5" fill="#FEF08A" />
+  <rect x="83" y="60" width="13" height="7" rx="3.5" fill="#FEF08A" />
+  <rect x="43" y="61" width="34" height="5" rx="2.5" fill="#071A3D" />
+
+  <!-- Car Wheels -->
+  <circle cx="35" cy="77" r="9.5" fill="#0F172A" stroke="#FFFFFF" stroke-width="2.8" />
+  <circle cx="35" cy="77" r="3.5" fill="#E2E8F0" />
+  <circle cx="85" cy="77" r="9.5" fill="#0F172A" stroke="#FFFFFF" stroke-width="2.8" />
+  <circle cx="85" cy="77" r="3.5" fill="#E2E8F0" />
+</svg>

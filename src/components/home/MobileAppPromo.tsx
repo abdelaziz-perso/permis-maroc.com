@@ -2,15 +2,11 @@
 
 import React from "react";
 import { useLanguage } from "@/lib/i18n/useLanguage";
-import {
-  Smartphone,
-  CheckCircle2,
-  Clock,
-  Apple,
-} from "lucide-react";
+import { Smartphone, CheckCircle2, Clock, Apple } from "lucide-react";
 
 export function MobileAppPromo() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
+  const isArabic = language === "ar" || language === "ary";
 
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-b from-[#FFFFFF] via-[#F8FAFC] to-[#F1F5F9] relative overflow-hidden border-t border-[#E2E8F0]">
@@ -34,7 +30,10 @@ export function MobileAppPromo() {
             {/* Feature bullets */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-10">
               {t.appPromo.features.map((feat, idx) => (
-                <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm text-[#334155] font-medium">
+                <div
+                  key={idx}
+                  className="flex items-center gap-2.5 text-xs sm:text-sm text-[#334155] font-medium"
+                >
                   <CheckCircle2 className="w-4 h-4 text-[#20C875] shrink-0" />
                   <span>{feat}</span>
                 </div>
@@ -43,18 +42,18 @@ export function MobileAppPromo() {
 
             {/* Coming Soon Notice and Store Badges */}
             <div className="p-5 rounded-3xl bg-white border border-[#E2E8F0] shadow-sm max-w-lg">
-              <div className="flex items-center gap-2 text-amber-500 text-xs font-bold uppercase tracking-wider mb-3">
+              <div className="flex items-center gap-2 text-amber-500 text-xs font-bold tracking-wide mb-3">
                 <Clock className="w-4 h-4" />
                 <span>{t.appPromo.comingSoon}</span>
               </div>
 
               <div className="flex flex-col sm:flex-row items-center gap-3">
                 {/* App Store Placeholder */}
-                <div className="w-full sm:w-1/2 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] opacity-80 cursor-not-allowed">
+                <div className="w-full sm:w-1/2 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
                   <Apple className="w-6 h-6 text-[#071A3D] shrink-0" />
-                  <div className="text-left">
+                  <div className="text-start">
                     <span className="block text-[10px] text-slate-500 leading-tight">
-                      Bientôt sur
+                      {isArabic ? "قريباً على" : "Bientôt sur"}
                     </span>
                     <span className="text-xs font-bold text-[#071A3D] tracking-wide">
                       App Store
@@ -63,15 +62,18 @@ export function MobileAppPromo() {
                 </div>
 
                 {/* Google Play Placeholder */}
-                <div className="w-full sm:w-1/2 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] opacity-80 cursor-not-allowed">
+                <div className="w-full sm:w-1/2 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
                   <div className="w-6 h-6 flex items-center justify-center shrink-0">
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current text-emerald-600">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="w-5 h-5 fill-current text-emerald-600"
+                    >
                       <path d="M3.609 1.814L13.792 12 3.61 22.186a1.996 1.996 0 0 1-.22-.914V2.728c0-.336.082-.647.219-.914zm11.233 11.233l2.25 2.25-11.45 6.61 9.2-8.86zm0-2.094L5.642 2.093l11.45 6.61-2.25 2.25zm1.536 1.047l3.774 2.18c.997.576.997 1.516 0 2.092l-3.774 2.18-2.316-2.316 2.316-2.136z" />
                     </svg>
                   </div>
-                  <div className="text-left">
+                  <div className="text-start">
                     <span className="block text-[10px] text-slate-500 leading-tight">
-                      Bientôt sur
+                      {isArabic ? "قريباً على" : "Bientôt sur"}
                     </span>
                     <span className="text-xs font-bold text-[#071A3D] tracking-wide">
                       Google Play
@@ -95,51 +97,74 @@ export function MobileAppPromo() {
                 {/* App Screen Header */}
                 <div className="flex items-center justify-between pb-3 border-b border-white/10">
                   <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-red-500" />
-                    <span className="text-xs font-black tracking-tight">PERMIS MAROC</span>
+                    <span className="text-xs font-black tracking-tight text-white">
+                      {isArabic ? "بيرمي المغرب" : "PERMIS MAROC"}
+                    </span>
                   </div>
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 font-bold">
-                    36/40
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 font-bold tabular-nums">
+                    37/40
                   </span>
                 </div>
 
                 {/* Simulated Screen Card */}
                 <div className="my-auto space-y-3">
                   <div className="p-3 rounded-xl bg-slate-900 border border-white/10">
-                    <span className="text-[10px] text-slate-400 uppercase font-mono">
-                      Examen Blanc #14
+                    <span className="text-[10px] text-slate-400 font-mono">
+                      {isArabic ? "امتحان تجريبي #14" : "Examen Blanc #14"}
                     </span>
                     <div className="flex items-center justify-between mt-1">
-                      <span className="text-sm font-bold text-white">Admis avec brio !</span>
+                      <span className="text-sm font-bold text-white">
+                        {isArabic ? "ناجح بتفوق !" : "Admis avec brio !"}
+                      </span>
                       <span className="text-lg">🎉</span>
                     </div>
                     <div className="w-full bg-slate-800 h-1.5 rounded-full mt-2">
-                      <div className="bg-emerald-500 h-full w-[90%] rounded-full" />
+                      <div className="bg-emerald-500 h-full w-[92%] rounded-full" />
                     </div>
                   </div>
 
                   <div className="p-3 rounded-xl bg-slate-900/60 border border-white/5 space-y-2">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-300">Priorités à droite</span>
-                      <span className="text-emerald-400 font-bold">100%</span>
+                      <span className="text-slate-300">
+                        {isArabic ? "قواعد الأسبقية" : "Priorités à droite"}
+                      </span>
+                      <span className="text-emerald-400 font-bold tabular-nums">
+                        100%
+                      </span>
                     </div>
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-300">Panneaux de danger</span>
-                      <span className="text-emerald-400 font-bold">95%</span>
+                      <span className="text-slate-300">
+                        {isArabic ? "علامات الخطر والمنع" : "Panneaux de danger"}
+                      </span>
+                      <span className="text-emerald-400 font-bold tabular-nums">
+                        95%
+                      </span>
                     </div>
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-slate-300">Arrêt & stationnement</span>
-                      <span className="text-amber-400 font-bold">85%</span>
+                      <span className="text-slate-300">
+                        {isArabic ? "الوقوف والتوقف" : "Arrêt & stationnement"}
+                      </span>
+                      <span className="text-amber-400 font-bold tabular-nums">
+                        88%
+                      </span>
                     </div>
                   </div>
                 </div>
 
                 {/* Bottom App Navigation */}
                 <div className="pt-2 border-t border-white/10 flex items-center justify-around text-slate-500">
-                  <span className="text-[10px] font-bold text-red-500">Accueil</span>
-                  <span className="text-[10px]">Cours</span>
-                  <span className="text-[10px]">Tests</span>
-                  <span className="text-[10px]">Profil</span>
+                  <span className="text-[10px] font-bold text-red-500">
+                    {isArabic ? "الرئيسية" : "Accueil"}
+                  </span>
+                  <span className="text-[10px]">
+                    {isArabic ? "الدروس" : "Cours"}
+                  </span>
+                  <span className="text-[10px]">
+                    {isArabic ? "الاختبارات" : "Tests"}
+                  </span>
+                  <span className="text-[10px]">
+                    {isArabic ? "حسابي" : "Profil"}
+                  </span>
                 </div>
               </div>
             </div>

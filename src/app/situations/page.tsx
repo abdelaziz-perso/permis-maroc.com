@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileAppShell } from "@/components/layout/MobileAppShell";
-import { MobileSituationView } from "@/components/mobile/MobileSituationView";
+import { MobileSituationWrapper } from "@/components/mobile/MobileSituationWrapper";
 import { Interactive3DSection } from "@/components/home/Interactive3DSection";
 import { LanguageProvider } from "@/lib/i18n/useLanguage";
 import { UserProvider } from "@/context/UserContext";
@@ -25,7 +25,7 @@ export default function SituationsPage() {
         {/* MOBILE VIEW (< 768px) matching reference design Screen 7 */}
         <div className="block md:hidden">
           <MobileAppShell title="Apprends en situation réelle">
-            <MobileSituationView />
+            <MobileSituationWrapper />
           </MobileAppShell>
         </div>
 

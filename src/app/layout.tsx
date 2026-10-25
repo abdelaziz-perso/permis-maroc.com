@@ -4,22 +4,23 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://permis-maroc.com"),
   title: {
-    default: "Permis Maroc – Code de la Route, Tests & Examen Blanc",
-    template: "%s | Permis Maroc",
+    default: "بيرمي المغرب | Permis Maroc – تعليم السياقة، قانون السير وامتحانات نـارسا 2026",
+    template: "%s | بيرمي المغرب - Permis Maroc",
   },
   description:
-    "Préparez votre permis de conduire au Maroc avec des cours de Code de la Route, tests interactifs, examens blancs et fiches de signalisation.",
+    "المنصة المغربية الأولى للتحضير لامتحان رخصة السياقة (البيرمي): دروس قانون السير، اختبارات تفاعلية، امتحانات تجريبية مطابقة لنظام نارسا 2026 ومحاكاة ثلاثية الأبعاد.",
   keywords: [
+    "بيرمي المغرب",
+    "تعليم السياقة بالمغرب",
+    "امتحان رخصة السياقة المغرب",
+    "أسئلة البيرمي 2026 نارسا",
+    "قانون السير المغرب",
+    "علامات المرور بالمغرب",
     "permis maroc",
     "permis de conduire maroc",
     "code de la route maroc",
     "test permis maroc",
-    "examen permis maroc",
     "examen blanc maroc",
-    "panneaux de signalisation maroc",
-    "permis B maroc",
-    "questions permis maroc",
-    "auto ecole maroc",
     "NARSA",
   ],
   authors: [{ name: "Permis Maroc Team" }],
@@ -31,20 +32,20 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Permis Maroc – Code de la Route, Tests & Examen Blanc",
+    title: "بيرمي المغرب | Permis Maroc – تعليم السياقة وامتحانات رخصة السياقة 2026",
     description:
-      "Préparez votre permis de conduire au Maroc avec des cours de Code de la Route, tests interactifs, examens blancs et fiches de signalisation.",
+      "تعلم قانون السير، تدرب على أسئلة نارسا 2026 واستعد لاجتياز امتحان رخصة السياقة في المغرب باللغة العربية، الدارجة والفرنسية.",
     url: "https://permis-maroc.com",
-    siteName: "Permis Maroc",
-    locale: "fr_MA",
-    alternateLocale: ["ar_MA"],
+    siteName: "بيرمي المغرب | Permis Maroc",
+    locale: "ar_MA",
+    alternateLocale: ["fr_MA"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Permis Maroc – Réussis ton permis du premier coup",
+    title: "بيرمي المغرب – انجح في امتحان السياقة من المرة الأولى",
     description:
-      "La plateforme moderne pour apprendre le Code de la Route et réussir son examen au Maroc.",
+      "المنصة التفاعلية الحديثة لتعلم قانون السير واجتياز امتحان رخصة السياقة بالمغرب.",
   },
   robots: {
     index: true,
@@ -63,8 +64,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://permis-maroc.com",
     languages: {
-      "fr-MA": "https://permis-maroc.com",
       "ar-MA": "https://permis-maroc.com",
+      "fr-MA": "https://permis-maroc.com",
       "x-default": "https://permis-maroc.com",
     },
   },
@@ -72,7 +73,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Permis Maroc",
+    title: "بيرمي المغرب",
   },
 };
 
@@ -90,7 +91,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" dir="ltr" className="h-full scroll-smooth">
+    <html lang="ar" dir="rtl" className="h-full scroll-smooth">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#071A3D] antialiased selection:bg-[#F20D2F] selection:text-white font-sans">
         {children}
       </body>
