@@ -33,7 +33,7 @@ export default function TestPermisMarocPage() {
 
           <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
             <div className="mb-10 text-center">
-              <span className="text-xs font-mono font-bold text-[#F20D2F] uppercase tracking-wider block mb-2">
+              <span className="text-xs font-mono font-bold text-[#C1272D] uppercase tracking-wider block mb-2">
                 Entraînement Libre & Gratuit
               </span>
               <h1 className="text-3xl sm:text-5xl font-black text-[#071A3D] tracking-tight mb-4 leading-tight">
@@ -57,7 +57,7 @@ export default function TestPermisMarocPage() {
                     </div>
                     <div>
                       <h3 className="font-bold text-base text-[#071A3D]">{s.title}</h3>
-                      <div className="flex items-center gap-3 text-xs text-slate-500 mt-1">
+                      <div className="flex items-center gap-3 text-xs text-[#5A6A82] mt-1">
                         <span>{s.count} questions</span>
                         <span>•</span>
                         <span>{s.duration}</span>
@@ -69,7 +69,7 @@ export default function TestPermisMarocPage() {
 
                   <Link
                     href="/examen-blanc"
-                    className="px-5 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-md shadow-red-500/20 shrink-0"
+                    className="px-5 py-2.5 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-md shadow-red-500/20 shrink-0"
                   >
                     <span>Lancer ce test</span>
                     <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" />
@@ -83,12 +83,12 @@ export default function TestPermisMarocPage() {
               <h2 className="text-xl font-bold text-[#071A3D] mb-2">
                 Vous visez le score de 34/40 à l&apos;examen officiel ?
               </h2>
-              <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto mb-6">
+              <p className="text-xs sm:text-sm text-[#5A6A82] max-w-md mx-auto mb-6">
                 Passez un examen blanc complet dans les conditions réelles avec décompte chronométré de 30 secondes par question.
               </p>
               <Link
                 href="/examen-blanc"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white font-bold text-sm shadow-md shadow-red-500/20"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm shadow-md shadow-red-500/20"
               >
                 <span>Démarrer un examen blanc complet</span>
                 <ArrowRight className="w-4 h-4 rtl:rotate-180" />

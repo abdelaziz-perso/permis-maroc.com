@@ -174,7 +174,7 @@ function ExamSimulator() {
         {!isFinished && (
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4 p-4 rounded-3xl bg-white border border-[#E2E8F0] shadow-xs">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-[#64748B] font-bold">Catégorie :</span>
+              <span className="text-xs text-[#5A6A82] font-bold">Catégorie :</span>
               <div className="flex items-center gap-1.5">
                 {(["B", "A", "C"] as LicenceCategory[]).map((cat) => (
                   <button
@@ -187,7 +187,7 @@ function ExamSimulator() {
                     }}
                     className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                       category === cat
-                        ? "bg-[#F20D2F] text-white shadow-md shadow-red-500/20"
+                        ? "bg-[#E30D2B] text-white shadow-md shadow-red-500/20"
                         : "bg-[#F8FAFC] text-slate-600 hover:bg-slate-100 border border-[#E2E8F0]"
                     }`}
                   >
@@ -211,10 +211,10 @@ function ExamSimulator() {
             {/* Top Bar with Question Count and Progress */}
             <div className="px-6 py-4 bg-[#F8FAFC] border-b border-[#E2E8F0] flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-lg bg-[#F20D2F] text-white font-mono font-bold text-sm">
+                <span className="px-3 py-1 rounded-lg bg-[#E30D2B] text-white font-mono font-bold text-sm">
                   {currentIndex + 1} / {config.totalQuestions}
                 </span>
-                <span className="text-xs text-[#64748B] font-bold">
+                <span className="text-xs text-[#5A6A82] font-bold">
                   {config.title} • Seuil requis : {config.passingScore}/{config.totalQuestions}
                 </span>
               </div>
@@ -226,7 +226,7 @@ function ExamSimulator() {
                     handleFinish();
                   }
                 }}
-                className="text-xs text-[#64748B] hover:text-[#F20D2F] font-bold transition-colors cursor-pointer"
+                className="text-xs text-[#5A6A82] hover:text-[#C1272D] font-bold transition-colors cursor-pointer"
               >
                 {t.exam.finish}
               </button>
@@ -245,7 +245,7 @@ function ExamSimulator() {
             {/* Question Body */}
             <div className="p-6 sm:p-8">
               {/* Question Text */}
-              <span className="text-xs font-bold text-[#F20D2F] uppercase tracking-wider block mb-2">
+              <span className="text-xs font-bold text-[#C1272D] uppercase tracking-wider block mb-2">
                 Question {currentIndex + 1}
               </span>
               <h2 className="text-xl sm:text-2xl font-black text-[#071A3D] mb-6 leading-snug">
@@ -272,7 +272,7 @@ function ExamSimulator() {
                         <span
                           className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm ${
                             isSelected
-                              ? "bg-[#F20D2F] text-white"
+                              ? "bg-[#E30D2B] text-white"
                               : "bg-slate-100 text-slate-700"
                           }`}
                         >
@@ -286,7 +286,7 @@ function ExamSimulator() {
                       <div
                         className={`w-5 h-5 rounded-full border flex items-center justify-center ${
                           isSelected
-                            ? "border-[#F20D2F] bg-[#F20D2F]"
+                            ? "border-[#F20D2F] bg-[#E30D2B]"
                             : "border-slate-300 bg-transparent"
                         }`}
                       >
@@ -311,7 +311,7 @@ function ExamSimulator() {
                 {currentIndex < config.totalQuestions - 1 ? (
                   <button
                     onClick={() => setCurrentIndex((prev) => prev + 1)}
-                    className="px-6 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#D90B28] text-white text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all shadow-md shadow-red-500/20 cursor-pointer active:scale-95"
+                    className="px-6 py-2.5 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all shadow-md shadow-red-500/20 cursor-pointer active:scale-95"
                   >
                     <span>{t.exam.next}</span>
                     <ChevronRight className="w-4 h-4 rtl:rotate-180" />
@@ -353,7 +353,7 @@ function ExamSimulator() {
                   {examResult.passed ? t.exam.congrats : t.exam.keepPracticing}
                 </h2>
 
-                <p className="text-[#64748B] text-sm max-w-md mx-auto mb-6">
+                <p className="text-[#5A6A82] text-sm max-w-md mx-auto mb-6">
                   {examResult.passed
                     ? "Vous avez atteint le score officiel requis par la NARSA pour cette épreuve."
                     : `Il vous manquait ${config.passingScore - examResult.score} point(s) pour atteindre le seuil éliminatoire de ${config.passingScore}/${config.totalQuestions}.`}
@@ -364,7 +364,7 @@ function ExamSimulator() {
                   <span className="text-5xl sm:text-7xl font-black tracking-tight text-[#071A3D]">
                     {examResult.score}
                   </span>
-                  <span className="text-2xl sm:text-3xl font-bold text-[#64748B] ml-2">
+                  <span className="text-2xl sm:text-3xl font-bold text-[#5A6A82] ml-2">
                     / {examResult.totalQuestions}
                   </span>
                 </div>
@@ -372,7 +372,7 @@ function ExamSimulator() {
                 <div className="flex flex-wrap items-center justify-center gap-4">
                   <button
                     onClick={handleRestart}
-                    className="px-6 py-3 rounded-2xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center gap-2 transition-all shadow-md shadow-red-500/20 cursor-pointer"
+                    className="px-6 py-3 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center gap-2 transition-all shadow-md shadow-red-500/20 cursor-pointer"
                   >
                     <RotateCcw className="w-4 h-4" />
                     <span>{t.exam.retryExam}</span>
@@ -382,7 +382,7 @@ function ExamSimulator() {
                     href="/code-de-la-route"
                     className="px-6 py-3 rounded-2xl bg-white hover:bg-slate-50 text-[#071A3D] border border-[#E2E8F0] font-bold text-sm flex items-center gap-2 transition-all shadow-xs"
                   >
-                    <BookOpen className="w-4 h-4 text-[#F20D2F]" />
+                    <BookOpen className="w-4 h-4 text-[#C1272D]" />
                     <span>Réviser les cours</span>
                   </Link>
                 </div>
@@ -439,7 +439,7 @@ function ExamSimulator() {
                         )}
                       </div>
 
-                      <p className="text-xs text-[#64748B] pl-8 leading-relaxed mb-2 font-normal">
+                      <p className="text-xs text-[#5A6A82] pl-8 leading-relaxed mb-2 font-normal">
                         {q.explanation}
                       </p>
                       <span className="text-[10px] text-slate-400 font-mono pl-8 block">

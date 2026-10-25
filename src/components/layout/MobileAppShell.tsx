@@ -25,7 +25,7 @@ export function MobileAppShell({
   className = "",
 }: MobileAppShellProps) {
   return (
-    <div className="md:hidden min-h-screen bg-[#F6F9FD] text-[#071A3D] flex flex-col selection:bg-[#F20D2F] selection:text-white font-sans antialiased">
+    <div className="md:hidden min-h-screen bg-[#F6F9FD] text-[#071A3D] flex flex-col selection:bg-[#E30D2B] selection:text-white font-sans antialiased">
       {/* 1. Mobile Top Bar */}
       <MobileTopBar
         isHome={isHome}

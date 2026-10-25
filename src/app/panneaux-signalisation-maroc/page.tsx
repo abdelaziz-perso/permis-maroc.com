@@ -27,7 +27,7 @@ export default function PanneauxSignalisationMarocPage() {
 
           <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
             <div className="mb-10 text-center">
-              <span className="text-xs font-mono font-bold text-[#F20D2F] uppercase tracking-wider block mb-2">
+              <span className="text-xs font-mono font-bold text-[#C1272D] uppercase tracking-wider block mb-2">
                 Catalogue Pédagogique
               </span>
               <h1 className="text-3xl sm:text-5xl font-black text-[#071A3D] tracking-tight mb-4 leading-tight">
@@ -48,7 +48,7 @@ export default function PanneauxSignalisationMarocPage() {
               </div>
               <Link
                 href="/panneaux"
-                className="px-5 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
+                className="px-5 py-2.5 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
               >
                 Explorer tous les panneaux
               </Link>
@@ -57,7 +57,7 @@ export default function PanneauxSignalisationMarocPage() {
             {/* Categories Showcase */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs">
-                <span className="text-xs font-mono font-bold text-[#F20D2F] uppercase tracking-wider block mb-2">
+                <span className="text-xs font-mono font-bold text-[#C1272D] uppercase tracking-wider block mb-2">
                   Triangles Rouges
                 </span>
                 <h3 className="text-xl font-bold text-[#071A3D] mb-2">Panneaux de Danger</h3>
@@ -72,7 +72,7 @@ export default function PanneauxSignalisationMarocPage() {
               </div>
 
               <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs">
-                <span className="text-xs font-mono font-bold text-[#F20D2F] uppercase tracking-wider block mb-2">
+                <span className="text-xs font-mono font-bold text-[#C1272D] uppercase tracking-wider block mb-2">
                   Cercles Bord Rouge
                 </span>
                 <h3 className="text-xl font-bold text-[#071A3D] mb-2">Panneaux d&apos;Interdiction</h3>

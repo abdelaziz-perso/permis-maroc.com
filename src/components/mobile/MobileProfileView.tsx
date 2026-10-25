@@ -106,7 +106,7 @@ export function MobileProfileView() {
 
         {/* Name & Email */}
         <h2 className="text-lg font-black text-[#071A3D]">{userName}</h2>
-        <span className="text-xs text-[#64748B]">{userEmail}</span>
+        <span className="text-xs text-[#5A6A82]">{userEmail}</span>
 
         {/* Level & XP */}
         <div className="mt-3.5 p-3 rounded-2xl bg-[#F6F9FD] border border-[#E5ECF5] text-left rtl:text-right">
@@ -115,7 +115,7 @@ export function MobileProfileView() {
               <Award className="w-4 h-4 text-amber-500" />
               <span>Niveau : {userLevel}</span>
             </div>
-            <span className="font-mono font-bold text-[#F20D2F]">
+            <span className="font-mono font-bold text-[#C1272D]">
               {userXp} XP
             </span>
           </div>
@@ -147,7 +147,7 @@ export function MobileProfileView() {
               <span className="text-sm font-black text-[#071A3D] tracking-tight">
                 {stat.value}
               </span>
-              <span className="text-[9px] text-[#64748B] font-medium leading-none truncate w-full mt-0.5">
+              <span className="text-[9px] text-[#5A6A82] font-medium leading-none truncate w-full mt-0.5">
                 {stat.label}
               </span>
             </div>
@@ -184,7 +184,7 @@ export function MobileProfileView() {
                     {row.badge}
                   </span>
                 )}
-                <ChevronRight className="w-4 h-4 text-[#64748B] rtl:rotate-180" />
+                <ChevronRight className="w-4 h-4 text-[#5A6A82] rtl:rotate-180" />
               </div>
             </Link>
           );

@@ -375,7 +375,7 @@ export function ScrollTransitionRoadSign() {
         {/* Top Editorial Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs font-extrabold text-[#F20D2F] mb-2">
+            <div className="inline-flex items-center gap-2 text-xs font-extrabold text-[#C1272D] mb-2">
               <Compass className="w-4 h-4" />
               <span>
                 {isArabic
@@ -403,7 +403,7 @@ export function ScrollTransitionRoadSign() {
             </div>
             <span className="text-slate-700">|</span>
             <div className="flex items-center gap-1.5 text-xs text-slate-300 font-semibold">
-              <ShieldCheck className="w-4 h-4 text-[#F20D2F]" />
+              <ShieldCheck className="w-4 h-4 text-[#C1272D]" />
               <span>
                 {isArabic ? "مناورة التجاوز القانوني" : "Manœuvre de dépassement"}
               </span>
@@ -467,7 +467,7 @@ export function ScrollTransitionRoadSign() {
                 ? "اختبر معلوماتك الآن في السؤال التفاعلي أسفله"
                 : "Répondre à la question test ci-dessous"}
             </span>
-            <ArrowDown className="w-4 h-4 text-[#F20D2F]" />
+            <ArrowDown className="w-4 h-4 text-[#C1272D]" />
           </Link>
         </div>
       </div>

@@ -73,10 +73,10 @@ export default function DocumentsPermisMarocPage() {
             <div className="bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden shadow-xs mb-10">
               <div className="p-6 border-b border-[#E2E8F0] flex items-center justify-between">
                 <h2 className="text-base font-bold text-[#071A3D] flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-[#F20D2F]" />
+                  <FileText className="w-5 h-5 text-[#C1272D]" />
                   <span>Checklist des pièces justificatives</span>
                 </h2>
-                <span className="text-xs text-slate-500 font-mono">Dossier NARSA 2026</span>
+                <span className="text-xs text-[#5A6A82] font-mono">Dossier NARSA 2026</span>
               </div>
 
               <div className="divide-y divide-[#E2E8F0]">
@@ -89,7 +89,7 @@ export default function DocumentsPermisMarocPage() {
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="font-bold text-sm text-[#071A3D]">{doc.title}</h3>
                         {doc.required ? (
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-50 text-[#F20D2F] border border-red-100">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-50 text-[#C1272D] border border-red-100">
                             Obligatoire
                           </span>
                         ) : (
@@ -98,7 +98,7 @@ export default function DocumentsPermisMarocPage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-500 leading-relaxed">
+                      <p className="text-xs text-[#5A6A82] leading-relaxed">
                         {doc.description}
                       </p>
                     </div>
@@ -128,7 +128,7 @@ export default function DocumentsPermisMarocPage() {
               </div>
               <Link
                 href="/examen-blanc"
-                className="px-5 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
+                className="px-5 py-2.5 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
               >
                 Faire un test blanc
               </Link>

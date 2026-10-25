@@ -67,7 +67,7 @@ export function MobileHomeScreen() {
     <div className="space-y-5">
       {/* 1. Header Greeting & Title */}
       <div className="pt-1">
-        <span className="text-xs font-semibold text-[#64748B] flex items-center gap-1.5 mb-1">
+        <span className="text-xs font-semibold text-[#5A6A82] flex items-center gap-1.5 mb-1">
           <span>{isArabic ? "مرحباً بك" : "Salam"}</span>
           <span>👋</span>
           {user?.name && (
@@ -77,20 +77,20 @@ export function MobileHomeScreen() {
         <h2 className="text-2xl sm:text-3xl font-black text-[#071A3D] tracking-tight leading-tight">
           {language === "ary" ? (
             <>
-              واجد باش تجيب <span className="text-[#F20D2F]">البيرمي</span> ؟
+              واجد باش تجيب <span className="text-[#C1272D]">البيرمي</span> ؟
             </>
           ) : isArabic ? (
             <>
               هل أنت مستعد للنجاح في{" "}
-              <span className="text-[#F20D2F]">امتحان السياقة</span> ؟
+              <span className="text-[#C1272D]">امتحان السياقة</span> ؟
             </>
           ) : (
             <>
-              Prêt à réussir ton <span className="text-[#F20D2F]">permis</span> ?
+              Prêt à réussir ton <span className="text-[#C1272D]">permis</span> ?
             </>
           )}
         </h2>
-        <p className="text-xs sm:text-sm text-[#64748B] mt-1 font-normal">
+        <p className="text-xs sm:text-sm text-[#5A6A82] mt-1 font-normal">
           {isArabic
             ? "تعلم قانون السير، تدرب وانجح من المرة الأولى مع بيرمي المغرب."
             : "Apprends, entraîne-toi et réussis avec Permis Maroc."}
@@ -104,7 +104,7 @@ export function MobileHomeScreen() {
       <div className="rounded-3xl bg-white border border-[#E5ECF5] p-5 shadow-[0_4px_20px_rgba(7,26,61,0.04)] space-y-3.5">
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
-            <span className="text-xs font-semibold text-[#64748B]">
+            <span className="text-xs font-semibold text-[#5A6A82]">
               {isArabic ? "التحضير للامتحان" : "Préparation examen"}
             </span>
             <div className="flex items-baseline gap-2 mt-0.5">
@@ -126,7 +126,7 @@ export function MobileHomeScreen() {
           />
         </div>
 
-        <p className="text-xs text-[#64748B]">
+        <p className="text-xs text-[#5A6A82]">
           {isArabic
             ? "استمر، أنت تتقدم بشكل ممتاز نحو النجاح."
             : "Continue, tu progresses bien."}
@@ -135,7 +135,7 @@ export function MobileHomeScreen() {
         {/* Large Primary Red CTA */}
         <Link
           href="/examen-blanc"
-          className="w-full py-3.5 px-5 rounded-2xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all"
+          className="w-full py-3.5 px-5 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all"
         >
           <span>
             {user
@@ -169,7 +169,7 @@ export function MobileHomeScreen() {
                 <span className="text-sm font-bold text-[#071A3D] block leading-snug">
                   {action.title}
                 </span>
-                <span className="text-[11px] text-[#64748B] block mt-0.5">
+                <span className="text-[11px] text-[#5A6A82] block mt-0.5">
                   {action.subtitle}
                 </span>
               </div>
@@ -200,7 +200,7 @@ export function MobileHomeScreen() {
       >
         <div className="flex items-center justify-between gap-3">
           <div className="space-y-1">
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#F20D2F] text-[10px] font-black uppercase tracking-wider">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#E30D2B] text-[10px] font-black uppercase tracking-wider">
               <Sparkles className="w-2.5 h-2.5" />
               <span>{isArabic ? "عرض خاص" : "PACK RÉVISION"}</span>
             </span>

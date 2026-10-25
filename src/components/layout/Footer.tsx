@@ -19,10 +19,10 @@ export function Footer() {
             <Link href="/" className="inline-block mb-4 group">
               <BrandLogo size="md" />
             </Link>
-            <p className="text-[#64748B] text-sm mb-4 leading-relaxed max-w-sm">
+            <p className="text-[#5A6A82] text-sm mb-4 leading-relaxed max-w-sm">
               {t.secondaryTagline}
             </p>
-            <div className="p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#64748B] leading-relaxed mb-4">
+            <div className="p-3.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#5A6A82] leading-relaxed mb-4">
               <div className="flex items-center gap-1.5 text-[#071A3D] font-bold mb-1">
                 <ShieldCheck className="w-4 h-4 text-[#20C875] shrink-0" />
                 <span>
@@ -39,14 +39,14 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-[#071A3D] font-extrabold text-sm mb-3">
+            <h3 className="text-[#071A3D] font-extrabold text-sm mb-3">
               {isArabic ? "دروس قانون السير" : "Code de la Route"}
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link
                   href="/code-de-la-route"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "جميع الدروس (12 محوراً)" : "Tous les cours (12 modules)"}
                 </Link>
@@ -54,7 +54,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/code-de-la-route/priorites"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "قواعد الأسبقية والملتقيات" : "Règles de Priorités"}
                 </Link>
@@ -62,7 +62,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/code-de-la-route/vitesse"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "تحديد السرعة والمسافات" : "Limitations de Vitesse"}
                 </Link>
@@ -70,7 +70,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/panneaux"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "+150 علامة وإشارة مرورية" : "150+ Panneaux de signalisation"}
                 </Link>
@@ -78,7 +78,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/pdf"
-                  className="text-[#F20D2F] hover:text-red-700 font-bold transition-colors"
+                  className="text-[#C1272D] hover:text-red-700 font-bold transition-colors"
                 >
                   {isArabic ? "ملخصات وجذاذات PDF (جديد)" : "Fiches Mémo & Résumés PDF (Nouveau)"}
                 </Link>
@@ -86,7 +86,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/code-de-la-route-maroc"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "دليل قانون السير المغربي 2026" : "Guide Code Maroc 2026"}
                 </Link>
@@ -96,14 +96,14 @@ export function Footer() {
 
           {/* Tests & Exams */}
           <div>
-            <h4 className="text-[#071A3D] font-extrabold text-sm mb-3">
+            <h3 className="text-[#071A3D] font-extrabold text-sm mb-3">
               {isArabic ? "الامتحانات والأدوات" : "Examens & Outils"}
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link
                   href="/pack-revision"
-                  className="text-[#F20D2F] hover:text-red-700 font-bold transition-colors"
+                  className="text-[#C1272D] hover:text-red-700 font-bold transition-colors"
                 >
                   {isArabic ? "باك المراجعة الشامل (79 درهم)" : "Pack Révision Permis B (79 MAD)"}
                 </Link>
@@ -111,7 +111,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/examen-blanc"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "امتحان تجريبي صنف B (40 سؤال)" : "Examen Blanc Permis B (40 questions)"}
                 </Link>
@@ -119,7 +119,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/test-permis-maroc"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "سلاسل اختبارات مجانية" : "Séries de tests gratuits"}
                 </Link>
@@ -127,7 +127,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/permis-b-maroc"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "رخصة السياقة صنف B" : "Permis B Véhicules Légers"}
                 </Link>
@@ -135,7 +135,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/prix-permis-maroc"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "تكلفة وأثمنة البيرمي بالمغرب" : "Prix & Tarifs du Permis au Maroc"}
                 </Link>
@@ -143,7 +143,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/documents-permis-maroc"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "الوثائق المطلوبة لملف البيرمي" : "Dossier & Documents requis"}
                 </Link>
@@ -153,14 +153,14 @@ export function Footer() {
 
           {/* Guides Villes & Blog */}
           <div>
-            <h4 className="text-[#071A3D] font-extrabold text-sm mb-3">
+            <h3 className="text-[#071A3D] font-extrabold text-sm mb-3">
               {isArabic ? "مراكز الامتحان بالمدن" : "Centres d'examen"}
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link
                   href="/villes/casablanca"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "رخصة السياقة بالدار البيضاء" : "Permis à Casablanca"}
                 </Link>
@@ -168,7 +168,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/villes/rabat"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "رخصة السياقة بالرباط" : "Permis à Rabat"}
                 </Link>
@@ -176,7 +176,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/villes/marrakech"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "رخصة السياقة بمراكش" : "Permis à Marrakech"}
                 </Link>
@@ -184,7 +184,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/villes/tanger"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "رخصة السياقة بطنجة" : "Permis à Tanger"}
                 </Link>
@@ -192,7 +192,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/blog"
-                  className="text-[#64748B] hover:text-[#071A3D] transition-colors"
+                  className="text-[#5A6A82] hover:text-[#071A3D] transition-colors"
                 >
                   {isArabic ? "نصائح ومقالات" : "Conseils & Blog"}
                 </Link>
@@ -200,7 +200,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/admin"
-                  className="text-[#94A3B8] hover:text-[#64748B] transition-colors"
+                  className="text-[#94A3B8] hover:text-[#5A6A82] transition-colors"
                 >
                   {isArabic ? "فضاء الإدارة" : "Espace Gestion / Admin"}
                 </Link>
@@ -224,9 +224,9 @@ export function Footer() {
               {isArabic ? "سياسة الخصوصية" : "Politique de Confidentialité"}
             </Link>
             <span>·</span>
-            <span className="text-[#64748B] flex items-center gap-1">
+            <span className="text-[#5A6A82] flex items-center gap-1">
               {isArabic ? "صنع بـ" : "Fait avec"}{" "}
-              <Heart className="w-3 h-3 text-[#F20D2F] fill-[#F20D2F]" />{" "}
+              <Heart className="w-3 h-3 text-[#C1272D] fill-[#F20D2F]" />{" "}
               {isArabic ? "في المغرب" : "au Maroc"}
             </span>
           </div>

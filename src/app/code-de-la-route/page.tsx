@@ -99,7 +99,7 @@ function CoursesContent() {
           <h1 className="text-3xl sm:text-5xl font-black text-[#071A3D] tracking-tight mb-4">
             Code de la Route au Maroc
           </h1>
-          <p className="text-[#64748B] text-sm sm:text-base leading-relaxed">
+          <p className="text-[#5A6A82] text-sm sm:text-base leading-relaxed">
             12 modules complets pour assimiler toutes les notions du Code de la Route marocain à votre rythme, avec fiches et mini-quiz.
           </p>
         </div>
@@ -125,18 +125,18 @@ function CoursesContent() {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-red-50 text-[#F20D2F] border border-red-100 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <div className="w-12 h-12 rounded-2xl bg-red-50 text-[#C1272D] border border-red-100 flex items-center justify-center group-hover:scale-105 transition-transform">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]">
+                    <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-[#F8FAFC] text-[#5A6A82] border border-[#E2E8F0]">
                       Module {idx + 1} / 12
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-[#071A3D] group-hover:text-[#F20D2F] transition-colors mb-2">
+                  <h3 className="text-lg font-bold text-[#071A3D] group-hover:text-[#C1272D] transition-colors mb-2">
                     {category.title}
                   </h3>
-                  <p className="text-xs text-[#64748B] line-clamp-2 leading-relaxed mb-6 font-normal">
+                  <p className="text-xs text-[#5A6A82] line-clamp-2 leading-relaxed mb-6 font-normal">
                     {category.description}
                   </p>
                 </div>
@@ -144,7 +144,7 @@ function CoursesContent() {
                 <div>
                   {/* Progress Indicator */}
                   <div className="mb-4">
-                    <div className="flex items-center justify-between text-[11px] text-[#64748B] mb-1.5 font-semibold">
+                    <div className="flex items-center justify-between text-[11px] text-[#5A6A82] mb-1.5 font-semibold">
                       <span>Progression</span>
                       <span className="font-mono font-bold text-[#071A3D]">{progress}%</span>
                     </div>
@@ -157,12 +157,12 @@ function CoursesContent() {
                   </div>
 
                   {/* Footer Meta */}
-                  <div className="pt-3 border-t border-[#F1F5F9] flex items-center justify-between text-xs text-[#64748B]">
+                  <div className="pt-3 border-t border-[#F1F5F9] flex items-center justify-between text-xs text-[#5A6A82]">
                     <div className="flex items-center gap-1.5 font-medium">
                       <Clock className="w-3.5 h-3.5 text-slate-400" />
                       <span>{category.estimatedHours}h estimées</span>
                     </div>
-                    <div className="flex items-center gap-1 font-bold text-[#071A3D] group-hover:text-[#F20D2F]">
+                    <div className="flex items-center gap-1 font-bold text-[#071A3D] group-hover:text-[#C1272D]">
                       <span>Accéder</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
                     </div>

@@ -85,7 +85,7 @@ export function MobileSignsView() {
             {activeSignModal.code ? `${activeSignModal.code} • ` : ""}
             {signName}
           </h1>
-          <span className="text-sm font-bold text-[#F20D2F] block mt-0.5">
+          <span className="text-sm font-bold text-[#C1272D] block mt-0.5">
             {activeSignModal.category === "danger"
               ? "Danger immédiat"
               : activeSignModal.category === "interdiction"
@@ -94,20 +94,20 @@ export function MobileSignsView() {
               ? "Arrêt ou priorité"
               : "Indication officielle"}
           </span>
-          <p className="text-xs sm:text-sm text-[#64748B] mt-2.5 leading-relaxed font-normal">
+          <p className="text-xs sm:text-sm text-[#5A6A82] mt-2.5 leading-relaxed font-normal">
             {signDesc}
           </p>
         </div>
 
         {/* Exemple en situation */}
         <div className="rounded-3xl bg-white border border-[#E5ECF5] p-4 shadow-sm space-y-3">
-          <h3 className="text-xs font-bold text-[#64748B] uppercase tracking-wider">
+          <h3 className="text-xs font-bold text-[#5A6A82] uppercase tracking-wider">
             {isArabic ? "مثال في وضعية حقيقية" : "Exemple en situation"}
           </h3>
 
           {/* Road scenario visual representation */}
           <div className="w-full h-36 rounded-2xl bg-gradient-to-b from-sky-100 via-amber-50 to-slate-200 border border-slate-200 overflow-hidden relative flex items-center justify-center p-3">
-            <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold">
+            <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-[#020617]/90 backdrop-blur-sm text-white text-[10px] font-bold">
               Route nationale
             </div>
             {/* Visual sign thumbnail at the intersection */}
@@ -135,7 +135,7 @@ export function MobileSignsView() {
         {/* Primary CTA: Tester mes connaissances */}
         <Link
           href="/examen-blanc"
-          className="w-full py-4 px-5 rounded-2xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all"
+          className="w-full py-4 px-5 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all"
         >
           <span>{isArabic ? "اختبر معلوماتك" : "Tester mes connaissances"}</span>
           <ArrowRight className="w-4 h-4 rtl:rotate-180" />
@@ -151,7 +151,7 @@ export function MobileSignsView() {
     <div className="space-y-4">
       {/* 1. Search Bar */}
       <div className="relative">
-        <Search className="absolute left-3.5 rtl:right-3.5 rtl:left-auto top-1/2 -translate-y-1/2 w-4 h-4 text-[#64748B] pointer-events-none" />
+        <Search className="absolute left-3.5 rtl:right-3.5 rtl:left-auto top-1/2 -translate-y-1/2 w-4 h-4 text-[#5A6A82] pointer-events-none" />
         <input
           type="text"
           value={searchQuery}
@@ -181,8 +181,8 @@ export function MobileSignsView() {
             onClick={() => setSelectedCategory(cat.id)}
             className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
               selectedCategory === cat.id
-                ? "bg-[#F20D2F] text-white shadow-md shadow-red-500/20"
-                : "bg-white text-[#64748B] hover:text-[#071A3D] border border-[#E5ECF5]"
+                ? "bg-[#E30D2B] text-white shadow-md shadow-red-500/20"
+                : "bg-white text-[#5A6A82] hover:text-[#071A3D] border border-[#E5ECF5]"
             }`}
           >
             {cat.label}

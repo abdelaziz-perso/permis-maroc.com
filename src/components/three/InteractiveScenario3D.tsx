@@ -473,7 +473,7 @@ export function InteractiveScenario3D({ scenario }: ScenarioProps) {
       {/* Interactive Controls & Educational Feedback */}
       <div className="w-full lg:w-2/5 p-6 flex flex-col justify-between border-t lg:border-t-0 lg:border-s border-[#E2E8F0] bg-white">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-50 border border-red-100 text-[#F20D2F] text-xs font-semibold tracking-wide mb-3">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-50 border border-red-100 text-[#C1272D] text-xs font-semibold tracking-wide mb-3">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>
               {isArabic ? "وضعية ثلاثية الأبعاد 3D" : "Situation 3D Réelle"}
@@ -524,7 +524,7 @@ export function InteractiveScenario3D({ scenario }: ScenarioProps) {
                         {isThisCorrect ? (
                           <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                         ) : (
-                          <XCircle className="w-4 h-4 text-[#F20D2F]" />
+                          <XCircle className="w-4 h-4 text-[#C1272D]" />
                         )}
                       </span>
                     )}
@@ -556,7 +556,7 @@ export function InteractiveScenario3D({ scenario }: ScenarioProps) {
                 </>
               ) : (
                 <>
-                  <XCircle className="w-5 h-5 text-[#F20D2F]" />
+                  <XCircle className="w-5 h-5 text-[#C1272D]" />
                   <span className="font-bold text-red-800 text-sm">
                     {isArabic
                       ? "انتبه، قرار غير صحيح!"
@@ -576,7 +576,7 @@ export function InteractiveScenario3D({ scenario }: ScenarioProps) {
                   ? "القواعد القانونية المطبقة :"
                   : "Règles officielles appliquées :"}
               </span>
-              <ul className="text-[11px] text-slate-500 space-y-1 list-disc list-inside">
+              <ul className="text-[11px] text-[#5A6A82] space-y-1 list-disc list-inside">
                 {rulesList.map((rule, idx) => (
                   <li key={idx}>{rule}</li>
                 ))}

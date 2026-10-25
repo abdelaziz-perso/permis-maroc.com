@@ -80,7 +80,7 @@ export function FaqAccordion() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#F20D2F] mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#C1272D] mb-3">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>{isArabic ? "الأسئلة الشائعة" : "Foire Aux Questions"}</span>
           </div>
@@ -89,7 +89,7 @@ export function FaqAccordion() {
               ? "كل ما تود معرفته حول رخصة السياقة في المغرب"
               : "Questions fréquentes sur le permis au Maroc"}
           </h2>
-          <p className="text-[#64748B] text-sm leading-relaxed">
+          <p className="text-[#5A6A82] text-sm leading-relaxed">
             {isArabic
               ? "إجابات دقيقة حول شروط التسجيل، تكلفة البيرمي، ونظام الامتحان النظري الجديد لنارسا."
               : "Tout ce qu'il faut savoir sur les démarches, les tarifs officiels et l'examen théorique NARSA."}
@@ -115,7 +115,7 @@ export function FaqAccordion() {
                   </span>
                   <ChevronDown
                     className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-[#F20D2F]" : ""
+                      isOpen ? "rotate-180 text-[#C1272D]" : ""
                     }`}
                   />
                 </button>

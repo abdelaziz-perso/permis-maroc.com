@@ -26,7 +26,7 @@ export default function PermisDeConduireMarocPage() {
           <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
             {/* Header */}
             <div className="mb-10">
-              <span className="text-xs font-mono font-bold text-[#F20D2F] uppercase tracking-wider block mb-2">
+              <span className="text-xs font-mono font-bold text-[#C1272D] uppercase tracking-wider block mb-2">
                 Dossier Officiel • Guide de Référence
               </span>
               <h1 className="text-3xl sm:text-5xl font-black text-[#071A3D] tracking-tight mb-4 leading-tight">
@@ -53,7 +53,7 @@ export default function PermisDeConduireMarocPage() {
                   <span className="text-[11px] text-slate-500">Score pour réussir</span>
                 </div>
                 <div className="p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-                  <span className="text-2xl font-black text-[#F20D2F] font-mono block">20h + 20h</span>
+                  <span className="text-2xl font-black text-[#C1272D] font-mono block">20h + 20h</span>
                   <span className="text-[11px] text-slate-500">Volume horaire légal</span>
                 </div>
                 <div className="p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
@@ -126,7 +126,7 @@ export default function PermisDeConduireMarocPage() {
                 </div>
                 <Link
                   href="/examen-blanc"
-                  className="px-5 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
+                  className="px-5 py-2.5 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
                 >
                   Lancer l&apos;examen blanc
                 </Link>

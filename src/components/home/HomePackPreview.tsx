@@ -39,7 +39,7 @@ export function HomePackPreview() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-[#F20D2F] font-bold text-xs uppercase tracking-wider mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-[#C1272D] font-bold text-xs uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{isArabic ? "باك المراجعة الشامل 2026" : "PACK RÉVISION PERMIS MAROC"}</span>
           </div>
@@ -57,13 +57,13 @@ export function HomePackPreview() {
             {/* LEFT: Product Details */}
             <div className="lg:col-span-6 space-y-6">
               <div>
-                <span className="inline-block px-3 py-1 rounded-lg bg-red-50 text-[#F20D2F] border border-red-200 text-[11px] font-extrabold uppercase tracking-wider mb-2.5">
+                <span className="inline-block px-3 py-1 rounded-lg bg-red-50 text-[#C1272D] border border-red-200 text-[11px] font-extrabold uppercase tracking-wider mb-2.5">
                   {isArabic ? "باك شامل وكامل" : "PACK COMPLET"}
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-black text-[#071A3D] tracking-tight">
                   {isArabic ? revisionPackData.nameAr : revisionPackData.name}
                 </h3>
-                <p className="text-sm sm:text-base text-[#64748B] font-medium mt-1">
+                <p className="text-sm sm:text-base text-[#5A6A82] font-medium mt-1">
                   {isArabic ? revisionPackData.subtitleAr : revisionPackData.subtitle}
                 </p>
               </div>
@@ -81,7 +81,7 @@ export function HomePackPreview() {
                       </span>
                     )}
                   </div>
-                  <span className="text-xs text-[#64748B] block mt-0.5">
+                  <span className="text-xs text-[#5A6A82] block mt-0.5">
                     {isArabic ? "أداء لمرة واحدة – بدون اشتراك شهري" : "Paiement unique – Accès complet"}
                   </span>
                 </div>
@@ -107,7 +107,7 @@ export function HomePackPreview() {
               <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link
                   href="/pack-revision"
-                  className="py-3.5 px-6 rounded-2xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-xl shadow-red-600/20 active:scale-[0.98] transition-all cursor-pointer"
+                  className="py-3.5 px-6 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-xl shadow-red-600/20 active:scale-[0.98] transition-all cursor-pointer"
                 >
                   <span>{isArabic ? "اكتشف الباك بالتفصيل" : "Obtenir le Pack"}</span>
                   <ArrowRight className="w-4 h-4 rtl:rotate-180" />
@@ -128,7 +128,7 @@ export function HomePackPreview() {
                   onClick={() => setDemoOpen(true)}
                   className="py-3.5 px-4 rounded-2xl bg-white hover:bg-slate-50 border border-[#E2E8F0] text-[#071A3D] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-2xs"
                 >
-                  <Play className="w-3.5 h-3.5 fill-current text-[#F20D2F]" />
+                  <Play className="w-3.5 h-3.5 fill-current text-[#C1272D]" />
                   <span>{isArabic ? "معاينة المنصة" : "Voir un aperçu"}</span>
                 </button>
               </div>

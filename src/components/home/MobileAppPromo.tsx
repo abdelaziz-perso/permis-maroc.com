@@ -14,7 +14,7 @@ export function MobileAppPromo() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Info, features, placeholder badges */}
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#F20D2F] mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#C1272D] mb-4">
               <Smartphone className="w-3.5 h-3.5" />
               <span>{t.appPromo.badge}</span>
             </div>
@@ -52,7 +52,7 @@ export function MobileAppPromo() {
                 <div className="w-full sm:w-1/2 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0]">
                   <Apple className="w-6 h-6 text-[#071A3D] shrink-0" />
                   <div className="text-start">
-                    <span className="block text-[10px] text-slate-500 leading-tight">
+                    <span className="block text-[10px] text-[#5A6A82] leading-tight">
                       {isArabic ? "قريباً على" : "Bientôt sur"}
                     </span>
                     <span className="text-xs font-bold text-[#071A3D] tracking-wide">
@@ -72,7 +72,7 @@ export function MobileAppPromo() {
                     </svg>
                   </div>
                   <div className="text-start">
-                    <span className="block text-[10px] text-slate-500 leading-tight">
+                    <span className="block text-[10px] text-[#5A6A82] leading-tight">
                       {isArabic ? "قريباً على" : "Bientôt sur"}
                     </span>
                     <span className="text-xs font-bold text-[#071A3D] tracking-wide">

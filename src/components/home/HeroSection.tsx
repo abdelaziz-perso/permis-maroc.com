@@ -112,8 +112,8 @@ export function HeroSection() {
           <div className="lg:col-span-6 flex flex-col justify-center items-start z-10">
             {/* Editorial Kicker with Red Moroccan Line */}
             <div className="inline-flex items-center gap-2.5 mb-4">
-              <span className="w-6 h-[2.5px] bg-[#F20D2F] rounded-full inline-block" />
-              <span className="text-xs sm:text-sm font-extrabold tracking-wide text-[#F20D2F]">
+              <span className="w-6 h-[2.5px] bg-[#E30D2B] rounded-full inline-block" />
+              <span className="text-xs sm:text-sm font-extrabold tracking-wide text-[#C1272D]">
                 {t.hero.badge}
               </span>
             </div>
@@ -126,7 +126,7 @@ export function HeroSection() {
               {language === "ary" ? (
                 <>
                   جيب{" "}
-                  <span className="text-[#F20D2F] underline decoration-red-500/30 underline-offset-8">
+                  <span className="text-[#C1272D] underline decoration-red-500/30 underline-offset-8">
                     البيرمي ديالك
                   </span>{" "}
                   فالمغرب من الدقة الأولى.
@@ -134,7 +134,7 @@ export function HeroSection() {
               ) : isArabic ? (
                 <>
                   اضمن{" "}
-                  <span className="text-[#F20D2F] underline decoration-red-500/30 underline-offset-8">
+                  <span className="text-[#C1272D] underline decoration-red-500/30 underline-offset-8">
                     رخصة السياقة
                   </span>{" "}
                   في المغرب من المرة الأولى.
@@ -142,7 +142,7 @@ export function HeroSection() {
               ) : (
                 <>
                   Réussis ton{" "}
-                  <span className="text-[#F20D2F] underline decoration-red-500/30 underline-offset-4">
+                  <span className="text-[#C1272D] underline decoration-red-500/30 underline-offset-4">
                     permis
                   </span>{" "}
                   au Maroc.
@@ -159,7 +159,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-8">
               <Link
                 href="/examen-blanc"
-                className="px-7 py-3.5 rounded-xl font-bold text-sm sm:text-base text-white bg-[#F20D2F] hover:bg-[#D90B28] transition-all flex items-center justify-center gap-2.5 shadow-xl shadow-red-500/25 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap"
+                className="px-7 py-3.5 rounded-xl font-bold text-sm sm:text-base text-white bg-[#E30D2B] hover:bg-[#D90B28] transition-all flex items-center justify-center gap-2.5 shadow-xl shadow-red-500/25 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer whitespace-nowrap"
               >
                 <span>{t.hero.primaryCta}</span>
                 <ArrowRight className="w-4 h-4 rtl:rotate-180" />
@@ -169,7 +169,7 @@ export function HeroSection() {
                 href="#quick-test"
                 className="px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base text-[#071A3D] bg-white hover:bg-slate-50 transition-all flex items-center justify-center gap-2.5 border border-[#E2E8F0] hover:border-slate-300 hover:-translate-y-0.5 active:translate-y-0 shadow-xs cursor-pointer whitespace-nowrap"
               >
-                <div className="w-5 h-5 rounded-full bg-red-50 text-[#F20D2F] flex items-center justify-center shrink-0">
+                <div className="w-5 h-5 rounded-full bg-red-50 text-[#C1272D] flex items-center justify-center shrink-0">
                   <Play className="w-2.5 h-2.5 fill-current" />
                 </div>
                 <span>{t.hero.secondaryCta}</span>
@@ -192,10 +192,10 @@ export function HeroSection() {
                       <IconComponent className="w-5 h-5" />
                     </div>
                     <div className="flex flex-col min-w-0">
-                      <span className="text-sm font-bold text-[#071A3D] group-hover:text-[#F20D2F] transition-colors truncate">
+                      <span className="text-sm font-bold text-[#071A3D] group-hover:text-[#C1272D] transition-colors truncate">
                         {feat.title}
                       </span>
-                      <span className="text-xs text-[#64748B] truncate">
+                      <span className="text-xs text-[#5A6A82] truncate">
                         {feat.desc}
                       </span>
                     </div>
@@ -205,7 +205,7 @@ export function HeroSection() {
             </div>
 
             {/* Unboxed Trust Line */}
-            <div className="flex flex-wrap items-center gap-2 text-xs text-[#64748B] font-medium">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-[#5A6A82] font-medium">
               <ShieldCheck className="w-4 h-4 text-[#20C875] shrink-0" />
               <span>
                 {isArabic
@@ -234,14 +234,14 @@ export function HeroSection() {
                 key={idx}
                 className="p-4 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs flex items-center gap-3.5"
               >
-                <div className="w-10 h-10 rounded-xl bg-red-50 text-[#F20D2F] border border-red-100 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-red-50 text-[#C1272D] border border-red-100 flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xl sm:text-2xl font-black text-[#071A3D] tracking-tight tabular-nums">
                     {stat.value}
                   </span>
-                  <span className="text-xs text-[#64748B] font-semibold">
+                  <span className="text-xs text-[#5A6A82] font-semibold">
                     {stat.label}
                   </span>
                 </div>

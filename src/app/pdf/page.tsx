@@ -70,14 +70,14 @@ export default function PdfResourcesPage() {
           <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
             {/* Header Hero */}
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#F20D2F] mb-4 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#C1272D] mb-4 shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                 <span>Ressources Pédagogiques & Fiches Pratiques 2026</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[#071A3D] mb-5 leading-tight">
                 Télécharger les Fiches Mémo{" "}
-                <span className="text-[#F20D2F]">Code de la Route PDF</span>
+                <span className="text-[#C1272D]">Code de la Route PDF</span>
               </h1>
 
               <p className="text-sm sm:text-base text-[#475569] leading-relaxed max-w-2xl mx-auto font-normal">
@@ -85,7 +85,7 @@ export default function PdfResourcesPage() {
               </p>
 
               {/* Trust badges */}
-              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 text-xs text-[#64748B] font-semibold">
+              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 text-xs text-[#5A6A82] font-semibold">
                 <span className="flex items-center gap-1.5">
                   <DownloadCloud className="w-4 h-4 text-[#20C875]" />
                   100% Gratuit & Imprimable

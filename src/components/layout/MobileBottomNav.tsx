@@ -60,8 +60,8 @@ export function MobileBottomNav({ hidden = false }: MobileBottomNavProps) {
           href="/"
           className={`flex flex-col items-center justify-center flex-1 py-1 transition-all ${
             isHomeActive
-              ? "text-[#F20D2F] font-bold"
-              : "text-[#64748B] hover:text-[#071A3D]"
+              ? "text-[#C1272D] font-bold"
+              : "text-[#5A6A82] hover:text-[#071A3D]"
           }`}
         >
           <Home
@@ -79,8 +79,8 @@ export function MobileBottomNav({ hidden = false }: MobileBottomNavProps) {
           href="/code-de-la-route"
           className={`flex flex-col items-center justify-center flex-1 py-1 transition-all ${
             isCoursesActive
-              ? "text-[#F20D2F] font-bold"
-              : "text-[#64748B] hover:text-[#071A3D]"
+              ? "text-[#C1272D] font-bold"
+              : "text-[#5A6A82] hover:text-[#071A3D]"
           }`}
         >
           <BookOpen
@@ -104,7 +104,7 @@ export function MobileBottomNav({ hidden = false }: MobileBottomNavProps) {
           </Link>
           <span
             className={`text-[10px] mt-0.5 tracking-tight ${
-              isTestsActive ? "text-[#F20D2F] font-bold" : "text-[#64748B]"
+              isTestsActive ? "text-[#C1272D] font-bold" : "text-[#5A6A82]"
             }`}
           >
             {isArabic ? "امتحانات" : "Tests"}
@@ -116,8 +116,8 @@ export function MobileBottomNav({ hidden = false }: MobileBottomNavProps) {
           href="/panneaux"
           className={`flex flex-col items-center justify-center flex-1 py-1 transition-all ${
             isSignsActive
-              ? "text-[#F20D2F] font-bold"
-              : "text-[#64748B] hover:text-[#071A3D]"
+              ? "text-[#C1272D] font-bold"
+              : "text-[#5A6A82] hover:text-[#071A3D]"
           }`}
         >
           <TriangleAlert
@@ -135,8 +135,8 @@ export function MobileBottomNav({ hidden = false }: MobileBottomNavProps) {
           href="/profil"
           className={`flex flex-col items-center justify-center flex-1 py-1 transition-all ${
             isProfileActive
-              ? "text-[#F20D2F] font-bold"
-              : "text-[#64748B] hover:text-[#071A3D]"
+              ? "text-[#C1272D] font-bold"
+              : "text-[#5A6A82] hover:text-[#071A3D]"
           }`}
         >
           <User

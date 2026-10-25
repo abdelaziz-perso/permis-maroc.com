@@ -61,8 +61,8 @@ export function MobileCoursesView() {
             onClick={() => setActiveFilter(chip.id)}
             className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
               activeFilter === chip.id
-                ? "bg-[#F20D2F] text-white shadow-md shadow-red-500/20"
-                : "bg-white text-[#64748B] hover:text-[#071A3D] border border-[#E5ECF5]"
+                ? "bg-[#E30D2B] text-white shadow-md shadow-red-500/20"
+                : "bg-white text-[#5A6A82] hover:text-[#071A3D] border border-[#E5ECF5]"
             }`}
           >
             {chip.label}
@@ -106,7 +106,7 @@ export function MobileCoursesView() {
                   <h3 className="text-sm font-bold text-[#071A3D] truncate">
                     {title}
                   </h3>
-                  <span className="text-xs font-bold text-[#64748B]">
+                  <span className="text-xs font-bold text-[#5A6A82]">
                     {progress}%
                   </span>
                 </div>
@@ -124,7 +124,7 @@ export function MobileCoursesView() {
                 </div>
 
                 {/* Meta details */}
-                <div className="flex items-center gap-3 text-[11px] text-[#64748B]">
+                <div className="flex items-center gap-3 text-[11px] text-[#5A6A82]">
                   <span className="flex items-center gap-1">
                     <Clock className="w-3 h-3" />
                     <span>{estimatedMins} min</span>
@@ -144,7 +144,7 @@ export function MobileCoursesView() {
                     <Lock className="w-3.5 h-3.5" />
                   </div>
                 ) : (
-                  <div className="w-7 h-7 rounded-full bg-[#F6F9FD] flex items-center justify-center text-[#64748B]">
+                  <div className="w-7 h-7 rounded-full bg-[#F6F9FD] flex items-center justify-center text-[#5A6A82]">
                     <ChevronRight className="w-4 h-4 rtl:rotate-180" />
                   </div>
                 )}

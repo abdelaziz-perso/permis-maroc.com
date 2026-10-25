@@ -20,7 +20,7 @@ export function PackValueProps({ isArabic = false }: PackValuePropsProps) {
     <section className="py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-          <span className="text-xs font-bold text-[#F20D2F] uppercase tracking-wider">
+          <span className="text-xs font-bold text-[#C1272D] uppercase tracking-wider">
             {isArabic ? "مميزات الباك" : "Pourquoi choisir ce pack ?"}
           </span>
           <h2 className="text-2xl sm:text-3xl font-black text-[#071A3D] tracking-tight mt-1">
@@ -45,7 +45,7 @@ export function PackValueProps({ isArabic = false }: PackValuePropsProps) {
                   <h3 className="font-extrabold text-lg text-[#071A3D] mb-2">
                     {isArabic ? prop.titleAr : prop.title}
                   </h3>
-                  <p className="text-sm text-[#64748B] leading-relaxed font-normal">
+                  <p className="text-sm text-[#5A6A82] leading-relaxed font-normal">
                     {isArabic ? prop.descriptionAr : prop.description}
                   </p>
                 </div>

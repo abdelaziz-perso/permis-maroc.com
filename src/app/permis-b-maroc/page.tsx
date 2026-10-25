@@ -25,7 +25,7 @@ export default function PermisBMarocPage() {
 
           <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
             <div className="mb-10">
-              <span className="text-xs font-mono font-bold text-[#F20D2F] uppercase tracking-wider block mb-2">
+              <span className="text-xs font-mono font-bold text-[#C1272D] uppercase tracking-wider block mb-2">
                 Catégorie B • Tourisme & Utilitaires Légers
               </span>
               <h1 className="text-3xl sm:text-5xl font-black text-[#071A3D] tracking-tight mb-4 leading-tight">
@@ -57,7 +57,7 @@ export default function PermisBMarocPage() {
                 </p>
                 <Link
                   href="/examen-blanc"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-red-500/20"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-red-500/20"
                 >
                   <span>Passer un examen blanc Permis B</span>
                   <ArrowRight className="w-3.5 h-3.5 rtl:rotate-180" />

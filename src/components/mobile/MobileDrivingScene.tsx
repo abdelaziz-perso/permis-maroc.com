@@ -277,7 +277,7 @@ export function MobileDrivingScene() {
 
       {/* Mobile 3D Scene Interactive Controls */}
       <div className="absolute bottom-2.5 left-3 right-3 z-10 flex items-center justify-between pointer-events-auto">
-        <span className="px-2.5 py-1 rounded-lg bg-slate-950/80 text-white text-[10px] font-bold">
+        <span className="px-2.5 py-1 rounded-lg bg-[#020617]/95 backdrop-blur-sm text-white text-[10px] font-bold">
           {isArabic ? "مشهد 3D يتفاعل مع التمرير واللمس" : "3D Réactif au Scroll & Touch"}
         </span>
 
@@ -285,9 +285,10 @@ export function MobileDrivingScene() {
           <button
             type="button"
             onClick={() => setCameraClose(!cameraClose)}
-            className="px-2.5 py-1 rounded-lg bg-slate-950/85 text-white text-[10px] font-bold flex items-center gap-1"
+            aria-pressed={!cameraClose}
+            className="px-2.5 py-1.5 min-h-8 rounded-lg bg-[#020617]/95 backdrop-blur-sm text-white text-[10px] font-bold flex items-center gap-1"
           >
-            <Eye className="w-3 h-3 text-[#F20D2F]" />
+            <Eye className="w-3 h-3 text-[#C1272D]" />
             <span>{isArabic ? "تقريب" : "Zoom"}</span>
           </button>
           <button

@@ -41,7 +41,7 @@ export function MobileStickyPurchaseBar({
           <button
             type="button"
             onClick={onOpenOrder}
-            className="flex-1 max-w-[200px] py-3 px-4 rounded-2xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-red-500/25 active:scale-95 transition-all cursor-pointer"
+            className="flex-1 max-w-[200px] py-3 px-4 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs flex items-center justify-center gap-1.5 shadow-lg shadow-red-500/25 active:scale-95 transition-all cursor-pointer"
           >
             <span>{isArabic ? "طلب الباك" : "Obtenir le Pack"}</span>
             <ArrowRight className="w-4 h-4 rtl:rotate-180" />

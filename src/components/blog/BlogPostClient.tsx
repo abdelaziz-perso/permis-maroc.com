@@ -20,15 +20,15 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
           <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
             <Link
               href="/blog"
-              className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-[#071A3D] transition-colors mb-6"
+              className="inline-flex items-center gap-1.5 text-xs text-[#5A6A82] hover:text-[#071A3D] transition-colors mb-6"
             >
               <ArrowLeft className="w-4 h-4 rtl:rotate-180" />
               <span>Retour à tous les articles</span>
             </Link>
 
             <div className="mb-8">
-              <div className="flex items-center gap-3 text-xs text-slate-500 mb-3">
-                <span className="font-mono font-bold text-[#F20D2F] px-2.5 py-0.5 rounded-full bg-red-50 border border-red-100">
+              <div className="flex items-center gap-3 text-xs text-[#5A6A82] mb-3">
+                <span className="font-mono font-bold text-[#C1272D] px-2.5 py-0.5 rounded-full bg-red-50 border border-red-100">
                   {post.category}
                 </span>
                 <span>•</span>
@@ -87,7 +87,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
               </div>
               <Link
                 href="/examen-blanc"
-                className="px-5 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
+                className="px-5 py-2.5 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
               >
                 Faire un test
               </Link>

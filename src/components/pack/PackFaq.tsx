@@ -19,7 +19,7 @@ export function PackFaq({ isArabic = false }: PackFaqProps) {
     <section className="py-12 sm:py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-[#F20D2F] text-xs font-bold mb-3 border border-red-200">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-[#C1272D] text-xs font-bold mb-3 border border-red-200">
             <HelpCircle className="w-3.5 h-3.5" />
             <span>{isArabic ? "أسئلة شائعة" : "Questions Fréquentes"}</span>
           </div>
@@ -45,8 +45,8 @@ export function PackFaq({ isArabic = false }: PackFaqProps) {
                     {isArabic ? item.questionAr : item.question}
                   </span>
                   <div
-                    className={`w-7 h-7 rounded-full bg-[#F8FAFC] flex items-center justify-center text-[#64748B] shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-[#F20D2F]" : ""
+                    className={`w-7 h-7 rounded-full bg-[#F8FAFC] flex items-center justify-center text-[#5A6A82] shrink-0 transition-transform duration-200 ${
+                      isOpen ? "rotate-180 text-[#C1272D]" : ""
                     }`}
                   >
                     <ChevronDown className="w-4 h-4" />

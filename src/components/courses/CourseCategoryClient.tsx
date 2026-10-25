@@ -48,7 +48,7 @@ export function CourseCategoryClient({ category }: { category: CourseCategory })
           <Navbar />
 
           <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 w-full">
-            <div className="flex items-center gap-2 text-xs text-slate-500 mb-6">
+            <div className="flex items-center gap-2 text-xs text-[#5A6A82] mb-6">
               <Link href="/code-de-la-route" className="hover:text-[#071A3D] transition-colors">
                 Code de la Route
               </Link>
@@ -59,7 +59,7 @@ export function CourseCategoryClient({ category }: { category: CourseCategory })
             <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] mb-8 shadow-xs">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                 <div>
-                  <span className="text-xs font-mono font-bold text-[#F20D2F] uppercase tracking-wider block mb-1">
+                  <span className="text-xs font-mono font-bold text-[#C1272D] uppercase tracking-wider block mb-1">
                     Leçon {activeLessonIndex + 1} sur {category.lessons.length}
                   </span>
                   <h1 className="text-2xl sm:text-3xl font-black text-[#071A3D]">
@@ -72,7 +72,7 @@ export function CourseCategoryClient({ category }: { category: CourseCategory })
                   className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
                     isCompleted
                       ? "bg-emerald-50 border border-emerald-200 text-emerald-700"
-                      : "bg-[#F20D2F] hover:bg-[#d60b29] text-white shadow-md shadow-red-500/20"
+                      : "bg-[#E30D2B] hover:bg-[#D90B28] text-white shadow-md shadow-red-500/20"
                   }`}
                 >
                   <CheckCircle2 className="w-4 h-4" />
@@ -111,14 +111,14 @@ export function CourseCategoryClient({ category }: { category: CourseCategory })
               </div>
 
               <div className="p-6 rounded-2xl bg-red-50 border border-red-100">
-                <h3 className="text-sm font-bold text-[#F20D2F] uppercase tracking-wider mb-3 flex items-center gap-2">
-                  <AlertCircle className="w-4 h-4 text-[#F20D2F]" />
+                <h3 className="text-sm font-bold text-[#C1272D] uppercase tracking-wider mb-3 flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 text-[#C1272D]" />
                   <span>Règles d&apos;or à retenir pour l&apos;examen</span>
                 </h3>
                 <ul className="space-y-2">
                   {currentLesson.keyRules.map((rule, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#F20D2F] mt-2 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E30D2B] mt-2 shrink-0" />
                       <span>{rule}</span>
                     </li>
                   ))}
@@ -165,7 +165,7 @@ export function CourseCategoryClient({ category }: { category: CourseCategory })
                               {isCorrect ? (
                                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                               ) : (
-                                <span className="text-xs text-[#F20D2F] font-bold">Incorrect</span>
+                                <span className="text-xs text-[#C1272D] font-bold">Incorrect</span>
                               )}
                             </span>
                           )}
@@ -196,7 +196,7 @@ export function CourseCategoryClient({ category }: { category: CourseCategory })
                 {activeLessonIndex < category.lessons.length - 1 ? (
                   <button
                     onClick={handleNext}
-                    className="px-6 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all shadow-md shadow-red-500/20 cursor-pointer"
+                    className="px-6 py-2.5 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all shadow-md shadow-red-500/20 cursor-pointer"
                   >
                     <span>Leçon suivante</span>
                     <ChevronRight className="w-4 h-4 rtl:rotate-180" />

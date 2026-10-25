@@ -23,7 +23,7 @@ export function FeaturesGrid() {
       description: t.features.f1Desc,
       href: "/examen-blanc",
       tag: isArabic ? "40 سؤالاً" : "40 Questions",
-      color: "border-red-500/25 text-[#F20D2F] bg-red-50",
+      color: "border-red-500/25 text-[#C1272D] bg-red-50",
     },
     {
       icon: BookOpen,
@@ -56,7 +56,7 @@ export function FeaturesGrid() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 border border-[#E2E8F0] text-xs text-slate-700 font-bold mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-[#F20D2F]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#C1272D]" />
             <span>
               {isArabic
                 ? "منظومة تعليمية متكاملة"
@@ -66,7 +66,7 @@ export function FeaturesGrid() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#071A3D] tracking-tight mb-4">
             {t.features.title}
           </h2>
-          <p className="text-[#64748B] text-sm sm:text-base leading-relaxed">
+          <p className="text-[#5A6A82] text-sm sm:text-base leading-relaxed">
             {t.features.subtitle}
           </p>
         </div>
@@ -90,15 +90,15 @@ export function FeaturesGrid() {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-[#071A3D] mb-2 group-hover:text-[#F20D2F] transition-colors">
+                <h3 className="text-lg font-bold text-[#071A3D] mb-2 group-hover:text-[#C1272D] transition-colors">
                   {feat.title}
                 </h3>
-                <p className="text-[#64748B] text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+                <p className="text-[#5A6A82] text-xs sm:text-sm leading-relaxed mb-6 font-normal">
                   {feat.description}
                 </p>
               </div>
 
-              <div className="flex items-center gap-1.5 text-xs font-bold text-[#64748B] group-hover:text-[#071A3D] transition-colors pt-4 border-t border-[#F1F5F9]">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-[#5A6A82] group-hover:text-[#071A3D] transition-colors pt-4 border-t border-[#F1F5F9]">
                 <span>{isArabic ? "اكتشف المزيد" : "Découvrir"}</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1 transition-transform" />
               </div>

@@ -158,7 +158,7 @@ export function MobileTestView() {
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <Award className="w-7 h-7 text-amber-400 mb-0.5" />
               <span className="text-3xl font-black text-[#071A3D] tracking-tight">
-                {score} <span className="text-xl text-[#64748B]">/ {totalQuestions}</span>
+                {score} <span className="text-xl text-[#5A6A82]">/ {totalQuestions}</span>
               </span>
             </div>
           </div>
@@ -172,7 +172,7 @@ export function MobileTestView() {
               ? "استمر في التدريب 💪"
               : "Continue tes révisions !"}
           </h2>
-          <p className="text-xs sm:text-sm text-[#64748B] max-w-xs mx-auto mt-1 leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#5A6A82] max-w-xs mx-auto mt-1 leading-relaxed">
             {passed
               ? isArabic
                 ? "ممتاز ! أنت مستعد لاجتياز الامتحان الرسمي بنجاح."
@@ -185,7 +185,7 @@ export function MobileTestView() {
 
         {/* Theme breakdown section */}
         <div className="rounded-3xl bg-white border border-[#E5ECF5] p-5 shadow-sm space-y-4">
-          <h3 className="text-xs font-bold text-[#64748B] uppercase tracking-wider">
+          <h3 className="text-xs font-bold text-[#5A6A82] uppercase tracking-wider">
             {isArabic ? "نتائجك حسب المحور" : "Vos résultats par thème"}
           </h3>
 
@@ -223,7 +223,7 @@ export function MobileTestView() {
               setCurrentQuestionIndex(0);
               setSelectedAnswerId(null);
             }}
-            className="w-full py-3.5 px-4 rounded-2xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all cursor-pointer"
+            className="w-full py-3.5 px-4 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all cursor-pointer"
           >
             <span>{isArabic ? "مراجعة أخطائي" : "Revoir mes erreurs"}</span>
           </button>
@@ -237,7 +237,7 @@ export function MobileTestView() {
             }}
             className="w-full py-3.5 px-4 rounded-2xl bg-white hover:bg-slate-50 text-[#071A3D] font-bold text-sm flex items-center justify-center gap-2 border border-[#E5ECF5] active:scale-[0.98] transition-all cursor-pointer"
           >
-            <RotateCcw className="w-4 h-4 text-[#64748B]" />
+            <RotateCcw className="w-4 h-4 text-[#5A6A82]" />
             <span>{isArabic ? "إعادة الاختبار" : "Refaire un test"}</span>
           </button>
         </div>
@@ -261,8 +261,8 @@ export function MobileTestView() {
             )}
           </span>
         </div>
-        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-mono font-bold text-[#F20D2F]">
-          <Clock className="w-3.5 h-3.5 text-[#F20D2F]" />
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-mono font-bold text-[#C1272D]">
+          <Clock className="w-3.5 h-3.5 text-[#C1272D]" />
           <span>{formatTimer(secondsRemaining)}</span>
         </div>
       </div>
@@ -271,11 +271,11 @@ export function MobileTestView() {
       <div className="flex items-center gap-3">
         <div className="flex-1 h-2 rounded-full bg-[#E5ECF5] overflow-hidden">
           <div
-            className="h-full rounded-full bg-[#F20D2F] transition-all duration-300"
+            className="h-full rounded-full bg-[#E30D2B] transition-all duration-300"
             style={{ width: `${progressPercentage}%` }}
           />
         </div>
-        <span className="text-xs font-bold text-[#64748B]">
+        <span className="text-xs font-bold text-[#5A6A82]">
           {progressPercentage}%
         </span>
       </div>
@@ -285,7 +285,7 @@ export function MobileTestView() {
         {/* Driving perspective cockpit illustration */}
         <div className="absolute inset-0 flex flex-col justify-between p-3 pointer-events-none">
           <div className="flex justify-between items-start">
-            <span className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[10px] font-bold">
+            <span className="px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md text-white text-[10px] font-bold">
               Situation réelle • Intersection
             </span>
             <div className="w-8 h-8 rounded-full bg-[#DC2626] border-2 border-white flex items-center justify-center text-white text-[9px] font-black shadow-md">
@@ -330,7 +330,7 @@ export function MobileTestView() {
               <div
                 className={`w-8 h-8 rounded-xl font-black text-xs flex items-center justify-center shrink-0 transition-colors ${
                   isSelected
-                    ? "bg-[#F20D2F] text-white"
+                    ? "bg-[#E30D2B] text-white"
                     : "bg-[#F6F9FD] border border-[#E5ECF5] text-[#071A3D]"
                 }`}
               >
@@ -352,7 +352,7 @@ export function MobileTestView() {
           className={`p-3.5 rounded-2xl border transition-all cursor-pointer ${
             bookmarked
               ? "bg-amber-50 border-amber-300 text-amber-500"
-              : "bg-white border-[#E5ECF5] text-[#64748B] hover:text-[#071A3D]"
+              : "bg-white border-[#E5ECF5] text-[#5A6A82] hover:text-[#071A3D]"
           }`}
           aria-label="Enregistrer la question"
         >
@@ -364,7 +364,7 @@ export function MobileTestView() {
         {/* Large Primary Red CTA */}
         <button
           onClick={handleNext}
-          className="flex-1 py-3.5 px-5 rounded-2xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all cursor-pointer"
+          className="flex-1 py-3.5 px-5 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all cursor-pointer"
         >
           <span>
             {currentQuestionIndex >= totalQuestions - 1

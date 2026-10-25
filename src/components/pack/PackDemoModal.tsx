@@ -108,7 +108,7 @@ export function PackDemoModal({
 
           {/* Header */}
           <div className="flex items-center gap-2 mb-4">
-            <span className="px-2.5 py-0.5 rounded-full bg-red-500/20 border border-red-500/30 text-[#F20D2F] font-bold text-xs uppercase tracking-wider">
+            <span className="px-2.5 py-0.5 rounded-full bg-red-500/20 border border-red-500/30 text-[#C1272D] font-bold text-xs uppercase tracking-wider">
               {isArabic ? "دليل المنصة" : "Aperçu interactif"}
             </span>
             <span className="text-xs text-slate-400">
@@ -147,7 +147,7 @@ export function PackDemoModal({
                 onClick={() => setCurrentStep(idx)}
                 className={`h-2 rounded-full transition-all cursor-pointer ${
                   currentStep === idx
-                    ? "w-8 bg-[#F20D2F]"
+                    ? "w-8 bg-[#E30D2B]"
                     : "w-2 bg-slate-700 hover:bg-slate-600"
                 }`}
               />

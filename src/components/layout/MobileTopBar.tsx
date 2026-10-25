@@ -47,8 +47,8 @@ export function MobileTopBar({
             onClick={() => setLanguage("ar")}
             className={`px-2.5 py-1 text-[11px] font-bold rounded-full transition-all ${
               language === "ar"
-                ? "bg-[#F20D2F] text-white shadow-xs"
-                : "text-[#64748B]"
+                ? "bg-[#E30D2B] text-white shadow-xs"
+                : "text-[#5A6A82]"
             }`}
           >
             العربية
@@ -57,8 +57,8 @@ export function MobileTopBar({
             onClick={() => setLanguage("ary")}
             className={`px-2.5 py-1 text-[11px] font-bold rounded-full transition-all ${
               language === "ary"
-                ? "bg-[#F20D2F] text-white shadow-xs"
-                : "text-[#64748B]"
+                ? "bg-[#E30D2B] text-white shadow-xs"
+                : "text-[#5A6A82]"
             }`}
           >
             الدارجة
@@ -67,8 +67,8 @@ export function MobileTopBar({
             onClick={() => setLanguage("fr")}
             className={`px-2.5 py-1 text-[11px] font-bold rounded-full transition-all ${
               language === "fr"
-                ? "bg-[#F20D2F] text-white shadow-xs"
-                : "text-[#64748B]"
+                ? "bg-[#E30D2B] text-white shadow-xs"
+                : "text-[#5A6A82]"
             }`}
           >
             FR
@@ -102,8 +102,8 @@ export function MobileTopBar({
               onClick={() => setLanguage("ar")}
               className={`px-2 py-0.5 text-[10px] font-bold rounded-full transition-all ${
                 language === "ar"
-                  ? "bg-[#F20D2F] text-white"
-                  : "text-[#64748B]"
+                  ? "bg-[#E30D2B] text-white"
+                  : "text-[#5A6A82]"
               }`}
             >
               عربي
@@ -112,8 +112,8 @@ export function MobileTopBar({
               onClick={() => setLanguage("ary")}
               className={`px-2 py-0.5 text-[10px] font-bold rounded-full transition-all ${
                 language === "ary"
-                  ? "bg-[#F20D2F] text-white"
-                  : "text-[#64748B]"
+                  ? "bg-[#E30D2B] text-white"
+                  : "text-[#5A6A82]"
               }`}
             >
               دارجة
@@ -122,8 +122,8 @@ export function MobileTopBar({
               onClick={() => setLanguage("fr")}
               className={`px-2 py-0.5 text-[10px] font-bold rounded-full transition-all ${
                 language === "fr"
-                  ? "bg-[#F20D2F] text-white"
-                  : "text-[#64748B]"
+                  ? "bg-[#E30D2B] text-white"
+                  : "text-[#5A6A82]"
               }`}
             >
               FR

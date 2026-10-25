@@ -653,7 +653,7 @@ export function HeroRoadScene() {
       {hoveredLabel && (
         <div className="absolute top-16 left-1/2 -translate-x-1/2 z-30 pointer-events-none w-max max-w-[92%]">
           <div className="px-4 py-2 rounded-xl bg-slate-950/95 text-white border border-[#C1272D]/70 text-xs font-bold shadow-2xl flex items-center gap-2">
-            <span className="text-[#F20D2F] font-black">●</span>
+            <span className="text-[#C1272D] font-black">●</span>
             <span className="truncate">{hoveredLabel}</span>
           </div>
         </div>
@@ -664,7 +664,9 @@ export function HeroRoadScene() {
         <button
           type="button"
           onClick={() => setDockCollapsed(!dockCollapsed)}
-          className="px-3 py-1 rounded-t-xl bg-slate-950/90 border border-b-0 border-white/15 text-[11px] font-bold text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
+          aria-expanded={!dockCollapsed}
+          aria-label={dockCollapsed ? (isArabic ? "إظهار التحكم 3D" : "Afficher contrôles 3D") : (isArabic ? "إخفاء" : "Masquer")}
+          className="px-3 py-1.5 min-h-8 rounded-t-xl bg-slate-950/90 border border-b-0 border-white/15 text-[11px] font-bold text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"
         >
           {dockCollapsed ? (
             <>
@@ -686,9 +688,10 @@ export function HeroRoadScene() {
               <button
                 type="button"
                 onClick={() => setCameraPreset("overview")}
-                className={`px-2.5 py-1.5 rounded-xl text-[11px] font-bold transition-colors flex items-center gap-1 cursor-pointer whitespace-nowrap ${
+                aria-pressed={cameraPreset === "overview"}
+                className={`px-3 py-2 min-h-9 rounded-xl text-xs font-bold transition-colors flex items-center gap-1 cursor-pointer whitespace-nowrap ${
                   cameraPreset === "overview"
-                    ? "bg-[#F20D2F] text-white"
+                    ? "bg-[#E30D2B] text-white"
                     : "text-slate-300 hover:text-white hover:bg-slate-800"
                 }`}
               >
@@ -701,9 +704,10 @@ export function HeroRoadScene() {
                   setCameraPreset("car");
                   setHoveredLabel(signLabels.direction);
                 }}
-                className={`px-2.5 py-1.5 rounded-xl text-[11px] font-bold transition-colors flex items-center gap-1 cursor-pointer whitespace-nowrap ${
+                aria-pressed={cameraPreset === "car"}
+                className={`px-3 py-2 min-h-9 rounded-xl text-xs font-bold transition-colors flex items-center gap-1 cursor-pointer whitespace-nowrap ${
                   cameraPreset === "car"
-                    ? "bg-[#F20D2F] text-white"
+                    ? "bg-[#E30D2B] text-white"
                     : "text-slate-300 hover:text-white hover:bg-slate-800"
                 }`}
               >
@@ -716,9 +720,10 @@ export function HeroRoadScene() {
                   setCameraPreset("signs");
                   setHoveredLabel(signLabels.stop);
                 }}
-                className={`px-2.5 py-1.5 rounded-xl text-[11px] font-bold transition-colors flex items-center gap-1 cursor-pointer whitespace-nowrap ${
+                aria-pressed={cameraPreset === "signs"}
+                className={`px-3 py-2 min-h-9 rounded-xl text-xs font-bold transition-colors flex items-center gap-1 cursor-pointer whitespace-nowrap ${
                   cameraPreset === "signs"
-                    ? "bg-[#F20D2F] text-white"
+                    ? "bg-[#E30D2B] text-white"
                     : "text-slate-300 hover:text-white hover:bg-slate-800"
                 }`}
               >
@@ -734,8 +739,9 @@ export function HeroRoadScene() {
                 onClick={() =>
                   setTimeOfDay(timeOfDay === "day" ? "night" : "day")
                 }
-                className="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-white/10 text-[11px] font-bold text-slate-200 flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                className="px-3 py-2 min-h-9 rounded-xl bg-slate-900 hover:bg-slate-800 border border-white/10 text-xs font-bold text-slate-200 flex items-center gap-1 cursor-pointer whitespace-nowrap"
                 title={isArabic ? "تبديل النهار / الليل" : "Mode Jour / Nuit"}
+                aria-pressed={timeOfDay === "day"}
               >
                 {timeOfDay === "day" ? (
                   <>

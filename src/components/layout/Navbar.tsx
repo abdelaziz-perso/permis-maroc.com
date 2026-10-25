@@ -9,7 +9,6 @@ import { BrandLogo } from "@/components/ui/BrandLogo";
 import {
   Menu,
   X,
-  Globe,
   Flame,
   User as UserIcon,
   Award,
@@ -52,7 +51,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden xl:flex items-center gap-0.5 min-w-0">
           {navLinks.map((link) => {
             const isActive =
               link.href === "/"
@@ -63,20 +62,20 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
+                className={`px-2.5 py-2 rounded-xl text-[13px] font-semibold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
                   link.highlight
                     ? isActive
-                      ? "bg-[#F20D2F] text-white shadow-md shadow-red-600/20 font-bold"
-                      : "bg-red-50 text-[#F20D2F] border border-red-200 hover:bg-red-100 font-bold"
+                      ? "bg-[#E30D2B] text-white shadow-md shadow-red-600/20 font-bold"
+                      : "bg-red-50 text-[#C1272D] border border-red-200 hover:bg-red-100 font-bold"
                     : isActive
-                    ? "bg-red-50 text-[#F20D2F] font-bold"
+                    ? "bg-red-50 text-[#C1272D] font-bold"
                     : "text-[#475569] hover:text-[#071A3D] hover:bg-slate-100/80"
                 }`}
               >
                 {link.highlight && (
                   <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                 )}
-                {Icon && <Icon className="w-3.5 h-3.5 text-[#F20D2F]" />}
+                {Icon && <Icon className="w-3.5 h-3.5 text-[#C1272D]" />}
                 <span>{link.label}</span>
               </Link>
             );
@@ -84,12 +83,12 @@ export function Navbar() {
         </nav>
 
         {/* Right Side Controls */}
-        <div className="hidden md:flex items-center gap-3 shrink-0">
+        <div className="hidden xl:flex items-center gap-2 shrink-0">
           {/* Gamification XP & Streak Badge */}
           {stats && (
             <Link
               href="/dashboard"
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] hover:border-amber-400/50 transition-all text-xs"
+              className="hidden 2xl:flex items-center gap-2 px-2.5 py-1.5 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] hover:border-amber-400/50 transition-all text-xs"
               title={
                 isArabic
                   ? "تقدمك ونقاط الخبرة"
@@ -109,13 +108,12 @@ export function Navbar() {
           )}
 
           {/* Language Switcher: العربية | الدارجة | FR */}
-          <div className="flex items-center bg-[#F1F5F9] rounded-xl p-1 border border-[#E2E8F0]">
-            <Globe className="w-3.5 h-3.5 text-slate-500 mx-1.5" />
+          <div className="flex items-center bg-[#F1F5F9] rounded-xl p-1 border border-[#E2E8F0] min-h-9">
             <button
               onClick={() => setLanguage("ar")}
-              className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-2.5 py-1 text-xs font-bold rounded-lg min-h-8 transition-all cursor-pointer whitespace-nowrap ${
                 language === "ar"
-                  ? "bg-[#F20D2F] text-white shadow-xs"
+                  ? "bg-[#E30D2B] text-white shadow-xs"
                   : "text-slate-600 hover:text-[#071A3D]"
               }`}
             >
@@ -123,9 +121,9 @@ export function Navbar() {
             </button>
             <button
               onClick={() => setLanguage("ary")}
-              className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-2.5 py-1 text-xs font-bold rounded-lg min-h-8 transition-all cursor-pointer whitespace-nowrap ${
                 language === "ary"
-                  ? "bg-[#F20D2F] text-white shadow-xs"
+                  ? "bg-[#E30D2B] text-white shadow-xs"
                   : "text-slate-600 hover:text-[#071A3D]"
               }`}
               title="الدارجة المغربية"
@@ -134,9 +132,9 @@ export function Navbar() {
             </button>
             <button
               onClick={() => setLanguage("fr")}
-              className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all cursor-pointer whitespace-nowrap ${
+              className={`px-2.5 py-1 text-xs font-bold rounded-lg min-h-8 transition-all cursor-pointer whitespace-nowrap ${
                 language === "fr"
-                  ? "bg-[#F20D2F] text-white shadow-xs"
+                  ? "bg-[#E30D2B] text-white shadow-xs"
                   : "text-slate-600 hover:text-[#071A3D]"
               }`}
             >
@@ -147,34 +145,34 @@ export function Navbar() {
           {/* Dashboard Link */}
           <Link
             href="/dashboard"
-            className={`p-2 rounded-xl border transition-all ${
+            className={`p-2.5 rounded-xl border transition-all ${
               pathname === "/dashboard"
-                ? "bg-red-50 border-red-200 text-[#F20D2F]"
+                ? "bg-red-50 border-red-200 text-[#C1272D]"
                 : "bg-[#F8FAFC] border-[#E2E8F0] text-slate-600 hover:text-[#071A3D]"
             }`}
             aria-label={t.nav.dashboard}
             title={t.nav.dashboard}
           >
-            <UserIcon className="w-4 h-4" />
+            <UserIcon className="w-5 h-5" />
           </Link>
 
           {/* Primary CTA */}
           <Link
             href="/examen-blanc"
-            className="px-4 py-2 rounded-xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-xs sm:text-sm transition-all shadow-md shadow-red-500/20 active:scale-95 whitespace-nowrap shrink-0"
+            className="px-3.5 py-2 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs sm:text-sm min-h-9 transition-all shadow-md shadow-red-500/20 active:scale-95 whitespace-nowrap shrink-0"
           >
             {t.nav.takeTest}
           </Link>
         </div>
 
         {/* Mobile Hamburger Button */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 xl:hidden">
           <div className="flex items-center bg-[#F1F5F9] rounded-lg p-0.5 border border-[#E2E8F0]">
             <button
               onClick={() => setLanguage("ar")}
-              className={`px-2 py-1 text-[11px] font-bold rounded-md ${
+              className={`px-2 py-1.5 text-[11px] font-bold rounded-md min-h-8 ${
                 language === "ar"
-                  ? "bg-[#F20D2F] text-white"
+                  ? "bg-[#E30D2B] text-white"
                   : "text-slate-600"
               }`}
             >
@@ -182,9 +180,9 @@ export function Navbar() {
             </button>
             <button
               onClick={() => setLanguage("ary")}
-              className={`px-2 py-1 text-[11px] font-bold rounded-md ${
+              className={`px-2 py-1.5 text-[11px] font-bold rounded-md min-h-8 ${
                 language === "ary"
-                  ? "bg-[#F20D2F] text-white"
+                  ? "bg-[#E30D2B] text-white"
                   : "text-slate-600"
               }`}
             >
@@ -192,9 +190,9 @@ export function Navbar() {
             </button>
             <button
               onClick={() => setLanguage("fr")}
-              className={`px-2 py-1 text-[11px] font-bold rounded-md ${
+              className={`px-2 py-1.5 text-[11px] font-bold rounded-md min-h-8 ${
                 language === "fr"
-                  ? "bg-[#F20D2F] text-white"
+                  ? "bg-[#E30D2B] text-white"
                   : "text-slate-600"
               }`}
             >
@@ -204,7 +202,7 @@ export function Navbar() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-[#071A3D] hover:bg-slate-100"
+            className="p-2.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-[#071A3D] hover:bg-slate-100"
             aria-label="Menu"
           >
             {mobileMenuOpen ? (
@@ -229,9 +227,9 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-2.5 rounded-xl text-sm font-bold ${
+                className={`block px-4 py-3 min-h-11 rounded-xl text-sm font-bold ${
                   isActive
-                    ? "bg-red-50 text-[#F20D2F] border border-red-200"
+                    ? "bg-red-50 text-[#C1272D] border border-red-200"
                     : "text-[#334155] hover:bg-slate-50"
                 }`}
               >
@@ -242,7 +240,7 @@ export function Navbar() {
           <Link
             href="/dashboard"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-4 py-2.5 rounded-xl text-sm font-bold text-[#334155] hover:bg-slate-50"
+            className="block px-4 py-3 min-h-11 rounded-xl text-sm font-bold text-[#334155] hover:bg-slate-50"
           >
             {t.nav.dashboard}
           </Link>
@@ -250,7 +248,7 @@ export function Navbar() {
             <Link
               href="/examen-blanc"
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center py-3 rounded-xl bg-[#F20D2F] text-white font-bold text-sm shadow-lg shadow-red-500/20"
+              className="block w-full text-center py-3 rounded-xl bg-[#E30D2B] text-white font-bold text-sm shadow-lg shadow-red-500/20"
             >
               {t.nav.startFree}
             </Link>

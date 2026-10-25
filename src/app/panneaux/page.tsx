@@ -77,14 +77,14 @@ function RoadSignsContent() {
         <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 w-full">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#F20D2F] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#C1272D] mb-3">
             <ShieldAlert className="w-3.5 h-3.5" />
             <span>Signalisation Officielle</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-[#071A3D] tracking-tight mb-4">
             {t.signs.title}
           </h1>
-          <p className="text-[#64748B] text-sm sm:text-base leading-relaxed">
+          <p className="text-[#5A6A82] text-sm sm:text-base leading-relaxed">
             {t.signs.subtitle}
           </p>
         </div>
@@ -111,7 +111,7 @@ function RoadSignsContent() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all cursor-pointer ${
                   activeCategory === cat.id
-                    ? "bg-[#F20D2F] text-white shadow-md shadow-red-500/20"
+                    ? "bg-[#E30D2B] text-white shadow-md shadow-red-500/20"
                     : "bg-white text-slate-600 hover:text-[#071A3D] border border-[#E2E8F0] shadow-2xs"
                 }`}
               >
@@ -134,7 +134,7 @@ function RoadSignsContent() {
               >
                 {/* Top Code Badge & Bookmark */}
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-[#F8FAFC] text-[#64748B] border border-[#E2E8F0]">
+                  <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-lg bg-[#F8FAFC] text-[#5A6A82] border border-[#E2E8F0]">
                     {sign.code}
                   </span>
                   <button
@@ -160,10 +160,10 @@ function RoadSignsContent() {
 
                 {/* Name & Short description */}
                 <div className="mt-4">
-                  <h3 className="font-bold text-base text-[#071A3D] group-hover:text-[#F20D2F] transition-colors mb-1 line-clamp-1">
+                  <h3 className="font-bold text-base text-[#071A3D] group-hover:text-[#C1272D] transition-colors mb-1 line-clamp-1">
                     {sign.name}
                   </h3>
-                  <p className="text-xs text-[#64748B] line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-[#5A6A82] line-clamp-2 leading-relaxed">
                     {sign.description}
                   </p>
                 </div>
@@ -175,7 +175,7 @@ function RoadSignsContent() {
                     {sign.finePoints ? <span>-{sign.finePoints} pts</span> : null}
                   </div>
                 ) : (
-                  <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[11px] text-[#64748B]">
+                  <div className="mt-4 pt-3 border-t border-[#F1F5F9] text-[11px] text-[#5A6A82]">
                     Cliquez pour voir les conseils
                   </div>
                 )}
@@ -195,7 +195,7 @@ function RoadSignsContent() {
                 setActiveCategory("all");
                 setSearchQuery("");
               }}
-              className="mt-3 text-xs text-[#F20D2F] font-bold hover:underline"
+              className="mt-3 text-xs text-[#C1272D] font-bold hover:underline"
             >
               Réinitialiser les filtres
             </button>
@@ -208,7 +208,7 @@ function RoadSignsContent() {
             <div className="relative w-full max-w-lg rounded-3xl bg-white border border-[#E2E8F0] p-6 sm:p-8 shadow-2xl overflow-hidden">
               <button
                 onClick={() => setSelectedSign(null)}
-                className="absolute top-5 right-5 p-2 rounded-xl bg-slate-100 text-slate-500 hover:text-[#071A3D] hover:bg-slate-200 transition-colors cursor-pointer"
+                className="absolute top-5 right-5 p-2 rounded-xl bg-slate-100 text-[#5A6A82] hover:text-[#071A3D] hover:bg-slate-200 transition-colors cursor-pointer"
                 aria-label="Fermer"
               >
                 <X className="w-5 h-5" />
@@ -219,13 +219,13 @@ function RoadSignsContent() {
                   <RoadSignIcon iconName={selectedSign.svgIconName} size={72} />
                 </div>
                 <div>
-                  <span className="text-xs font-mono font-bold text-[#F20D2F] uppercase tracking-wider block mb-1">
+                  <span className="text-xs font-mono font-bold text-[#C1272D] uppercase tracking-wider block mb-1">
                     Code {selectedSign.code} • {selectedSign.category}
                   </span>
                   <h3 className="text-xl font-black text-[#071A3D] leading-tight">
                     {selectedSign.name}
                   </h3>
-                  <p className="text-xs text-[#64748B] font-arabic mt-1">
+                  <p className="text-xs text-[#5A6A82] font-arabic mt-1">
                     {selectedSign.nameAr}
                   </p>
                 </div>
@@ -276,7 +276,7 @@ function RoadSignsContent() {
 
               <button
                 onClick={() => setSelectedSign(null)}
-                className="w-full mt-6 py-3 rounded-2xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md shadow-red-500/20"
+                className="w-full mt-6 py-3 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs uppercase tracking-wider transition-colors cursor-pointer shadow-md shadow-red-500/20"
               >
                 {t.signs.close}
               </button>

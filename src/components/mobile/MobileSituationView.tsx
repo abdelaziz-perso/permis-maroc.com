@@ -256,7 +256,7 @@ export function MobileSituationView() {
           <span className="px-2.5 py-1 rounded-full bg-white/95 text-[11px] font-bold text-[#071A3D] shadow-sm">
             Situation 1 / 3
           </span>
-          <span className="px-2.5 py-1 rounded-full bg-[#F20D2F] text-[11px] font-bold text-white shadow-sm">
+          <span className="px-2.5 py-1 rounded-full bg-[#E30D2B] text-[11px] font-bold text-white shadow-sm">
             Intersection
           </span>
         </div>
@@ -267,7 +267,7 @@ export function MobileSituationView() {
         <h2 className="text-lg font-black text-[#071A3D]">
           {isArabic ? "شكون كيدوز الأول ؟" : "Qui passe en premier ?"}
         </h2>
-        <p className="text-xs text-[#64748B] mt-0.5">
+        <p className="text-xs text-[#5A6A82] mt-0.5">
           {isArabic
             ? "اضغط على السيارة التي تعتقد أن لها الأسبقية."
             : "Touchez le véhicule de votre choix."}
@@ -289,7 +289,7 @@ export function MobileSituationView() {
             🚗
           </div>
           <span className="text-sm font-bold text-[#071A3D]">Voiture A</span>
-          <span className="text-[11px] text-[#64748B]">Jaune</span>
+          <span className="text-[11px] text-[#5A6A82]">Jaune</span>
           {selectedVehicle === "A" && (
             <span className="mt-2 text-xs font-bold text-[#20C875] flex items-center gap-1">
               <CheckCircle2 className="w-3.5 h-3.5" /> Bonne réponse
@@ -310,9 +310,9 @@ export function MobileSituationView() {
             🚙
           </div>
           <span className="text-sm font-bold text-[#071A3D]">Voiture B</span>
-          <span className="text-[11px] text-[#64748B]">Bleue</span>
+          <span className="text-[11px] text-[#5A6A82]">Bleue</span>
           {selectedVehicle === "B" && (
-            <span className="mt-2 text-xs font-bold text-[#F20D2F] flex items-center gap-1">
+            <span className="mt-2 text-xs font-bold text-[#C1272D] flex items-center gap-1">
               <XCircle className="w-3.5 h-3.5" /> Mauvaise réponse
             </span>
           )}
@@ -353,7 +353,7 @@ export function MobileSituationView() {
               </button>
             </div>
 
-            <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed mb-4">
+            <p className="text-xs sm:text-sm text-[#5A6A82] leading-relaxed mb-4">
               {isArabic
                 ? "السيارة الصفراء A تمر أولاً لأن السيارة الزرقاء B أمامها علامة قف/ليس لكم حق الأسبقية. يجب على السيارة B التوقف التام وإعطاء الأسبقية للعربات القادمة من اليمين واليسار."
                 : "La Voiture A (jaune) passe en premier car la Voiture B (bleue) rencontre un panneau d'arrêt / Cédez le passage. Elle a donc l'obligation absolue de marquer un temps d'arrêt et de céder le passage avant de s'engager."}
@@ -361,7 +361,7 @@ export function MobileSituationView() {
 
             <button
               onClick={() => setShowExplanationSheet(false)}
-              className="w-full py-3 px-4 rounded-2xl bg-[#F20D2F] text-white text-xs font-bold shadow-md shadow-red-500/20 active:scale-98"
+              className="w-full py-3 px-4 rounded-2xl bg-[#E30D2B] text-white text-xs font-bold shadow-md shadow-red-500/20 active:scale-98"
             >
               {isArabic ? "فهمت القاعدة" : "J'ai compris"}
             </button>

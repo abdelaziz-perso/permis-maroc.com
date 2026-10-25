@@ -64,7 +64,7 @@ export default async function RoadSignDetailPage({ params }: Props) {
                   {sign.code ? `${sign.code} • ` : ""}
                   {sign.name}
                 </h1>
-                <span className="text-sm font-bold text-[#F20D2F] block mt-0.5">
+                <span className="text-sm font-bold text-[#C1272D] block mt-0.5">
                   {sign.category === "danger"
                     ? "Danger immédiat"
                     : sign.category === "interdiction"
@@ -73,18 +73,18 @@ export default async function RoadSignDetailPage({ params }: Props) {
                     ? "Arrêt ou priorité"
                     : "Indication officielle"}
                 </span>
-                <p className="text-xs sm:text-sm text-[#64748B] mt-2.5 leading-relaxed font-normal">
+                <p className="text-xs sm:text-sm text-[#5A6A82] mt-2.5 leading-relaxed font-normal">
                   {sign.description}
                 </p>
               </div>
 
               {/* Exemple en situation */}
               <div className="rounded-3xl bg-white border border-[#E5ECF5] p-4 shadow-sm space-y-3">
-                <h3 className="text-xs font-bold text-[#64748B] uppercase tracking-wider">
+                <h3 className="text-xs font-bold text-[#5A6A82] uppercase tracking-wider">
                   Exemple en situation
                 </h3>
                 <div className="w-full h-36 rounded-2xl bg-gradient-to-b from-sky-100 via-amber-50 to-slate-200 border border-slate-200 overflow-hidden relative flex items-center justify-center p-3">
-                  <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-bold">
+                  <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-[#020617]/90 backdrop-blur-sm text-white text-[10px] font-bold">
                     Route nationale
                   </div>
                   <div className="flex items-center gap-4">
@@ -113,7 +113,7 @@ export default async function RoadSignDetailPage({ params }: Props) {
               {/* CTA: Tester mes connaissances */}
               <Link
                 href="/examen-blanc"
-                className="w-full py-4 px-5 rounded-2xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all"
+                className="w-full py-4 px-5 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all"
               >
                 <span>Tester mes connaissances</span>
                 <ArrowRight className="w-4 h-4 rtl:rotate-180" />
@@ -128,7 +128,7 @@ export default async function RoadSignDetailPage({ params }: Props) {
           <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
             <Link
               href="/panneaux"
-              className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-[#071A3D] mb-6"
+              className="inline-flex items-center gap-2 text-xs font-semibold text-[#5A6A82] hover:text-[#071A3D] mb-6"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Retour à tous les panneaux</span>
@@ -145,7 +145,7 @@ export default async function RoadSignDetailPage({ params }: Props) {
               </div>
 
               <div className="flex-1">
-                <span className="text-xs font-bold text-[#F20D2F] uppercase tracking-wider">
+                <span className="text-xs font-bold text-[#C1272D] uppercase tracking-wider">
                   {sign.category}
                 </span>
                 <h1 className="text-3xl font-black text-[#071A3D] mt-1 mb-3">

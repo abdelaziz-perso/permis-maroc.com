@@ -104,7 +104,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#071A3D] antialiased selection:bg-[#F20D2F] selection:text-white font-sans">
+      <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#071A3D] antialiased selection:bg-[#E30D2B] selection:text-white font-sans">
         {children}
       </body>
     </html>

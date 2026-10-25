@@ -87,7 +87,7 @@ export function PackInteractivePreview({
         {/* Screen Content Container */}
         <div className="relative w-full rounded-[36px] bg-[#F8FAFC] text-slate-900 overflow-hidden min-h-[460px] flex flex-col font-sans pt-6">
           {/* Status Bar */}
-          <div className="px-5 pt-1.5 pb-2 flex items-center justify-between text-[11px] font-semibold text-slate-500 select-none">
+          <div className="px-5 pt-1.5 pb-2 flex items-center justify-between text-[11px] font-semibold text-[#5A6A82] select-none">
             <span>09:41</span>
             <div className="flex items-center gap-1.5">
               <span>5G</span>
@@ -127,7 +127,7 @@ export function PackInteractivePreview({
                   {/* Progress info */}
                   <div className="flex items-center justify-between text-[11px]">
                     <span className="font-bold text-slate-700">Question 14/40</span>
-                    <span className="text-slate-500 font-medium flex items-center gap-1">
+                    <span className="text-[#5A6A82] font-medium flex items-center gap-1">
                       <Clock className="w-3 h-3 text-red-500" /> 00:28s
                     </span>
                   </div>
@@ -380,7 +380,7 @@ export function PackInteractivePreview({
                     <div className="text-[13px] font-black text-slate-800">
                       {isArabic ? "مبروك ! الامتحان ناجح" : "Félicitations ! Examen validé"}
                     </div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">
+                    <div className="text-[10px] text-[#5A6A82] mt-0.5">
                       {isArabic
                         ? "المعدل المطلوب: 34/40 (أنت جاهز للامتحان)"
                         : "Score minimum requis : 34/40"}

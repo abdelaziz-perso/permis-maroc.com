@@ -41,14 +41,14 @@ export function QuickTestSection() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#F20D2F] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-bold text-[#C1272D] mb-3">
             <Sparkles className="w-3.5 h-3.5 text-amber-500" />
             <span>{t.quickTest.badge}</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#071A3D] tracking-tight mb-3">
             {t.quickTest.title}
           </h2>
-          <p className="text-[#64748B] text-sm sm:text-base leading-relaxed">
+          <p className="text-[#5A6A82] text-sm sm:text-base leading-relaxed">
             {t.quickTest.subtitle}
           </p>
         </div>
@@ -58,7 +58,7 @@ export function QuickTestSection() {
           {/* Top Progress Bar & Header */}
           <div className="px-6 py-4 bg-[#F8FAFC] border-b border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <span className="px-2.5 py-1 rounded-md bg-[#F20D2F] text-white text-xs font-mono font-bold tabular-nums">
+              <span className="px-2.5 py-1 rounded-md bg-[#E30D2B] text-white text-xs font-mono font-bold tabular-nums">
                 1 / 40
               </span>
               <span className="text-xs font-bold text-[#071A3D]">
@@ -221,7 +221,7 @@ export function QuickTestSection() {
             {/* Question & Options */}
             <div className="md:col-span-6 flex flex-col justify-between">
               <div>
-                <span className="text-xs font-bold text-[#F20D2F] tracking-wide block mb-1.5">
+                <span className="text-xs font-bold text-[#C1272D] tracking-wide block mb-1.5">
                   {isArabic
                     ? "مدونة السير المغربية • قواعد الأسبقية"
                     : "Code de la Route Marocain • Priorités"}
@@ -314,7 +314,7 @@ export function QuickTestSection() {
                   <p className="text-xs text-slate-700 leading-relaxed">
                     {explanationText}
                   </p>
-                  <span className="block mt-2 text-[10px] text-slate-500 font-mono">
+                  <span className="block mt-2 text-[10px] text-[#5A6A82] font-mono">
                     {isArabic
                       ? `المرجع القانوني: المادة 28 من القانون 52-05`
                       : `Réf : ${question.officialRef}`}
@@ -325,7 +325,7 @@ export function QuickTestSection() {
               {/* CTA to Full Exam */}
               <Link
                 href="/examen-blanc"
-                className="w-full py-3.5 px-4 rounded-2xl bg-[#F20D2F] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-red-500/25 active:scale-98"
+                className="w-full py-3.5 px-4 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-red-500/25 active:scale-98"
               >
                 <span>{t.quickTest.cta}</span>
                 <ArrowRight className="w-4 h-4 rtl:rotate-180" />
@@ -334,7 +334,7 @@ export function QuickTestSection() {
           </div>
 
           {/* Legal / Educational disclaimer */}
-          <div className="px-6 py-3.5 bg-[#F8FAFC] border-t border-[#E2E8F0] flex items-center gap-2 text-xs text-[#64748B]">
+          <div className="px-6 py-3.5 bg-[#F8FAFC] border-t border-[#E2E8F0] flex items-center gap-2 text-xs text-[#5A6A82]">
             <ShieldCheck className="w-4 h-4 text-[#20C875] shrink-0" />
             <span>{t.quickTest.disclaimer}</span>
           </div>

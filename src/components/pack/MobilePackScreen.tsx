@@ -36,7 +36,7 @@ export function MobilePackScreen({ isArabic = false }: MobilePackScreenProps) {
       {/* 1. Header & Price Badge */}
       <div className="rounded-3xl bg-white border border-[#E5ECF5] p-5 shadow-[0_4px_20px_rgba(7,26,61,0.04)] space-y-3">
         <div className="flex items-center justify-between">
-          <span className="px-2.5 py-1 rounded-lg bg-red-50 text-[#F20D2F] font-black text-[10px] uppercase tracking-wider">
+          <span className="px-2.5 py-1 rounded-lg bg-red-50 text-[#C1272D] font-black text-[10px] uppercase tracking-wider">
             {isArabic ? "باك شامل وكامل" : "PACK COMPLET"}
           </span>
           <span className="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-600 font-extrabold text-[11px]">
@@ -48,7 +48,7 @@ export function MobilePackScreen({ isArabic = false }: MobilePackScreenProps) {
           <h1 className="text-xl font-black text-[#071A3D] tracking-tight leading-snug">
             {isArabic ? revisionPackData.nameAr : revisionPackData.name}
           </h1>
-          <p className="text-xs text-[#64748B] mt-0.5 font-medium">
+          <p className="text-xs text-[#5A6A82] mt-0.5 font-medium">
             {isArabic ? revisionPackData.subtitleAr : revisionPackData.subtitle}
           </p>
         </div>
@@ -99,7 +99,7 @@ export function MobilePackScreen({ isArabic = false }: MobilePackScreenProps) {
             <span className="text-xs font-bold text-[#071A3D] leading-snug">
               {isArabic ? prop.titleAr : prop.title}
             </span>
-            <span className="text-[10px] text-[#64748B] leading-tight mt-1">
+            <span className="text-[10px] text-[#5A6A82] leading-tight mt-1">
               {isArabic ? prop.descriptionAr : prop.description}
             </span>
           </div>
@@ -126,7 +126,7 @@ export function MobilePackScreen({ isArabic = false }: MobilePackScreenProps) {
       {/* 6. FAQ Accordion */}
       <div className="rounded-3xl bg-white border border-[#E5ECF5] p-5 shadow-[0_4px_20px_rgba(7,26,61,0.04)] space-y-3">
         <h2 className="text-sm font-extrabold text-[#071A3D] flex items-center gap-1.5">
-          <HelpCircle className="w-4 h-4 text-[#F20D2F]" />
+          <HelpCircle className="w-4 h-4 text-[#C1272D]" />
           <span>{isArabic ? "الأسئلة الشائعة" : "Questions fréquentes"}</span>
         </h2>
         <div className="space-y-2">

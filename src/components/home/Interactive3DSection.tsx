@@ -24,7 +24,7 @@ export function Interactive3DSection() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-[#071A3D] tracking-tight mb-4">
             {t.interactive3dSection.title}
           </h2>
-          <p className="text-[#64748B] text-sm sm:text-base leading-relaxed">
+          <p className="text-[#5A6A82] text-sm sm:text-base leading-relaxed">
             {t.interactive3dSection.subtitle}
           </p>
 
@@ -36,7 +36,7 @@ export function Interactive3DSection() {
                 onClick={() => setActiveScenarioIndex(idx)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 cursor-pointer ${
                   activeScenarioIndex === idx
-                    ? "bg-[#F20D2F] text-white shadow-md shadow-red-500/20"
+                    ? "bg-[#E30D2B] text-white shadow-md shadow-red-500/20"
                     : "bg-white text-slate-600 hover:text-[#071A3D] border border-[#E2E8F0] shadow-2xs"
                 }`}
               >

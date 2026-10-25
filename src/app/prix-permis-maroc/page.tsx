@@ -38,13 +38,13 @@ export default function PrixPermisMarocPage() {
 
             {/* Estimated Total Price Banner */}
             <div className="p-8 rounded-3xl bg-white border border-[#E2E8F0] mb-10 shadow-sm text-center">
-              <span className="text-xs font-mono text-slate-500 uppercase tracking-widest block mb-2">
+              <span className="text-xs font-mono text-[#5A6A82] uppercase tracking-widest block mb-2">
                 Budget global moyen estimé (Permis B)
               </span>
               <div className="text-4xl sm:text-6xl font-black text-[#071A3D] mb-3">
-                3 350 <span className="text-2xl sm:text-3xl font-bold text-[#F20D2F]">MAD</span> – 4 350 <span className="text-2xl sm:text-3xl font-bold text-[#F20D2F]">MAD</span>
+                3 350 <span className="text-2xl sm:text-3xl font-bold text-[#C1272D]">MAD</span> – 4 350 <span className="text-2xl sm:text-3xl font-bold text-[#C1272D]">MAD</span>
               </div>
-              <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto">
+              <p className="text-xs sm:text-sm text-[#5A6A82] max-w-lg mx-auto">
                 Ce montant total comprend la formation légale minimale (40 heures), les taxes d&apos;examen d&apos;État et le certificat médical officiel.
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function PrixPermisMarocPage() {
               </div>
               <Link
                 href="/examen-blanc"
-                className="px-5 py-2.5 rounded-xl bg-[#F20D2F] hover:bg-[#d60b29] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
+                className="px-5 py-2.5 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs uppercase tracking-wider shrink-0 transition-all shadow-md shadow-red-500/20"
               >
                 Faire un test gratuit
               </Link>
