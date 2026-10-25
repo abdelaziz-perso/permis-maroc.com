@@ -23,9 +23,15 @@ export const metadata: Metadata = {
     "examen blanc maroc",
     "NARSA",
   ],
-  authors: [{ name: "Permis Maroc Team" }],
-  creator: "Permis Maroc",
+  authors: [
+    { name: "Permis Maroc" },
+    { name: "Darb Digital", url: "https://darbdigital.ma" },
+  ],
+  creator: "Darb Digital",
   publisher: "Permis Maroc",
+  other: {
+    "developer": "Darb Digital Solutions — https://darbdigital.ma",
+  },
   formatDetection: {
     email: false,
     address: false,

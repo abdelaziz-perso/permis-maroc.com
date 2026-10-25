@@ -24,11 +24,24 @@ export default function MentionsLegalesPage() {
               <p>
                 Permis-Maroc.com est un service éducatif en ligne indépendant destiné à la préparation des examens du Code de la Route au Maroc. Le site n&apos;est en aucun cas affilié, sponsorisé ou rattaché à l&apos;Agence Nationale de la Sécurité Routière (NARSA) ou au Ministère du Transport et de la Logistique marocain.
               </p>
-              <h2 className="text-lg font-bold text-[#071A3D]">2. Propriété intellectuelle</h2>
+              <h2 className="text-lg font-bold text-[#071A3D]">2. Conception & développement</h2>
+              <p>
+                Le site a été conçu et développé par{" "}
+                <a
+                  href="https://darbdigital.ma"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#F20D2F] font-semibold hover:underline"
+                >
+                  Darb Digital Solutions
+                </a>{" "}
+                (darbdigital.ma) — agence web, mobile, IA & automation basée au Maroc.
+              </p>
+              <h2 className="text-lg font-bold text-[#071A3D]">3. Propriété intellectuelle</h2>
               <p>
                 L&apos;ensemble des contenus, marques, logos, graphismes 3D, code source et architectures pédagogiques présents sur ce site sont protégés par les lois relatives à la propriété intellectuelle au Royaume du Maroc.
               </p>
-              <h2 className="text-lg font-bold text-[#071A3D]">3. Avertissement pédagogique</h2>
+              <h2 className="text-lg font-bold text-[#071A3D]">4. Avertissement pédagogique</h2>
               <p>
                 Les questions d&apos;entraînement, simulations 3D et tests proposés sont des outils d&apos;apprentissage conçus selon les principes de la Loi 52-05 et ne se substituent pas à la formation pratique et théorique obligatoire dispensée au sein d&apos;une auto-école agréée.
               </p>

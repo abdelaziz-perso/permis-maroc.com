@@ -13,6 +13,8 @@ export interface PdfResource {
   fileSize: string;
   downloads: string;
   updatedYear: string;
+  /** Real PDF served from /public/pdf */
+  pdfUrl: string;
   keySummaryFr: string[];
   keySummaryAr: string[];
   detailedContentFr: string;
@@ -47,9 +49,10 @@ export const moroccanPdfResources: PdfResource[] = [
     icon: "ShieldAlert",
     badgeFr: "Indispensable 100% Examen",
     badgeAr: "أساسي للامتحان 100%",
-    fileSize: "2.4 Mo",
+    fileSize: "15 Mo",
     downloads: "42 500+",
     updatedYear: "2026",
+    pdfUrl: "/pdf/guide-isharat-al-morour-2026.pdf",
     keySummaryFr: [
       "Panneaux triangulaires à bord rouge : Danger (positionnés à 50m en ville, 150m hors agglomération).",
       "Panneaux circulaires à bord rouge : Interdiction (application immédiate à hauteur du panneau).",
@@ -87,9 +90,10 @@ export const moroccanPdfResources: PdfResource[] = [
     icon: "Ruler",
     badgeFr: "Formules Examen",
     badgeAr: "معادلات الامتحان",
-    fileSize: "1.1 Mo",
+    fileSize: "547 Ko",
     downloads: "38 200+",
     updatedYear: "2026",
+    pdfUrl: "/pdf/hisab-al-masafat.pdf",
     keySummaryFr: [
       "Temps de réaction moyen : 1 seconde dans des conditions normales (augmente avec la fatigue, l'alcool ou le téléphone).",
       "Distance de réaction = Chiffre des dizaines de la vitesse multiplié par 3.",
@@ -149,9 +153,10 @@ export const moroccanPdfResources: PdfResource[] = [
     icon: "Scale",
     badgeFr: "Loi 52-05 Révisée",
     badgeAr: "مدونة السير 52-05",
-    fileSize: "1.8 Mo",
+    fileSize: "1.5 Mo",
     downloads: "29 100+",
     updatedYear: "2026",
+    pdfUrl: "/pdf/mukhalafat-darajat-examen.pdf",
     keySummaryFr: [
       "Capital initial : 20 points pendant la période probatoire (2 ans), puis 30 points pour le permis définitif.",
       "1ère classe (700 MAD) : Non-respect du feu rouge, sens interdit, dépassement dangereux, défaut de ceinture.",
@@ -209,9 +214,10 @@ export const moroccanPdfResources: PdfResource[] = [
     icon: "RotateCw",
     badgeFr: "Top Questions Examen",
     badgeAr: "أهم أسئلة الامتحان",
-    fileSize: "1.9 Mo",
+    fileSize: "946 Ko",
     downloads: "35 800+",
     updatedYear: "2026",
+    pdfUrl: "/pdf/qawaid-asbaqiya-multaqayat.pdf",
     keySummaryFr: [
       "Hiérarchie absolue : 1. Agent de police / Gendarme > 2. Feux tricolores > 3. Panneaux de priorité > 4. Priorité à droite par défaut.",
       "L'agent de profil = passage autorisé. L'agent de face ou de dos = arrêt obligatoire.",
@@ -249,9 +255,10 @@ export const moroccanPdfResources: PdfResource[] = [
     icon: "SquareParking",
     badgeFr: "Fiche Pratique",
     badgeAr: "بطاقة عملية",
-    fileSize: "1.3 Mo",
+    fileSize: "548 Ko",
     downloads: "24 700+",
     updatedYear: "2026",
+    pdfUrl: "/pdf/alamat-wuquf-tawaqquf.pdf",
     keySummaryFr: [
       "Arrêt : immobilisation momentanée pour faire monter/descendre un passager ou charger des bagages, conducteur reste au volant.",
       "Stationnement : immobilisation prolongée du véhicule avec le conducteur qui quitte son véhicule.",
@@ -289,9 +296,10 @@ export const moroccanPdfResources: PdfResource[] = [
     icon: "Lightbulb",
     badgeFr: "Essentiel Sécurité",
     badgeAr: "ضروري للسلامة",
-    fileSize: "1.4 Mo",
+    fileSize: "3.7 Mo",
     downloads: "28 300+",
     updatedYear: "2026",
+    pdfUrl: "/pdf/anwa-al-adwa-taqs.pdf",
     keySummaryFr: [
       "Feux de position (Veilleuses) : visibles à 150m, n'éclairent pas la route. Utilisés en ville éclairée.",
       "Feux de croisement (Codes) : éclairent à 30m au moins sans éblouir. Feux universels pour la pluie, le brouillard, les tunnels et la nuit.",
@@ -329,9 +337,10 @@ export const moroccanPdfResources: PdfResource[] = [
     icon: "HeartPulse",
     badgeFr: "Gestes qui Sauvent",
     badgeAr: "إسعافات أولية",
-    fileSize: "1.2 Mo",
+    fileSize: "390 Ko",
     downloads: "21 900+",
     updatedYear: "2026",
+    pdfUrl: "/pdf/isafat-awwaliya-haditha.pdf",
     keySummaryFr: [
       "Protocole P.A.S : 1. PROTÉGER (gilet, triangle de présignalisation à 30m ou 100m en virage) > 2. ALERTER > 3. SECOURIR.",
       "Numéros d'urgence : 15 (Protection Civile / SAMU), 177 (Gendarmerie Royale hors agglomération), 19 (Police en ville).",
@@ -369,9 +378,10 @@ export const moroccanPdfResources: PdfResource[] = [
     icon: "Wrench",
     badgeFr: "Contrôles Techniques",
     badgeAr: "فحص تقني",
-    fileSize: "1.7 Mo",
+    fileSize: "476 Ko",
     downloads: "26 400+",
     updatedYear: "2026",
+    pdfUrl: "/pdf/mikanik-al-sayara.pdf",
     keySummaryFr: [
       "Voyants ROUGES : Danger immédiat ! Obligation de s'arrêter dès que possible en toute sécurité (pression d'huile, température moteur, système de freinage).",
       "Voyants ORANGES : Avertissement technique qui nécessite un contrôle rapide sans arrêt immédiat (réserve de carburant, voyant moteur, préchauffage).",
@@ -409,9 +419,10 @@ export const moroccanPdfResources: PdfResource[] = [
     icon: "Milestone",
     badgeFr: "Marquages au Sol",
     badgeAr: "خطوط الطريق",
-    fileSize: "1.5 Mo",
+    fileSize: "544 Ko",
     downloads: "23 100+",
     updatedYear: "2026",
+    pdfUrl: "/pdf/tashwir-afqi.pdf",
     keySummaryFr: [
       "Ligne continue : Mur infranchissable ! Interdiction absolue de la franchir ou de la chevaucher.",
       "Ligne discontinue : Dépassement autorisé si la visibilité le permet.",
@@ -434,5 +445,46 @@ export const moroccanPdfResources: PdfResource[] = [
       "À la 1ère flèche de rabattement, vous devez commencer à vous rabattre à droite. À la 3ème flèche, tout dépassement est formellement interdit.",
     examTipsAr:
       "عند رؤية السهم الأول للانحياز يجب الشروع في الرجوع لليمين، وعند السهم الثالث يمنع أي تجاوز تماماً.",
+  },
+  {
+    id: "isharat-amudiya",
+    slug: "isharat-amudiya-signalisation-verticale-maroc-pdf",
+    titleFr: "Signalisation Verticale : Formes, Couleurs & Règles",
+    titleAr: "الإشارات العمودية: الأشكال والألوان والقواعد",
+    categoryFr: "Signalisation",
+    categoryAr: "الإشارات الطرقية",
+    descriptionFr:
+      "Fiche dédiée au code géométrique de la signalisation verticale marocaine : triangle danger, cercle interdiction/obligation, carré indication, et panneaux de fin.",
+    descriptionAr:
+      "ملخص مركز للتشوير العمودي المغربي: المثلث للخطر، الدائرة للمنع والإجبار، المربع للإرشاد، وعلامات نهاية المنع والإجبار.",
+    icon: "ShieldAlert",
+    badgeFr: "Code Forme & Couleur",
+    badgeAr: "شكل ولون الإشارة",
+    fileSize: "633 Ko",
+    downloads: "19 400+",
+    updatedYear: "2026",
+    pdfUrl: "/pdf/isharat-amudiya.pdf",
+    keySummaryFr: [
+      "6 familles : danger, interdiction, obligation, indication, fin d'interdiction, fin d'obligation.",
+      "Danger = triangle rouge avancé (50 m en ville / 150 m hors agglomération).",
+      "Interdiction = cercle rouge à effet immédiat jusqu'à la prochaine intersection ou panneau de fin.",
+      "Obligation = cercle bleu ; Indication = carré/rectangle bleu.",
+      "Référence visuelle alignée sur le catalogue 2026 des isharat al-morour bi-al-suwar.",
+    ],
+    keySummaryAr: [
+      "6 أصناف: خطر، منع، إجبار، إرشاد، نهاية المنع، نهاية الإجبار.",
+      "الخطر = مثلث أحمر متقدم (50م داخل المدينة / 150م خارجها).",
+      "المنع = دائرة حمراء مفعولها فوري حتى الملتقى أو علامة النهاية.",
+      "الإجبار = دائرة زرقاء ؛ الإرشاد = مربع/مستطيل أزرق.",
+      "مرجع بصري متوافق مع دليل إشارات المرور بالصور 2026.",
+    ],
+    detailedContentFr:
+      "La signalisation verticale est le langage immédiat du Code de la Route. Maîtriser la forme et la couleur permet de répondre rapidement aux questions d'examen NARSA sans hésitation.",
+    detailedContentAr:
+      "التشوير العمودي هو لغة قانون السير الفورية. إتقان الشكل واللون يمكّن المترشح من الإجابة بسرعة ودقة في امتحان نارسا.",
+    examTipsFr:
+      "Si l'énoncé parle d'une 'marque avancée', pensez toujours triangle rouge (danger). Si c'est une 'marque de position', pensez cercle (interdiction ou obligation).",
+    examTipsAr:
+      "إذا قال السؤال 'علامة متقدمة' فكّر في المثلث الأحمر (خطر). وإذا قال 'علامة وضعية' فكّر في الدائرة (منع أو إجبار).",
   },
 ];

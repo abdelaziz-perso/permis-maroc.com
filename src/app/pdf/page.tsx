@@ -81,19 +81,19 @@ export default function PdfResourcesPage() {
               </h1>
 
               <p className="text-sm sm:text-base text-[#475569] leading-relaxed max-w-2xl mx-auto font-normal">
-                Tous les résumés essentiels pour réviser l&apos;examen théorique NARSA : formules de calcul de distances, règles de priorité, tableau des amendes de la Loi 52-05 et feux en conditions difficiles.
+                Pack PDF 2026 : guide des isharat (170 signes / 6 familles), distances, priorités, amendes Loi 52-05, feux & météo, stationnement, mécanique et premiers secours.
               </p>
 
               {/* Trust badges */}
               <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mt-6 text-xs text-[#5A6A82] font-semibold">
                 <span className="flex items-center gap-1.5">
                   <DownloadCloud className="w-4 h-4 text-[#20C875]" />
-                  100% Gratuit & Imprimable
+                  10 PDF téléchargeables
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5">
                   <BookOpen className="w-4 h-4 text-blue-500" />
-                  Conforme Banque de Questions 2026
+                  170 isharat · 6 catégories
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1.5">
