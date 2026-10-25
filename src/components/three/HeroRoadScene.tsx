@@ -18,6 +18,11 @@ import {
   setupStudioEnvironment,
 } from "./sceneBuilders";
 import {
+  buildCarCurve,
+  carSpeedFactor,
+  carTurnSignal,
+} from "./carPathData";
+import {
   Pause,
   Play,
   Eye,
@@ -237,25 +242,7 @@ export function HeroRoadScene() {
     carWrapper.add(carInstance.group);
     world.add(carWrapper);
 
-    const curve = new THREE.CatmullRomCurve3(
-      [
-        new THREE.Vector3(7.2, 0.05, 0.85),
-        new THREE.Vector3(4.8, 0.05, 0.85),
-        new THREE.Vector3(2.6, 0.05, 0.82),
-        new THREE.Vector3(1.4, 0.05, 0.35),
-        new THREE.Vector3(0.0, 0.05, -1.95),
-        new THREE.Vector3(-1.95, 0.05, -0.2),
-        new THREE.Vector3(-1.4, 0.05, 1.4),
-        new THREE.Vector3(-0.4, 0.05, 2.3),
-        new THREE.Vector3(0.9, 0.05, 4.0),
-        new THREE.Vector3(0.9, 0.05, 6.2),
-        new THREE.Vector3(3.2, 0.05, 5.8),
-        new THREE.Vector3(6.2, 0.05, 3.4),
-      ],
-      true,
-      "centripetal",
-      0.5
-    );
+    const curve = buildCarCurve(0.05);
 
     const currentCamPos = new THREE.Vector3(...basePosition);
     const currentLookTarget = new THREE.Vector3(...targetLookAt);
@@ -373,14 +360,10 @@ export function HeroRoadScene() {
 
       if (!isPausedRef.current) {
         const u = progressU;
-        let speedFactor = 1.0 + scrollVelocityBoost;
-        if (u >= 0.12 && u <= 0.28) {
-          speedFactor = 0.52 + scrollVelocityBoost * 0.5;
-        } else if (u > 0.28 && u <= 0.6) {
-          speedFactor = 0.88 + scrollVelocityBoost * 0.7;
-        } else if (u > 0.6 && u <= 0.88) {
-          speedFactor = 1.32 + scrollVelocityBoost;
-        }
+        const speedFactor = Math.min(
+          carSpeedFactor(u) + scrollVelocityBoost * 0.6,
+          1.9
+        );
 
         const step = (delta * 0.075 * speedFactor) % 1;
         progressU = (progressU + step) % 1.0;
@@ -397,8 +380,7 @@ export function HeroRoadScene() {
           -0.45,
           0.45
         );
-        const turnSignal: "none" | "left" | "right" =
-          progressU >= 0.48 && progressU <= 0.74 ? "right" : "none";
+        const turnSignal: "none" | "left" | "right" = carTurnSignal(progressU);
 
         carWrapper.position.set(
           pos.x,
