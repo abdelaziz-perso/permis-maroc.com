@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { HeroRoadWrapper } from "@/components/three/HeroRoadWrapper";
 import {
@@ -16,11 +17,14 @@ import {
   HelpCircle,
   Languages,
   ShieldCheck,
+  Boxes,
+  Sparkles,
 } from "lucide-react";
 
 export function HeroSection() {
   const { language, t } = useLanguage();
   const isArabic = language === "ar" || language === "ary";
+  const [interactiveMode, setInteractiveMode] = useState(false);
 
   const featureCards = [
     {
@@ -219,9 +223,40 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* 3D Interactive Moroccan Driving Environment */}
-          <div className="lg:col-span-6 w-full h-[420px] sm:h-[490px] lg:h-[560px] relative z-10">
-            <HeroRoadWrapper />
+          {/* Hero visual: HD scene by default, optional live 3D */}
+          <div className="lg:col-span-6 relative w-full h-[420px] sm:h-[490px] lg:h-[560px] z-10 overflow-hidden rounded-3xl bg-[#DCE9F6] border border-[#E2E8F0]">
+            {!interactiveMode ? (
+              <>
+                <Image
+                  src="/images/hero.jpg"
+                  alt="Permis Maroc — scène de conduite 3D au Maroc"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center select-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => setInteractiveMode(true)}
+                  className="absolute bottom-3 right-3 z-20 px-3.5 py-2 rounded-xl bg-white/95 hover:bg-white text-[#071A3D] border border-[#E2E8F0] shadow-md text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer backdrop-blur-sm"
+                >
+                  <Boxes className="w-3.5 h-3.5 text-[#E30D2B]" />
+                  <span>{isArabic ? "تفعيل المشهد التفاعلي" : "Activer la 3D interactive"}</span>
+                </button>
+              </>
+            ) : (
+              <>
+                <HeroRoadWrapper />
+                <button
+                  type="button"
+                  onClick={() => setInteractiveMode(false)}
+                  className="absolute bottom-3 right-3 z-30 px-3.5 py-2 rounded-xl bg-white/95 hover:bg-white text-[#071A3D] border border-[#E2E8F0] shadow-md text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-[#2563EB]" />
+                  <span>{isArabic ? "عرض عالي الدقة" : "Vue Haute Définition"}</span>
+                </button>
+              </>
+            )}
           </div>
         </div>
 

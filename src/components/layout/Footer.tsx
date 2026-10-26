@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import { ShieldCheck, Heart } from "lucide-react";
+import { ShieldCheck, Heart, ExternalLink } from "lucide-react";
 
 export function Footer() {
   const { language, t } = useLanguage();
@@ -210,12 +210,27 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-[#E2E8F0] flex flex-col sm:flex-row items-center justify-between text-xs text-[#94A3B8] gap-4">
-          <p>
-            © {new Date().getFullYear()} PERMIS-MAROC.COM.{" "}
-            {isArabic ? "جميع الحقوق محفوظة." : "Tous droits réservés."}
-          </p>
-          <div className="flex items-center gap-4">
+        <div className="mt-10 pt-6 border-t border-[#E2E8F0] flex flex-col lg:flex-row items-center justify-between text-xs text-[#94A3B8] gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
+            <p>
+              © {new Date().getFullYear()} PERMIS-MAROC.COM.{" "}
+              {isArabic ? "جميع الحقوق محفوظة." : "Tous droits réservés."}
+            </p>
+            <span className="hidden sm:inline text-[#E2E8F0]">|</span>
+            <a
+              href="https://darbdigital.ma"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[#5A6A82] hover:text-[#071A3D] transition-colors font-medium"
+            >
+              <span>
+                {isArabic ? "تطوير الموقع بواسطة" : "Site développé par"}{" "}
+                <span className="text-[#071A3D] font-bold">Darb Digital</span>
+              </span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+          <div className="flex items-center gap-4 flex-wrap justify-center">
             <Link href="/mentions-legales" className="hover:text-[#071A3D]">
               {isArabic ? "إشعار قانوني" : "Mentions Légales"}
             </Link>
