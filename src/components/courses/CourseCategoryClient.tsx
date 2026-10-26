@@ -7,6 +7,8 @@ import { Footer } from "@/components/layout/Footer";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { LanguageProvider } from "@/lib/i18n/useLanguage";
 import { UserProvider, useUser } from "@/context/UserContext";
+import { AudioProvider } from "@/providers/AudioProvider";
+import { AudioPlayer } from "@/components/audio/AudioPlayer";
 import { CourseCategory } from "@/types/models";
 import {
   BookOpen,
@@ -41,9 +43,18 @@ export function CourseCategoryClient({ category }: { category: CourseCategory })
     }
   };
 
+  const lessonSpeech = [
+    currentLesson.title,
+    currentLesson.summary,
+    ...currentLesson.content,
+    "Règles d'or à retenir :",
+    ...currentLesson.keyRules,
+  ].join(" ");
+
   return (
     <LanguageProvider>
       <UserProvider>
+        <AudioProvider>
         <div className="min-h-screen flex flex-col bg-[#F8FAFC] text-[#071A3D]">
           <Navbar />
 
@@ -91,6 +102,13 @@ export function CourseCategoryClient({ category }: { category: CourseCategory })
             </div>
 
             <div className="space-y-6">
+              <AudioPlayer
+                id={`lesson-${currentLesson.id}`}
+                text={lessonSpeech}
+                language="fr"
+                title="Audio du cours"
+              />
+
               <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-2xs">
                 <h3 className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-amber-500" />
@@ -217,6 +235,7 @@ export function CourseCategoryClient({ category }: { category: CourseCategory })
           <Footer />
           <MobileBottomNav />
         </div>
+        </AudioProvider>
       </UserProvider>
     </LanguageProvider>
   );

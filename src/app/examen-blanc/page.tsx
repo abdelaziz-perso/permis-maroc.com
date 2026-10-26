@@ -9,6 +9,14 @@ import { MobileAppShell } from "@/components/layout/MobileAppShell";
 import { MobileTestView } from "@/components/mobile/MobileTestView";
 import { LanguageProvider, useLanguage } from "@/lib/i18n/useLanguage";
 import { UserProvider, useUser } from "@/context/UserContext";
+import { AudioProvider, useAudioOptional } from "@/providers/AudioProvider";
+import { AudioButton } from "@/components/audio/AudioButton";
+import { AudioStatus } from "@/components/audio/AudioStatus";
+import { AudioModeToggle } from "@/components/audio/AudioModeToggle";
+import {
+  buildQuestionSpeech,
+  mapUiLanguageToAudio,
+} from "@/lib/audio/speechBuilders";
 import { sampleQuestions, examConfigs } from "@/data/questions";
 import { LicenceCategory, Question, ExamResult, QuestionCategory } from "@/types/models";
 import {
@@ -30,15 +38,21 @@ export default function ExamPage() {
   return (
     <LanguageProvider>
       <UserProvider>
-        <ExamSimulator />
+        <AudioProvider>
+          <ExamSimulator />
+          <AudioStatus />
+        </AudioProvider>
       </UserProvider>
     </LanguageProvider>
   );
 }
 
 function ExamSimulator() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { recordExamResult } = useUser();
+  const audio = useAudioOptional();
+  const audioLang =
+    audio?.settings.audioLanguage ?? mapUiLanguageToAudio(language);
 
   const [category, setCategory] = useState<LicenceCategory>("B");
   const config = examConfigs[category];
@@ -160,7 +174,11 @@ function ExamSimulator() {
     <>
       {/* MOBILE APP TEST VIEW (< 768px) matching reference design */}
       <div className="block md:hidden">
-        <MobileAppShell title="Test permis B" hideBottomNav={true}>
+        <MobileAppShell
+          title="Test permis B"
+          hideBottomNav={true}
+          rightAction={<AudioModeToggle />}
+        >
           <MobileTestView />
         </MobileAppShell>
       </div>
@@ -248,9 +266,25 @@ function ExamSimulator() {
               <span className="text-xs font-bold text-[#C1272D] uppercase tracking-wider block mb-2">
                 Question {currentIndex + 1}
               </span>
-              <h2 className="text-xl sm:text-2xl font-black text-[#071A3D] mb-6 leading-snug">
+              <h2 className="text-xl sm:text-2xl font-black text-[#071A3D] mb-4 leading-snug">
                 {currentQ.question}
               </h2>
+              <div className="mb-6">
+                <AudioButton
+                  id={`exam-q-${currentQ.id}-${currentIndex}`}
+                  text={buildQuestionSpeech({
+                    question: currentQ,
+                    index: currentIndex + 1,
+                    total: config.totalQuestions,
+                    language: audioLang,
+                    includeAnswers: audio?.settings.autoReadAnswers ?? true,
+                  })}
+                  language={audioLang}
+                  label="Écouter la question"
+                  variant="ghost"
+                  size="sm"
+                />
+              </div>
 
               {/* Multiple Choice Options */}
               <div className="space-y-3.5 mb-8">
@@ -261,16 +295,20 @@ function ExamSimulator() {
                   return (
                     <button
                       key={answer.id}
-                      onClick={() => handleSelectAnswer(answer.id)}
-                      className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between cursor-pointer ${
+                      type="button"
+                      onClick={() => {
+                        audio?.stop();
+                        handleSelectAnswer(answer.id);
+                      }}
+                      className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F20D2F] ${
                         isSelected
                           ? "border-[#F20D2F] bg-red-50/60 text-[#071A3D] shadow-md shadow-red-500/10 ring-1 ring-[#F20D2F]"
                           : "border-[#E2E8F0] bg-white hover:bg-slate-50 text-[#071A3D]"
                       }`}
                     >
-                      <div className="flex items-center gap-3.5">
+                      <div className="flex items-center gap-3.5 min-w-0">
                         <span
-                          className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm ${
+                          className={`w-8 h-8 rounded-xl flex items-center justify-center font-bold text-sm shrink-0 ${
                             isSelected
                               ? "bg-[#E30D2B] text-white"
                               : "bg-slate-100 text-slate-700"
@@ -283,14 +321,27 @@ function ExamSimulator() {
                         </span>
                       </div>
 
-                      <div
-                        className={`w-5 h-5 rounded-full border flex items-center justify-center ${
-                          isSelected
-                            ? "border-[#F20D2F] bg-[#E30D2B]"
-                            : "border-slate-300 bg-transparent"
-                        }`}
-                      >
-                        {isSelected && <span className="w-2 h-2 rounded-full bg-white" />}
+                      <div className="flex items-center gap-2 shrink-0">
+                        <AudioButton
+                          id={`exam-ans-${currentQ.id}-${answer.id}`}
+                          text={`Réponse ${letters[index]}. ${answer.text}`}
+                          language={audioLang}
+                          variant="icon"
+                          size="sm"
+                          stopPropagation
+                          label={`Écouter la réponse ${letters[index]}`}
+                        />
+                        <div
+                          className={`w-5 h-5 rounded-full border flex items-center justify-center ${
+                            isSelected
+                              ? "border-[#F20D2F] bg-[#E30D2B]"
+                              : "border-slate-300 bg-transparent"
+                          }`}
+                        >
+                          {isSelected && (
+                            <span className="w-2 h-2 rounded-full bg-white" />
+                          )}
+                        </div>
                       </div>
                     </button>
                   );
@@ -301,7 +352,10 @@ function ExamSimulator() {
               <div className="flex items-center justify-between pt-6 border-t border-[#F1F5F9]">
                 <button
                   disabled={currentIndex === 0}
-                  onClick={() => setCurrentIndex((prev) => Math.max(0, prev - 1))}
+                  onClick={() => {
+                    audio?.stop();
+                    setCurrentIndex((prev) => Math.max(0, prev - 1));
+                  }}
                   className="px-4 py-2.5 rounded-xl border border-[#E2E8F0] bg-white hover:bg-slate-50 disabled:opacity-40 disabled:pointer-events-none text-xs font-bold text-[#071A3D] flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
                 >
                   <ChevronLeft className="w-4 h-4 rtl:rotate-180" />
@@ -310,7 +364,10 @@ function ExamSimulator() {
 
                 {currentIndex < config.totalQuestions - 1 ? (
                   <button
-                    onClick={() => setCurrentIndex((prev) => prev + 1)}
+                    onClick={() => {
+                      audio?.stop();
+                      setCurrentIndex((prev) => prev + 1);
+                    }}
                     className="px-6 py-2.5 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white text-xs sm:text-sm font-bold flex items-center gap-1.5 transition-all shadow-md shadow-red-500/20 cursor-pointer active:scale-95"
                   >
                     <span>{t.exam.next}</span>

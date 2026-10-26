@@ -51,6 +51,11 @@ export const sampleQuestions: Question[] = [
     question: "À cette intersection sans signalisation ni feux, qui a la priorité de passage ?",
     questionAr: "في هذا الملتقى بدون تشوير طرقي وبدون أضواء، من له حق الأسبقية في المرور؟",
     questionAry: "فهاد الكروازما لي ما فيها لا بلايك لا ضواو، شكون عندو حق يدوز الأول ؟",
+    audioDescription: {
+      fr: "Vous arrivez à une intersection sans panneaux ni feux. Observez les véhicules autour de vous. Qui doit passer en premier ?",
+      ar: "أنت تقترب من ملتقى طرق بدون إشارات أو أضواء. لاحظ المركبات من حولك. من يجب أن يمر أولاً؟",
+      darija: "راك وصلتي لكروازما بلا بلايك وبلا ضواو. شوف الشيرات لي حداك. شكون خاصو يدوز الأول؟",
+    },
     image: "/illustrations/intersection-priority-right.svg",
     imageType: "intersection",
     licenceCategory: "B",

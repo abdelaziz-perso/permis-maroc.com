@@ -8,6 +8,7 @@ import { SignGraphic } from "@/components/signs/SignGraphic";
 import { roadSigns } from "@/data/roadSigns";
 import { LanguageProvider } from "@/lib/i18n/useLanguage";
 import { UserProvider } from "@/context/UserContext";
+import { SignDetailAudio } from "@/components/audio/SignDetailAudio";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 
 export const dynamic = "force-static";
@@ -76,6 +77,7 @@ export default async function RoadSignDetailPage({ params }: Props) {
                 <p className="text-xs sm:text-sm text-[#5A6A82] mt-2.5 leading-relaxed font-normal">
                   {sign.description}
                 </p>
+                <SignDetailAudio sign={sign} />
               </div>
 
               {/* Exemple en situation */}

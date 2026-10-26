@@ -6,11 +6,17 @@ import { useLanguage } from "@/lib/i18n/useLanguage";
 import { roadSigns } from "@/data/roadSigns";
 import { RoadSign } from "@/types/models";
 import { SignGraphic } from "@/components/signs/SignGraphic";
+import { AudioButton } from "@/components/audio/AudioButton";
+import { buildSignSpeech, mapUiLanguageToAudio } from "@/lib/audio/speechBuilders";
+import { useAudioOptional } from "@/providers/AudioProvider";
 import { Search, X, ArrowLeft, ArrowRight } from "lucide-react";
 
 export function MobileSignsView() {
   const { language } = useLanguage();
+  const audio = useAudioOptional();
   const isArabic = language === "ar" || language === "ary";
+  const audioLang =
+    audio?.settings.audioLanguage ?? mapUiLanguageToAudio(language);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -97,6 +103,16 @@ export function MobileSignsView() {
           <p className="text-xs sm:text-sm text-[#5A6A82] mt-2.5 leading-relaxed font-normal">
             {signDesc}
           </p>
+          <div className="mt-3">
+            <AudioButton
+              id={`sign-${activeSignModal.id}`}
+              text={buildSignSpeech(activeSignModal, audioLang)}
+              language={audioLang}
+              label={isArabic ? "استمع للعلامة" : "Écouter"}
+              variant="ghost"
+              size="sm"
+            />
+          </div>
         </div>
 
         {/* Exemple en situation */}

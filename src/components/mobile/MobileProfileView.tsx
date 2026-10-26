@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { useUser } from "@/context/UserContext";
+import { AudioSettings } from "@/components/audio/AudioSettings";
 import {
   Settings,
   ChevronRight,
@@ -154,6 +155,9 @@ export function MobileProfileView() {
           );
         })}
       </div>
+
+      {/* Audio & accessibility settings */}
+      <AudioSettings />
 
       {/* 3. Native App Style List Rows matching reference */}
       <div className="rounded-3xl bg-white border border-[#E5ECF5] overflow-hidden divide-y divide-[#E5ECF5] shadow-sm">

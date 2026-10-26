@@ -1,35 +1,65 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import confetti from "canvas-confetti";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { useUser } from "@/context/UserContext";
 import { sampleQuestions } from "@/data/questions";
+import { AudioButton } from "@/components/audio/AudioButton";
+import { useAudioOptional } from "@/providers/AudioProvider";
+import {
+  buildCorrectionSpeech,
+  buildQuestionSpeech,
+  mapUiLanguageToAudio,
+} from "@/lib/audio/speechBuilders";
 import {
   Clock,
   Bookmark,
   ArrowRight,
   RotateCcw,
   Award,
+  CheckCircle2,
+  XCircle,
 } from "lucide-react";
 
 export function MobileTestView() {
   const { language } = useLanguage();
   const { recordExamResult } = useUser();
+  const audio = useAudioOptional();
   const isArabic = language === "ar" || language === "ary";
+  const audioLang = audio?.settings.audioLanguage ?? mapUiLanguageToAudio(language);
 
   // State
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(11); // Starting at Q12 for direct match to mockup
-  const [selectedAnswerId, setSelectedAnswerId] = useState<string | null>("b"); // B selected
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedAnswerId, setSelectedAnswerId] = useState<string | null>(null);
+  const [revealed, setRevealed] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
   const [secondsRemaining, setSecondsRemaining] = useState(1122); // 18:42
   const [isCompleted, setIsCompleted] = useState(false);
   const score = 35;
+  const autoReadToken = useRef(0);
 
   const totalQuestions = 40;
   const questionsList = sampleQuestions;
   const currentQuestion =
     questionsList[currentQuestionIndex % questionsList.length];
+
+  const situationText =
+    audioLang === "fr"
+      ? currentQuestion.audioDescription?.fr
+      : audioLang === "darija"
+        ? currentQuestion.audioDescription?.darija ||
+          currentQuestion.audioDescription?.ar
+        : currentQuestion.audioDescription?.ar;
+
+  const questionSpeech = buildQuestionSpeech({
+    question: currentQuestion,
+    index: currentQuestionIndex + 1,
+    total: totalQuestions,
+    language: audioLang,
+    includeAnswers: audio?.settings.autoReadAnswers ?? true,
+    situationText,
+  });
 
   // Timer countdown
   useEffect(() => {
@@ -40,13 +70,53 @@ export function MobileTestView() {
     return () => clearInterval(interval);
   }, [isCompleted]);
 
+  // Auto-read question when Audio Mode is on
+  useEffect(() => {
+    if (!audio?.settings.audioMode || !audio.settings.autoReadQuestions) return;
+    if (isCompleted || revealed) return;
+    const token = ++autoReadToken.current;
+    const t = window.setTimeout(() => {
+      if (token !== autoReadToken.current) return;
+      void audio.play({
+        id: `q-${currentQuestion.id}-${currentQuestionIndex}`,
+        text: questionSpeech,
+        language: audioLang,
+      });
+    }, 350);
+    return () => window.clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional on question change
+  }, [currentQuestionIndex, audio?.settings.audioMode]);
+
   const formatTimer = (totalSecs: number) => {
     const mins = Math.floor(totalSecs / 60);
     const secs = totalSecs % 60;
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   };
 
+  const handleSelectAnswer = (answerId: string) => {
+    if (revealed) return;
+    setSelectedAnswerId(answerId);
+    setRevealed(true);
+    audio?.stop();
+
+    if (audio?.settings.audioMode && audio.settings.autoReadCorrections) {
+      const correct = currentQuestion.answers.find((a) => a.isCorrect);
+      const isCorrect = correct?.id === answerId;
+      const speech = buildCorrectionSpeech({
+        question: currentQuestion,
+        isCorrect,
+        language: audioLang,
+      });
+      void audio.play({
+        id: `corr-${currentQuestion.id}-${currentQuestionIndex}`,
+        text: speech,
+        language: audioLang,
+      });
+    }
+  };
+
   const handleNext = () => {
+    audio?.stop();
     if (currentQuestionIndex >= totalQuestions - 1) {
       // Finish exam
       setIsCompleted(true);
@@ -82,6 +152,7 @@ export function MobileTestView() {
     } else {
       setCurrentQuestionIndex((prev) => prev + 1);
       setSelectedAnswerId(null);
+      setRevealed(false);
     }
   };
 
@@ -222,6 +293,7 @@ export function MobileTestView() {
               setIsCompleted(false);
               setCurrentQuestionIndex(0);
               setSelectedAnswerId(null);
+              setRevealed(false);
             }}
             className="w-full py-3.5 px-4 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all cursor-pointer"
           >
@@ -233,6 +305,7 @@ export function MobileTestView() {
               setIsCompleted(false);
               setCurrentQuestionIndex(0);
               setSelectedAnswerId(null);
+              setRevealed(false);
               setSecondsRemaining(1200);
             }}
             className="w-full py-3.5 px-4 rounded-2xl bg-white hover:bg-slate-50 text-[#071A3D] font-bold text-sm flex items-center justify-center gap-2 border border-[#E5ECF5] active:scale-[0.98] transition-all cursor-pointer"
@@ -300,38 +373,63 @@ export function MobileTestView() {
       </div>
 
       {/* Question Text */}
-      <div className="pt-1">
+      <div className="pt-1 space-y-3">
         <h2 className="text-base sm:text-lg font-black text-[#071A3D] leading-snug">
           {isArabic
             ? currentQuestion.questionAr || currentQuestion.question
             : currentQuestion.question}
         </h2>
+        <AudioButton
+          id={`q-${currentQuestion.id}-${currentQuestionIndex}`}
+          text={questionSpeech}
+          language={audioLang}
+          label={isArabic ? "استمع للسؤال" : "Écouter la question"}
+          playingLabel={isArabic ? "إيقاف مؤقت" : "Pause"}
+          variant="ghost"
+          size="sm"
+        />
       </div>
 
       {/* Answer Choice Cards (A, B, C) */}
-      <div className="space-y-2.5">
+      <div className="space-y-2.5" role="group" aria-label={isArabic ? "الإجابات" : "Réponses"}>
         {currentQuestion.answers.map((answer, idx) => {
           const letter = String.fromCharCode(65 + idx); // A, B, C...
           const isSelected = selectedAnswerId === answer.id;
           const answerText = isArabic ? answer.textAr || answer.text : answer.text;
+          const isCorrectAnswer = answer.isCorrect;
+          const showResult = revealed;
+          const answerSpeech =
+            (isArabic ? "الجواب" : "Réponse") +
+            ` ${letter}. ${answerText}`;
+
+          let cardClass =
+            "bg-white border-[#E5ECF5] hover:border-slate-300 text-[#071A3D]";
+          if (showResult && isCorrectAnswer) {
+            cardClass =
+              "bg-emerald-50 border-emerald-400 ring-1 ring-emerald-400 text-[#071A3D]";
+          } else if (showResult && isSelected && !isCorrectAnswer) {
+            cardClass =
+              "bg-red-50 border-[#F20D2F] ring-1 ring-[#F20D2F] text-[#071A3D]";
+          } else if (isSelected) {
+            cardClass =
+              "bg-red-50/70 border-[#F20D2F] shadow-sm ring-1 ring-[#F20D2F]";
+          }
 
           return (
             <button
               key={answer.id}
-              onClick={() => {
-                setSelectedAnswerId(answer.id);
-              }}
-              className={`w-full p-4 rounded-2xl border text-left rtl:text-right flex items-center gap-3.5 transition-all cursor-pointer ${
-                isSelected
-                  ? "bg-red-50/70 border-[#F20D2F] shadow-sm ring-1 ring-[#F20D2F]"
-                  : "bg-white border-[#E5ECF5] hover:border-slate-300 text-[#071A3D]"
-              }`}
+              type="button"
+              onClick={() => handleSelectAnswer(answer.id)}
+              disabled={revealed}
+              className={`w-full p-4 rounded-2xl border text-left rtl:text-right flex items-center gap-3.5 transition-all cursor-pointer disabled:cursor-default ${cardClass}`}
             >
               <div
                 className={`w-8 h-8 rounded-xl font-black text-xs flex items-center justify-center shrink-0 transition-colors ${
-                  isSelected
-                    ? "bg-[#E30D2B] text-white"
-                    : "bg-[#F6F9FD] border border-[#E5ECF5] text-[#071A3D]"
+                  showResult && isCorrectAnswer
+                    ? "bg-[#20C875] text-white"
+                    : isSelected
+                      ? "bg-[#E30D2B] text-white"
+                      : "bg-[#F6F9FD] border border-[#E5ECF5] text-[#071A3D]"
                 }`}
               >
                 {letter}
@@ -339,17 +437,83 @@ export function MobileTestView() {
               <span className="text-sm font-bold text-[#071A3D] flex-1">
                 {answerText}
               </span>
+              <AudioButton
+                id={`ans-${currentQuestion.id}-${answer.id}`}
+                text={answerSpeech}
+                language={audioLang}
+                variant="icon"
+                size="sm"
+                stopPropagation
+                label={`${isArabic ? "استمع للإجابة" : "Écouter la réponse"} ${letter}`}
+              />
             </button>
           );
         })}
       </div>
 
+      {/* Correction feedback */}
+      {revealed && selectedAnswerId && (
+        <div
+          className="p-4 rounded-2xl border border-[#E2E8F0] bg-white space-y-3"
+          aria-live="polite"
+        >
+          {(() => {
+            const correct = currentQuestion.answers.find((a) => a.isCorrect);
+            const isCorrect = correct?.id === selectedAnswerId;
+            return (
+              <>
+                <div
+                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold ${
+                    isCorrect
+                      ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                      : "bg-red-50 text-red-700 border border-red-200"
+                  }`}
+                >
+                  {isCorrect ? (
+                    <CheckCircle2 className="w-4 h-4" aria-hidden />
+                  ) : (
+                    <XCircle className="w-4 h-4" aria-hidden />
+                  )}
+                  <span>
+                    {isCorrect
+                      ? isArabic
+                        ? "إجابة صحيحة"
+                        : "Bonne réponse"
+                      : isArabic
+                        ? "إجابة خاطئة"
+                        : "Mauvaise réponse"}
+                  </span>
+                </div>
+                <p className="text-sm text-[#475569] leading-relaxed">
+                  {isArabic
+                    ? currentQuestion.explanationAr || currentQuestion.explanation
+                    : currentQuestion.explanation}
+                </p>
+                <AudioButton
+                  id={`corr-${currentQuestion.id}-${currentQuestionIndex}`}
+                  text={buildCorrectionSpeech({
+                    question: currentQuestion,
+                    isCorrect,
+                    language: audioLang,
+                  })}
+                  language={audioLang}
+                  label={isArabic ? "استمع للشرح" : "Écouter l'explication"}
+                  variant="ghost"
+                  size="sm"
+                />
+              </>
+            );
+          })()}
+        </div>
+      )}
+
       {/* Bottom Action Bar in Thumb Zone */}
       <div className="pt-2 flex items-center gap-3">
         {/* Bookmark Favorite Button */}
         <button
+          type="button"
           onClick={() => setBookmarked(!bookmarked)}
-          className={`p-3.5 rounded-2xl border transition-all cursor-pointer ${
+          className={`min-h-11 min-w-11 p-3.5 rounded-2xl border transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F20D2F] ${
             bookmarked
               ? "bg-amber-50 border-amber-300 text-amber-500"
               : "bg-white border-[#E5ECF5] text-[#5A6A82] hover:text-[#071A3D]"
@@ -363,8 +527,9 @@ export function MobileTestView() {
 
         {/* Large Primary Red CTA */}
         <button
+          type="button"
           onClick={handleNext}
-          className="flex-1 py-3.5 px-5 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all cursor-pointer"
+          className="flex-1 min-h-11 py-3.5 px-5 rounded-2xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-red-500/25 active:scale-[0.98] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F20D2F] focus-visible:ring-offset-2"
         >
           <span>
             {currentQuestionIndex >= totalQuestions - 1
@@ -372,8 +537,8 @@ export function MobileTestView() {
                 ? "إنهاء الاختبار"
                 : "Terminer le test"
               : isArabic
-              ? "السؤال الموالي"
-              : "Question suivante"}
+                ? "السؤال الموالي"
+                : "Question suivante"}
           </span>
           <ArrowRight className="w-4 h-4 rtl:rotate-180" />
         </button>

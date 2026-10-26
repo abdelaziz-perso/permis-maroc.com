@@ -23,6 +23,13 @@ export interface Answer {
   isCorrect: boolean;
 }
 
+/** Optional spoken description of a visual situation (must not reveal the answer). */
+export interface AudioDescription {
+  fr?: string;
+  ar?: string;
+  darija?: string;
+}
+
 export interface Question {
   id: string;
   category: QuestionCategory;
@@ -30,6 +37,11 @@ export interface Question {
   question: string;
   questionAr?: string;
   questionAry?: string;
+  /** Optional spoken text that may differ from visible UI text */
+  audioText?: string;
+  audioTextAr?: string;
+  audioTextAry?: string;
+  audioDescription?: AudioDescription;
   image?: string;
   imageType?: 'intersection' | 'road_sign' | 'highway' | 'night' | 'weather' | 'dashboard';
   answers: Answer[];

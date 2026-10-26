@@ -4,7 +4,9 @@ import React from "react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import { ShieldCheck, Heart, ExternalLink } from "lucide-react";
+import { ShieldCheck, Heart, ExternalLink, Video } from "lucide-react";
+
+const YOUTUBE_CHANNEL_URL = "https://www.youtube.com/@codeamraouimehdi";
 
 export function Footer() {
   const { language, t } = useLanguage();
@@ -35,6 +37,20 @@ export function Footer() {
                 ? "بيرمي المغرب (Permis-Maroc.com) هي منصة تعليمية خاصة ومستقلة عن الوكالة الوطنية للسلامة الطرقية (نارسا - NARSA). جميع الدروس والاختبارات مطابقة لمقتضيات القانون 52-05 المتعلق بمدونة السير على الطرق بالمغرب."
                 : "Permis-Maroc.com est un portail pédagogique privé indépendant de l'Agence Nationale de la Sécurité Routière (NARSA). Les contenus sont conformes aux principes de la Loi 52-05 portant Code de la Route au Maroc."}
             </div>
+            <a
+              href={YOUTUBE_CHANNEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[#FF0000]/8 hover:bg-[#FF0000] text-white text-xs font-bold transition-colors shadow-sm shadow-red-500/20"
+            >
+              <Video className="w-4 h-4" aria-hidden="true" />
+              <span>
+                {isArabic
+                  ? "قناتنا على يوتيوب — Code Amraoui Mehdi"
+                  : "Notre chaîne YouTube — Code Amraoui Mehdi"}
+              </span>
+              <ExternalLink className="w-3 h-3 opacity-80" aria-hidden="true" />
+            </a>
           </div>
 
           {/* Quick Links */}
