@@ -37,6 +37,19 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/favicon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+  },
   openGraph: {
     title: "بيرمي المغرب | Permis Maroc – تعليم السياقة وامتحانات رخصة السياقة 2026",
     description:
@@ -46,12 +59,21 @@ export const metadata: Metadata = {
     locale: "ar_MA",
     alternateLocale: ["fr_MA"],
     type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Permis Maroc",
+      },
+    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "بيرمي المغرب – انجح في امتحان السياقة من المرة الأولى",
     description:
       "المنصة التفاعلية الحديثة لتعلم قانون السير واجتياز امتحان رخصة السياقة بالمغرب.",
+    images: ["/logo.png"],
   },
   robots: {
     index: true,
@@ -75,7 +97,6 @@ export const metadata: Metadata = {
       "x-default": "https://permis-maroc.com",
     },
   },
-  manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",

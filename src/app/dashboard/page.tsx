@@ -8,6 +8,8 @@ import { MobileAppShell } from "@/components/layout/MobileAppShell";
 import { MobileProfileView } from "@/components/mobile/MobileProfileView";
 import { LanguageProvider, useLanguage } from "@/lib/i18n/useLanguage";
 import { UserProvider, useUser } from "@/context/UserContext";
+import { AuthProvider } from "@/providers/AuthProvider";
+import { AuthGuard } from "@/components/auth/AuthGuard";
 import { courseCategories } from "@/data/courses";
 import {
   Flame,
@@ -28,9 +30,13 @@ import {
 export default function DashboardPage() {
   return (
     <LanguageProvider>
-      <UserProvider>
-        <DashboardContent />
-      </UserProvider>
+      <AuthProvider>
+        <AuthGuard>
+          <UserProvider>
+            <DashboardContent />
+          </UserProvider>
+        </AuthGuard>
+      </AuthProvider>
     </LanguageProvider>
   );
 }

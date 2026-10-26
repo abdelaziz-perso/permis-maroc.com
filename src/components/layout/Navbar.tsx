@@ -6,11 +6,11 @@ import { usePathname } from "next/navigation";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { useUser } from "@/context/UserContext";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { AuthNavControls } from "@/components/auth/AuthNavControls";
 import {
   Menu,
   X,
   Flame,
-  User as UserIcon,
   Award,
   Sparkles,
   FileDown,
@@ -142,27 +142,7 @@ export function Navbar() {
             </button>
           </div>
 
-          {/* Dashboard Link */}
-          <Link
-            href="/dashboard"
-            className={`p-2.5 rounded-xl border transition-all ${
-              pathname === "/dashboard"
-                ? "bg-red-50 border-red-200 text-[#C1272D]"
-                : "bg-[#F8FAFC] border-[#E2E8F0] text-slate-600 hover:text-[#071A3D]"
-            }`}
-            aria-label={t.nav.dashboard}
-            title={t.nav.dashboard}
-          >
-            <UserIcon className="w-5 h-5" />
-          </Link>
-
-          {/* Primary CTA */}
-          <Link
-            href="/examen-blanc"
-            className="px-3.5 py-2 rounded-xl bg-[#E30D2B] hover:bg-[#D90B28] text-white font-bold text-xs sm:text-sm min-h-9 transition-all shadow-md shadow-red-500/20 active:scale-95 whitespace-nowrap shrink-0"
-          >
-            {t.nav.takeTest}
-          </Link>
+          <AuthNavControls />
         </div>
 
         {/* Mobile Hamburger Button */}
@@ -237,21 +217,8 @@ export function Navbar() {
               </Link>
             );
           })}
-          <Link
-            href="/dashboard"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-4 py-3 min-h-11 rounded-xl text-sm font-bold text-[#334155] hover:bg-slate-50"
-          >
-            {t.nav.dashboard}
-          </Link>
-          <div className="pt-2">
-            <Link
-              href="/examen-blanc"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center py-3 rounded-xl bg-[#E30D2B] text-white font-bold text-sm shadow-lg shadow-red-500/20"
-            >
-              {t.nav.startFree}
-            </Link>
+          <div className="pt-2" onClick={() => setMobileMenuOpen(false)}>
+            <AuthNavControls compact />
           </div>
         </div>
       )}

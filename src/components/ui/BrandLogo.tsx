@@ -62,7 +62,7 @@ export function BrandLogo({
     return (
       <div className={`inline-flex items-center gap-2.5 select-none ${className}`}>
         <Image
-          src="/images/logo-mark.png"
+          src="/images/logo-mark-square.png"
           alt=""
           width={dims.mark}
           height={dims.mark}
@@ -87,7 +87,7 @@ export function BrandLogo({
     return (
       <span className={`inline-flex items-center ${className}`}>
         <Image
-          src="/images/logo-mark.png"
+          src="/images/logo-mark-square.png"
           alt="Permis Maroc"
           width={dims.mark}
           height={dims.mark}

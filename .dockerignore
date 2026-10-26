@@ -1,0 +1,11 @@
+**/node_modules
+**/.next
+**/out
+**/.git
+**/vendor
+**/.env
+**/.env.*
+!**/.env.example
+**/.phpunit.result.cache
+**/storage/logs/*
+**/database/database.sqlite
