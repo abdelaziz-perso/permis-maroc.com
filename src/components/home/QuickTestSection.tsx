@@ -5,6 +5,11 @@ import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/useLanguage";
 import { sampleQuestions } from "@/data/questions";
 import {
+  localizedAnswerText,
+  localizedExplanationText,
+  localizedQuestionText,
+} from "@/lib/i18n/localizeContent";
+import {
   CheckCircle2,
   XCircle,
   ArrowRight,
@@ -22,19 +27,8 @@ export function QuickTestSection() {
   const selectedAnswer = question.answers.find((a) => a.id === selectedAnswerId);
   const isCorrect = selectedAnswer ? selectedAnswer.isCorrect : null;
 
-  const questionText =
-    language === "ary" && question.questionAry
-      ? question.questionAry
-      : isArabic && question.questionAr
-      ? question.questionAr
-      : question.question;
-
-  const explanationText =
-    language === "ary" && question.explanationAry
-      ? question.explanationAry
-      : isArabic && question.explanationAr
-      ? question.explanationAr
-      : question.explanation;
+  const questionText = localizedQuestionText(question, language);
+  const explanationText = localizedExplanationText(question, language);
 
   return (
     <section id="quick-test" className="py-16 lg:py-24 bg-[#F8FAFC] relative">
@@ -236,7 +230,7 @@ export function QuickTestSection() {
                     const letters = isArabic ? ["أ", "ب", "ج"] : ["A", "B", "C"];
                     const isSelected = selectedAnswerId === answer.id;
                     const answerLabel =
-                      isArabic && answer.textAr ? answer.textAr : answer.text;
+                      localizedAnswerText(answer, language);
 
                     let cardClass =
                       "border-[#E2E8F0] bg-white hover:bg-slate-50 hover:border-slate-300 text-[#071A3D]";

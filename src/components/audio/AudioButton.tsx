@@ -46,8 +46,10 @@ export function AudioButton({
   const isLoading = isCurrent && audio.status === "loading";
   const isError = isCurrent && audio.status === "error";
 
-  const defaultLabel = isArabic ? "استمع" : "Écouter";
-  const defaultPlaying = isArabic ? "إيقاف مؤقت" : "Pause";
+  const defaultLabel =
+    uiLang === "ary" ? "سمع" : uiLang === "ar" ? "استمع" : "Écouter";
+  const defaultPlaying =
+    uiLang === "ary" ? "وقف" : uiLang === "ar" ? "إيقاف مؤقت" : "Pause";
 
   const handleClick = async (e: React.MouseEvent) => {
     if (stopPropagation) {

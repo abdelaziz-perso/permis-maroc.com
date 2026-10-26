@@ -3,6 +3,11 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { Language } from "@/types/models";
 import { translations } from "./translations";
+import { mapUiLanguageToAudio } from "./localizeContent";
+import {
+  AUDIO_STORAGE_KEY,
+  DEFAULT_AUDIO_SETTINGS,
+} from "@/lib/audio/types";
 
 interface LanguageContextType {
   language: Language;
@@ -20,29 +25,52 @@ const LanguageContext = createContext<LanguageContextType>({
 
 const STORAGE_KEY = "permis_maroc_lang_v2";
 
+function syncAudioLanguage(lang: Language) {
+  try {
+    const raw = localStorage.getItem(AUDIO_STORAGE_KEY);
+    const current = raw
+      ? { ...DEFAULT_AUDIO_SETTINGS, ...JSON.parse(raw) }
+      : { ...DEFAULT_AUDIO_SETTINGS };
+    const nextLang = mapUiLanguageToAudio(lang);
+    if (current.audioLanguage === nextLang) return;
+    localStorage.setItem(
+      AUDIO_STORAGE_KEY,
+      JSON.stringify({ ...current, audioLanguage: nextLang })
+    );
+    window.dispatchEvent(
+      new CustomEvent("pm-audio-settings", {
+        detail: { audioLanguage: nextLang },
+      })
+    );
+  } catch {
+    /* ignore */
+  }
+}
+
+function readSavedLanguage(): Language {
+  if (typeof window === "undefined") return "ar";
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY) as Language | null;
+    if (saved === "ar" || saved === "ary" || saved === "fr") return saved;
+  } catch {
+    /* ignore */
+  }
+  return "ar";
+}
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  // Default language is Standard Arabic ("ar")
-  const [language, setLanguageState] = useState<Language>("ar");
+  const [language, setLanguageState] = useState<Language>(readSavedLanguage);
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY) as Language | null;
-    if (saved === "ar" || saved === "ary" || saved === "fr") {
-      setLanguageState(saved);
-      document.documentElement.dir =
-        saved === "ar" || saved === "ary" ? "rtl" : "ltr";
-      document.documentElement.lang = saved === "ary" ? "ar" : saved;
-    } else {
-      document.documentElement.dir = "rtl";
-      document.documentElement.lang = "ar";
-    }
-  }, []);
+    document.documentElement.dir =
+      language === "ar" || language === "ary" ? "rtl" : "ltr";
+    document.documentElement.lang = language === "ary" ? "ar" : language;
+    syncAudioLanguage(language);
+  }, [language]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem(STORAGE_KEY, lang);
-    document.documentElement.dir =
-      lang === "ar" || lang === "ary" ? "rtl" : "ltr";
-    document.documentElement.lang = lang === "ary" ? "ar" : lang;
   };
 
   const isRtl = language === "ar" || language === "ary";

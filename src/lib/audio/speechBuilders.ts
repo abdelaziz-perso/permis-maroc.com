@@ -1,56 +1,59 @@
-import type { Answer, Question, RoadSign } from "@/types/models";
+import type { Answer, Language, Question, RoadSign } from "@/types/models";
 import type { AudioLanguage } from "./types";
+import {
+  localizedAnswerText,
+  localizedExplanationText,
+  localizedQuestionText,
+  localizedSignAdvice,
+  localizedSignDescription,
+  localizedSignName,
+  mapUiLanguageToAudio,
+} from "@/lib/i18n/localizeContent";
 
-function uiLang(language: AudioLanguage): "fr" | "ar" | "ary" {
-  if (language === "fr") return "fr";
-  if (language === "darija") return "ary";
-  return "ar";
+export { mapUiLanguageToAudio };
+
+function toUiLang(language: AudioLanguage | Language): Language {
+  if (language === "darija" || language === "ary") return "ary";
+  if (language === "ar") return "ar";
+  return "fr";
 }
 
 export function questionTextFor(
   q: Question,
-  language: AudioLanguage
+  language: AudioLanguage | Language
 ): string {
-  const lang = uiLang(language);
-  if (lang === "ary") return q.questionAry || q.questionAr || q.question;
-  if (lang === "ar") return q.questionAr || q.question;
-  return q.question;
+  return localizedQuestionText(q, toUiLang(language));
 }
 
 export function answerTextFor(
   answer: Answer,
-  language: AudioLanguage
+  language: AudioLanguage | Language
 ): string {
-  const lang = uiLang(language);
-  if (lang === "ar" || lang === "ary") return answer.textAr || answer.text;
-  return answer.text;
+  return localizedAnswerText(answer, toUiLang(language));
 }
 
 export function explanationTextFor(
   q: Question,
-  language: AudioLanguage
+  language: AudioLanguage | Language
 ): string {
-  const lang = uiLang(language);
-  if (lang === "ary") return q.explanationAry || q.explanationAr || q.explanation;
-  if (lang === "ar") return q.explanationAr || q.explanation;
-  return q.explanation;
+  return localizedExplanationText(q, toUiLang(language));
 }
 
 export function buildQuestionSpeech(opts: {
   question: Question;
   index: number;
   total: number;
-  language: AudioLanguage;
+  language: AudioLanguage | Language;
   includeAnswers: boolean;
   situationText?: string;
 }): string {
-  const { question, index, total, language, includeAnswers, situationText } =
-    opts;
+  const { question, index, total, includeAnswers, situationText } = opts;
+  const ui = toUiLang(opts.language);
   const parts: string[] = [];
 
-  if (language === "fr") {
+  if (ui === "fr") {
     parts.push(`Question ${index} sur ${total}.`);
-  } else if (language === "darija") {
+  } else if (ui === "ary") {
     parts.push(`السؤال ${index} من ${total}.`);
   } else {
     parts.push(`السؤال ${index} من ${total}.`);
@@ -60,18 +63,18 @@ export function buildQuestionSpeech(opts: {
     parts.push(situationText.trim());
   }
 
-  parts.push(questionTextFor(question, language));
+  parts.push(localizedQuestionText(question, ui));
 
   if (includeAnswers) {
     question.answers.forEach((answer, i) => {
       const letter = String.fromCharCode(65 + i);
       const label =
-        language === "fr"
+        ui === "fr"
           ? `Réponse ${letter}.`
-          : language === "darija"
+          : ui === "ary"
             ? `الجواب ${letter}.`
             : `الإجابة ${letter}.`;
-      parts.push(`${label} ${answerTextFor(answer, language)}`);
+      parts.push(`${label} ${localizedAnswerText(answer, ui)}`);
     });
   }
 
@@ -81,15 +84,16 @@ export function buildQuestionSpeech(opts: {
 export function buildCorrectionSpeech(opts: {
   question: Question;
   isCorrect: boolean;
-  language: AudioLanguage;
+  language: AudioLanguage | Language;
 }): string {
-  const { question, isCorrect, language } = opts;
+  const { question, isCorrect } = opts;
+  const ui = toUiLang(opts.language);
   const verdict =
-    language === "fr"
+    ui === "fr"
       ? isCorrect
         ? "Bonne réponse."
         : "Ce n'est pas la bonne réponse."
-      : language === "darija"
+      : ui === "ary"
         ? isCorrect
           ? "جواب صحيح."
           : "هاد الجواب ماشي صحيح."
@@ -97,31 +101,20 @@ export function buildCorrectionSpeech(opts: {
           ? "إجابة صحيحة."
           : "هذه ليست الإجابة الصحيحة.";
 
-  return `${verdict} ${explanationTextFor(question, language)}`;
+  return `${verdict} ${localizedExplanationText(question, ui)}`;
 }
 
 export function buildSignSpeech(
   sign: RoadSign,
-  language: AudioLanguage
+  language: AudioLanguage | Language
 ): string {
-  const name = language === "fr" ? sign.name : sign.nameAr;
-  const description =
-    language === "fr" ? sign.description : sign.descriptionAr;
-  const advice =
-    language === "fr"
-      ? sign.advice
-      : sign.adviceAr || sign.advice;
+  const ui = toUiLang(language);
+  const name = localizedSignName(sign, ui);
+  const description = localizedSignDescription(sign, ui);
+  const advice = localizedSignAdvice(sign, ui);
 
-  if (language === "fr") {
+  if (ui === "fr") {
     return `Panneau ${name}. ${description} ${advice}`;
   }
   return `علامة ${name}. ${description} ${advice}`;
-}
-
-export function mapUiLanguageToAudio(
-  language: "fr" | "ar" | "ary"
-): AudioLanguage {
-  if (language === "fr") return "fr";
-  if (language === "ary") return "darija";
-  return "ar";
 }

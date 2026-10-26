@@ -10,8 +10,18 @@ import { useAudioOptional } from "@/providers/AudioProvider";
 import {
   buildCorrectionSpeech,
   buildQuestionSpeech,
-  mapUiLanguageToAudio,
 } from "@/lib/audio/speechBuilders";
+import {
+  answerSpeechPrefix,
+  listenAnswerLabel,
+  listenExplanationLabel,
+  listenQuestionLabel,
+  localizedAnswerText,
+  localizedExplanationText,
+  localizedQuestionText,
+  localizedSituationText,
+  mapUiLanguageToAudio,
+} from "@/lib/i18n/localizeContent";
 import {
   Clock,
   Bookmark,
@@ -23,11 +33,11 @@ import {
 } from "lucide-react";
 
 export function MobileTestView() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const { recordExamResult } = useUser();
   const audio = useAudioOptional();
   const isArabic = language === "ar" || language === "ary";
-  const audioLang = audio?.settings.audioLanguage ?? mapUiLanguageToAudio(language);
+  const audioLang = mapUiLanguageToAudio(language);
 
   // State
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -44,13 +54,7 @@ export function MobileTestView() {
   const currentQuestion =
     questionsList[currentQuestionIndex % questionsList.length];
 
-  const situationText =
-    audioLang === "fr"
-      ? currentQuestion.audioDescription?.fr
-      : audioLang === "darija"
-        ? currentQuestion.audioDescription?.darija ||
-          currentQuestion.audioDescription?.ar
-        : currentQuestion.audioDescription?.ar;
+  const situationText = localizedSituationText(currentQuestion, language);
 
   const questionSpeech = buildQuestionSpeech({
     question: currentQuestion,
@@ -70,22 +74,28 @@ export function MobileTestView() {
     return () => clearInterval(interval);
   }, [isCompleted]);
 
+  // Stop playback when the UI language changes so the next read uses the new locale
+  useEffect(() => {
+    audio?.stop();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- only on language switch
+  }, [language]);
+
   // Auto-read question when Audio Mode is on
   useEffect(() => {
     if (!audio?.settings.audioMode || !audio.settings.autoReadQuestions) return;
     if (isCompleted || revealed) return;
     const token = ++autoReadToken.current;
-    const t = window.setTimeout(() => {
+    const timer = window.setTimeout(() => {
       if (token !== autoReadToken.current) return;
       void audio.play({
-        id: `q-${currentQuestion.id}-${currentQuestionIndex}`,
+        id: `q-${currentQuestion.id}-${currentQuestionIndex}-${language}`,
         text: questionSpeech,
         language: audioLang,
       });
     }, 350);
-    return () => window.clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional on question change
-  }, [currentQuestionIndex, audio?.settings.audioMode]);
+    return () => window.clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional on question/language change
+  }, [currentQuestionIndex, audio?.settings.audioMode, language]);
 
   const formatTimer = (totalSecs: number) => {
     const mins = Math.floor(totalSecs / 60);
@@ -375,16 +385,16 @@ export function MobileTestView() {
       {/* Question Text */}
       <div className="pt-1 space-y-3">
         <h2 className="text-base sm:text-lg font-black text-[#071A3D] leading-snug">
-          {isArabic
-            ? currentQuestion.questionAr || currentQuestion.question
-            : currentQuestion.question}
+          {localizedQuestionText(currentQuestion, language)}
         </h2>
         <AudioButton
           id={`q-${currentQuestion.id}-${currentQuestionIndex}`}
           text={questionSpeech}
           language={audioLang}
-          label={isArabic ? "استمع للسؤال" : "Écouter la question"}
-          playingLabel={isArabic ? "إيقاف مؤقت" : "Pause"}
+          label={listenQuestionLabel(language)}
+          playingLabel={
+            language === "ary" ? "وقف" : language === "ar" ? "إيقاف مؤقت" : "Pause"
+          }
           variant="ghost"
           size="sm"
         />
@@ -395,12 +405,10 @@ export function MobileTestView() {
         {currentQuestion.answers.map((answer, idx) => {
           const letter = String.fromCharCode(65 + idx); // A, B, C...
           const isSelected = selectedAnswerId === answer.id;
-          const answerText = isArabic ? answer.textAr || answer.text : answer.text;
+          const answerText = localizedAnswerText(answer, language);
           const isCorrectAnswer = answer.isCorrect;
           const showResult = revealed;
-          const answerSpeech =
-            (isArabic ? "الجواب" : "Réponse") +
-            ` ${letter}. ${answerText}`;
+          const answerSpeech = `${answerSpeechPrefix(language, letter)} ${answerText}`;
 
           let cardClass =
             "bg-white border-[#E5ECF5] hover:border-slate-300 text-[#071A3D]";
@@ -444,7 +452,7 @@ export function MobileTestView() {
                 variant="icon"
                 size="sm"
                 stopPropagation
-                label={`${isArabic ? "استمع للإجابة" : "Écouter la réponse"} ${letter}`}
+                label={listenAnswerLabel(language, letter)}
               />
             </button>
           );
@@ -475,19 +483,11 @@ export function MobileTestView() {
                     <XCircle className="w-4 h-4" aria-hidden />
                   )}
                   <span>
-                    {isCorrect
-                      ? isArabic
-                        ? "إجابة صحيحة"
-                        : "Bonne réponse"
-                      : isArabic
-                        ? "إجابة خاطئة"
-                        : "Mauvaise réponse"}
+                    {isCorrect ? t.exam.correctAnswer : t.exam.wrongAnswer}
                   </span>
                 </div>
                 <p className="text-sm text-[#475569] leading-relaxed">
-                  {isArabic
-                    ? currentQuestion.explanationAr || currentQuestion.explanation
-                    : currentQuestion.explanation}
+                  {localizedExplanationText(currentQuestion, language)}
                 </p>
                 <AudioButton
                   id={`corr-${currentQuestion.id}-${currentQuestionIndex}`}
@@ -497,7 +497,7 @@ export function MobileTestView() {
                     language: audioLang,
                   })}
                   language={audioLang}
-                  label={isArabic ? "استمع للشرح" : "Écouter l'explication"}
+                  label={listenExplanationLabel(language)}
                   variant="ghost"
                   size="sm"
                 />
@@ -518,7 +518,7 @@ export function MobileTestView() {
               ? "bg-amber-50 border-amber-300 text-amber-500"
               : "bg-white border-[#E5ECF5] text-[#5A6A82] hover:text-[#071A3D]"
           }`}
-          aria-label="Enregistrer la question"
+          aria-label={t.exam.question}
         >
           <Bookmark
             className={`w-5 h-5 ${bookmarked ? "fill-amber-500" : ""}`}
@@ -533,12 +533,8 @@ export function MobileTestView() {
         >
           <span>
             {currentQuestionIndex >= totalQuestions - 1
-              ? isArabic
-                ? "إنهاء الاختبار"
-                : "Terminer le test"
-              : isArabic
-                ? "السؤال الموالي"
-                : "Question suivante"}
+              ? t.exam.endTest
+              : t.exam.nextQuestion}
           </span>
           <ArrowRight className="w-4 h-4 rtl:rotate-180" />
         </button>

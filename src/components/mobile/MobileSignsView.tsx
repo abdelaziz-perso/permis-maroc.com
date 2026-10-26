@@ -7,16 +7,19 @@ import { roadSigns } from "@/data/roadSigns";
 import { RoadSign } from "@/types/models";
 import { SignGraphic } from "@/components/signs/SignGraphic";
 import { AudioButton } from "@/components/audio/AudioButton";
-import { buildSignSpeech, mapUiLanguageToAudio } from "@/lib/audio/speechBuilders";
-import { useAudioOptional } from "@/providers/AudioProvider";
+import { buildSignSpeech } from "@/lib/audio/speechBuilders";
+import {
+  localizedSignAdvice,
+  localizedSignDescription,
+  localizedSignName,
+  mapUiLanguageToAudio,
+} from "@/lib/i18n/localizeContent";
 import { Search, X, ArrowLeft, ArrowRight } from "lucide-react";
 
 export function MobileSignsView() {
   const { language } = useLanguage();
-  const audio = useAudioOptional();
   const isArabic = language === "ar" || language === "ary";
-  const audioLang =
-    audio?.settings.audioLanguage ?? mapUiLanguageToAudio(language);
+  const audioLang = mapUiLanguageToAudio(language);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -51,13 +54,9 @@ export function MobileSignsView() {
   // SCREEN 6: SIGN DETAIL MODAL / DRAWER
   // -------------------------------------------------------------
   if (activeSignModal) {
-    const signName = isArabic ? activeSignModal.nameAr : activeSignModal.name;
-    const signDesc = isArabic
-      ? activeSignModal.descriptionAr
-      : activeSignModal.description;
-    const signAdvice = isArabic
-      ? activeSignModal.adviceAr
-      : activeSignModal.advice;
+    const signName = localizedSignName(activeSignModal, language);
+    const signDesc = localizedSignDescription(activeSignModal, language);
+    const signAdvice = localizedSignAdvice(activeSignModal, language);
 
     return (
       <div className="space-y-6 pt-1">
@@ -108,7 +107,13 @@ export function MobileSignsView() {
               id={`sign-${activeSignModal.id}`}
               text={buildSignSpeech(activeSignModal, audioLang)}
               language={audioLang}
-              label={isArabic ? "استمع للعلامة" : "Écouter"}
+              label={
+                language === "ary"
+                  ? "سمع البلاكة"
+                  : language === "ar"
+                    ? "استمع للعلامة"
+                    : "Écouter"
+              }
               variant="ghost"
               size="sm"
             />
@@ -118,7 +123,11 @@ export function MobileSignsView() {
         {/* Exemple en situation */}
         <div className="rounded-3xl bg-white border border-[#E5ECF5] p-4 shadow-sm space-y-3">
           <h3 className="text-xs font-bold text-[#5A6A82] uppercase tracking-wider">
-            {isArabic ? "مثال في وضعية حقيقية" : "Exemple en situation"}
+            {language === "ary"
+              ? "مثال فوضعية حقيقية"
+              : language === "ar"
+                ? "مثال في وضعية حقيقية"
+                : "Exemple en situation"}
           </h3>
 
           {/* Road scenario visual representation */}

@@ -13,10 +13,17 @@ import { AudioProvider, useAudioOptional } from "@/providers/AudioProvider";
 import { AudioButton } from "@/components/audio/AudioButton";
 import { AudioStatus } from "@/components/audio/AudioStatus";
 import { AudioModeToggle } from "@/components/audio/AudioModeToggle";
+import { buildQuestionSpeech } from "@/lib/audio/speechBuilders";
 import {
-  buildQuestionSpeech,
+  answerSpeechPrefix,
+  listenAnswerLabel,
+  listenQuestionLabel,
+  localizedAnswerText,
+  localizedExplanationText,
+  localizedQuestionText,
+  localizedSituationText,
   mapUiLanguageToAudio,
-} from "@/lib/audio/speechBuilders";
+} from "@/lib/i18n/localizeContent";
 import { sampleQuestions, examConfigs } from "@/data/questions";
 import { LicenceCategory, Question, ExamResult, QuestionCategory } from "@/types/models";
 import {
@@ -51,8 +58,8 @@ function ExamSimulator() {
   const { t, language } = useLanguage();
   const { recordExamResult } = useUser();
   const audio = useAudioOptional();
-  const audioLang =
-    audio?.settings.audioLanguage ?? mapUiLanguageToAudio(language);
+  // UI language is the source of truth for both displayed text and TTS
+  const audioLang = mapUiLanguageToAudio(language);
 
   const [category, setCategory] = useState<LicenceCategory>("B");
   const config = examConfigs[category];
@@ -233,7 +240,7 @@ function ExamSimulator() {
                   {currentIndex + 1} / {config.totalQuestions}
                 </span>
                 <span className="text-xs text-[#5A6A82] font-bold">
-                  {config.title} • Seuil requis : {config.passingScore}/{config.totalQuestions}
+                  {config.title} • {t.exam.thresholdShort} : {config.passingScore}/{config.totalQuestions}
                 </span>
               </div>
 
@@ -264,10 +271,10 @@ function ExamSimulator() {
             <div className="p-6 sm:p-8">
               {/* Question Text */}
               <span className="text-xs font-bold text-[#C1272D] uppercase tracking-wider block mb-2">
-                Question {currentIndex + 1}
+                {t.exam.question} {currentIndex + 1}
               </span>
               <h2 className="text-xl sm:text-2xl font-black text-[#071A3D] mb-4 leading-snug">
-                {currentQ.question}
+                {localizedQuestionText(currentQ, language)}
               </h2>
               <div className="mb-6">
                 <AudioButton
@@ -278,9 +285,10 @@ function ExamSimulator() {
                     total: config.totalQuestions,
                     language: audioLang,
                     includeAnswers: audio?.settings.autoReadAnswers ?? true,
+                    situationText: localizedSituationText(currentQ, language),
                   })}
                   language={audioLang}
-                  label="Écouter la question"
+                  label={listenQuestionLabel(language)}
                   variant="ghost"
                   size="sm"
                 />
@@ -291,6 +299,7 @@ function ExamSimulator() {
                 {currentQ.answers.map((answer, index) => {
                   const letters = ["A", "B", "C", "D"];
                   const isSelected = userAnswers[currentIndex] === answer.id;
+                  const answerText = localizedAnswerText(answer, language);
 
                   return (
                     <button
@@ -300,7 +309,7 @@ function ExamSimulator() {
                         audio?.stop();
                         handleSelectAnswer(answer.id);
                       }}
-                      className={`w-full text-left p-4 rounded-2xl border transition-all flex items-center justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F20D2F] ${
+                      className={`w-full text-start p-4 rounded-2xl border transition-all flex items-center justify-between cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F20D2F] ${
                         isSelected
                           ? "border-[#F20D2F] bg-red-50/60 text-[#071A3D] shadow-md shadow-red-500/10 ring-1 ring-[#F20D2F]"
                           : "border-[#E2E8F0] bg-white hover:bg-slate-50 text-[#071A3D]"
@@ -317,19 +326,19 @@ function ExamSimulator() {
                           {letters[index]}
                         </span>
                         <span className="text-sm sm:text-base font-semibold">
-                          {answer.text}
+                          {answerText}
                         </span>
                       </div>
 
                       <div className="flex items-center gap-2 shrink-0">
                         <AudioButton
                           id={`exam-ans-${currentQ.id}-${answer.id}`}
-                          text={`Réponse ${letters[index]}. ${answer.text}`}
+                          text={`${answerSpeechPrefix(language, letters[index])} ${answerText}`}
                           language={audioLang}
                           variant="icon"
                           size="sm"
                           stopPropagation
-                          label={`Écouter la réponse ${letters[index]}`}
+                          label={listenAnswerLabel(language, letters[index])}
                         />
                         <div
                           className={`w-5 h-5 rounded-full border flex items-center justify-center ${
@@ -402,7 +411,9 @@ function ExamSimulator() {
                 >
                   <Award className="w-4 h-4" />
                   <span>
-                    {examResult.passed ? "Examen Validé" : "Examen Non Validé"}
+                    {examResult.passed
+                      ? t.exam.examValidated
+                      : t.exam.examNotValidated}
                   </span>
                 </div>
 
@@ -412,8 +423,14 @@ function ExamSimulator() {
 
                 <p className="text-[#5A6A82] text-sm max-w-md mx-auto mb-6">
                   {examResult.passed
-                    ? "Vous avez atteint le score officiel requis par la NARSA pour cette épreuve."
-                    : `Il vous manquait ${config.passingScore - examResult.score} point(s) pour atteindre le seuil éliminatoire de ${config.passingScore}/${config.totalQuestions}.`}
+                    ? t.exam.narsaReached
+                    : t.exam.pointsMissing
+                        .replace(
+                          "{n}",
+                          String(config.passingScore - examResult.score)
+                        )
+                        .replace("{pass}", String(config.passingScore))
+                        .replace("{total}", String(config.totalQuestions))}
                 </p>
 
                 {/* Score Number Badge */}
@@ -440,7 +457,7 @@ function ExamSimulator() {
                     className="px-6 py-3 rounded-2xl bg-white hover:bg-slate-50 text-[#071A3D] border border-[#E2E8F0] font-bold text-sm flex items-center gap-2 transition-all shadow-xs"
                   >
                     <BookOpen className="w-4 h-4 text-[#C1272D]" />
-                    <span>Réviser les cours</span>
+                    <span>{t.exam.reviewCourses}</span>
                   </Link>
                 </div>
               </div>
@@ -451,7 +468,7 @@ function ExamSimulator() {
               <div className="flex items-center gap-2 mb-6">
                 <Sparkles className="w-5 h-5 text-amber-500" />
                 <h3 className="text-xl font-bold text-[#071A3D]">
-                  Correction détaillée des questions
+                  {t.exam.detailedCorrection}
                 </h3>
               </div>
 
@@ -482,7 +499,7 @@ function ExamSimulator() {
                             {idx + 1}
                           </span>
                           <span className="font-bold text-sm text-[#071A3D]">
-                            {q.question}
+                            {localizedQuestionText(q, language)}
                           </span>
                         </div>
                         {isAnsCorrect ? (
@@ -496,10 +513,10 @@ function ExamSimulator() {
                         )}
                       </div>
 
-                      <p className="text-xs text-[#5A6A82] pl-8 leading-relaxed mb-2 font-normal">
-                        {q.explanation}
+                      <p className="text-xs text-[#5A6A82] ps-8 leading-relaxed mb-2 font-normal">
+                        {localizedExplanationText(q, language)}
                       </p>
-                      <span className="text-[10px] text-slate-400 font-mono pl-8 block">
+                      <span className="text-[10px] text-slate-400 font-mono ps-8 block">
                         Réf : {q.officialRef}
                       </span>
                     </div>

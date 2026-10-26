@@ -83,6 +83,22 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     }
   }, [settings]);
 
+  // Keep TTS language in sync when the UI language switcher changes
+  useEffect(() => {
+    const onSync = (event: Event) => {
+      const detail = (event as CustomEvent<{ audioLanguage?: AudioLanguage }>)
+        .detail;
+      if (!detail?.audioLanguage) return;
+      setSettings((prev) =>
+        prev.audioLanguage === detail.audioLanguage
+          ? prev
+          : { ...prev, audioLanguage: detail.audioLanguage! }
+      );
+    };
+    window.addEventListener("pm-audio-settings", onSync);
+    return () => window.removeEventListener("pm-audio-settings", onSync);
+  }, []);
+
   const stopInternal = useCallback(() => {
     playTokenRef.current += 1;
     browserTTS.current.stop();
